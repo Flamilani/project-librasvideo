@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { REGISTER_VIEW_DATA } from './constants/register.constant';
 import { RegisterViewContent, RegisterViewData, RegisterViewFooter, RegisterViewHeader } from './interface/login.interface';
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
   email: string = '';
   senha: string = '';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -33,6 +34,10 @@ export class RegisterComponent implements OnInit {
 
   cadastrar() {
     console.log("Cadastro");
+  }
+
+  navigate() {
+    this.router.navigateByUrl('home/login');
   }
 
 }

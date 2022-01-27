@@ -1,7 +1,13 @@
 <div class="demo">
   <carousel
     [images]="images"
-    [objectFit]="'cover'">
+    [objectFit]="'cover'"
+    [freeScroll]="true"
+    [borderRadius]="10"
+    [height]="150"
+    [cellWidth]="100"
+    (click)="handleCarouselEvents($event)"
+    >
   </carousel>
 </div>
 

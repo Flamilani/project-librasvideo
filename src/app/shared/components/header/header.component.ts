@@ -1,6 +1,4 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -9,13 +7,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
-    }
-
-    isHomeRoute() {
-      return this.router.url != '/';
-    }
+  }
 
 }

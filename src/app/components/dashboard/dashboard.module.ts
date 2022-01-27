@@ -1,4 +1,3 @@
-import { MessageModule } from './../message/message.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
@@ -9,6 +8,7 @@ import { DashboardComponent } from './dashboard.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MoviesIndexComponent } from './movies/movies-index/movies-index.component';
 import { MoviesCreateComponent } from './movies/movies-create/movies-create.component';
+import { MessageModule } from 'src/app/shared/components/message/message.module';
 
 
 @NgModule({

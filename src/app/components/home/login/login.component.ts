@@ -48,11 +48,12 @@ export class LoginComponent implements OnInit {
   }
 
   navigate() {
-    this.router.navigateByUrl('cadastro');
+    this.router.navigateByUrl('home/cadastro');
   }
 
   login() {
-    this.authService.autenticar(this.email, this.senha).subscribe(
+    this.router.navigateByUrl('entrada');
+/*     this.authService.autenticar(this.email, this.senha).subscribe(
       () => {
         this.router.navigateByUrl('entrada');
       },
@@ -60,7 +61,7 @@ export class LoginComponent implements OnInit {
         alert('Usuário ou senha inválido');
         console.log(error);
       }
-    );
+    ); */
   }
 
 }

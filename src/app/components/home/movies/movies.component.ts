@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { Movie } from './model/movie.model';
+import { MoviesService } from './service/movies.service';
 
 @Component({
   selector: 'app-movies',
@@ -7,11 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviesComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('myCarousel') myCarousel: any;
+  @ViewChild('myCarouselThumbs') myCarouselThumbs: any;
+
+  movies!: Movie[];
 
   images = [
-    {path: '/assets/photo-1548625149-9129dad5eef7.jpg'},
-    {path: '/assets/photo-1548625149-d37da68f9a7f.jpg'},
+    {path: 'https://image.tmdb.org/t/p/original/4MXfPlVS5aY6FJlJ5Y0qXsPnNcy.jpg'},
+    {path: 'https://image.tmdb.org/t/p/original/nSNle6UJNNuEbglNvXt67m1a1Yn.jpg'},
     {path: '/assets/photo-1489365091240-6a18fc761ec2.jpg'},
     {path: '/assets/photo-1547691889-841a6f1c5ca6.jpg'},
     {path: '/assets/photo-1595433562696-a8b1cb8bdad1.jpg'},
@@ -22,7 +28,35 @@ export class MoviesComponent implements OnInit {
     {path: '/assets/photo-1569749450723-1836b067fb64.jpg'}
 ];
 
-  ngOnInit(): void {
+
+
+  constructor(
+    private moviesService: MoviesService,
+    private router: Router
+  ) {
+
   }
+
+  ngOnInit(): void {
+    this.listMovies();
+  }
+
+  listMovies() {
+    this.moviesService.index().subscribe(movies => {
+      this.movies = movies;
+    //  console.log(movies);
+      for (var item of movies) {
+        console.log(item.title);
+      }
+    });
+  }
+
+  handleCarouselEvents(event: any) {
+    console.log('filme');
+    this.router.navigateByUrl('home/cadastro');
+    if (event.name === "transitionend") {
+        this.myCarouselThumbs.select(this.myCarousel.slideCounter)
+    }
+}
 
 }
