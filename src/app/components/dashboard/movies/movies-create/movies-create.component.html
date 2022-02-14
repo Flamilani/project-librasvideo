@@ -1,1 +1,31 @@
-<p>movies-create works!</p>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Adicionar novo filme
+      <button (click)="back()" class="btn btn-info float-end">
+        Voltar
+      </button>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="form">
+        <div class="mb-3">
+          <label for="title" class="form-label">Título</label>
+          <input type="text" class="form-control" id="title" formControlName="title">
+        </div>
+        <div class="mb-3">
+          <label for="director" class="form-label">Diretor</label>
+          <input type="text" class="form-control" id="director" formControlName="director">
+        </div>
+        <div class="mb-3">
+          <label for="genres" class="form-label">Gênero</label>
+          <input type="text" class="form-control" id="genres" formControlName="genres">
+        </div>
+        <div class="mb-3">
+          <label for="year" class="form-label">Ano</label>
+          <input type="text" class="form-control" id="year" formControlName="year">
+        </div>
+        <button type="button" class="btn btn-primary" [disabled]="!form.valid" (click)="createMovie()">Adicionar</button>
+      </form>
+    </div>
+  </div>
+</div>

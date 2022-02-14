@@ -1,5 +1,3 @@
-import { MaterialModule } from './../../shared/material/material.module';
-import { FooterComponent } from './../../shared/components/footer/footer.component';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from './../../shared/shared.module';
 import { HomeComponent } from './home.component';
@@ -12,8 +10,11 @@ import { MoviesComponent } from './movies/movies.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { LoginComponent } from './login/login.component';
 import { MessageModule } from 'src/app/shared/components/message/message.module';
-import { HeaderComponent } from 'src/app/shared/components/header/header.component';
 import { MovieComponent } from './movie/movie.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { GenresComponent } from './genres/genres.component';
+import { FooterComponent } from './templates/footer/footer.component';
+import { HeaderComponent } from './templates/header/header.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MovieComponent } from './movie/movie.component';
     RegisterComponent,
     HeaderComponent,
     FooterComponent,
-    MovieComponent
+    MovieComponent,
+    GenresComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,7 @@ import { MovieComponent } from './movie/movie.component';
     MessageModule,
     SharedModule,
     IvyCarouselModule,
-    MaterialModule
+    CarouselModule
   ],
   exports: [
     HomeComponent

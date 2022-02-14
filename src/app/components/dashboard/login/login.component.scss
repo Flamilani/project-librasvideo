@@ -1,3 +1,13 @@
+.marginTop{
+  margin-top: 5rem;
+}
+
 .inputPadding {
   padding: 10px;
+}
+
+.btn-info:disabled {
+  color: #cccccc !important;
+  background-color: grey;
+  border-color: #545e68;
 }

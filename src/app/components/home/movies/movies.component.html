@@ -1,14 +1,34 @@
-<div class="demo">
-  <carousel
-    [images]="images"
-    [objectFit]="'cover'"
-    [freeScroll]="true"
-    [borderRadius]="10"
-    [height]="150"
-    [cellWidth]="100"
-    (click)="handleCarouselEvents($event)"
-    >
-  </carousel>
-</div>
+<h2 class="title">Filmes</h2>
+<div class="text-white mb-4" *ngFor="let genre of listGenres">
+  {{ genre.name }}
+<!--   <div class="card text-black" *ngFor="let movie of movies">
+    <div class="card-body">
+      {{ movie.title }}
+    </div>
+  </div> -->
+<!--   <div class="demo">
+    <carousel
+      [images]="images"
+      [objectFit]="'cover'"
+      [freeScroll]="true"
+      [borderRadius]="10"
+      [height]="150"
+      [cellWidth]="100"
+      (click)="handleCarouselEvents($event)"
+      >
+    </carousel>
+  </div> -->
+
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let slide of movies">
+    <ng-template carouselSlide [width]="130">
+      <div class="slide">
+        <img [src]="slide.url" [alt]="slide.title" (click)="goToMovie(slide.id)">
+      </div>
+    </ng-template>
+  </ng-container>
+  </owl-carousel-o>
+ </div>
+
 
 

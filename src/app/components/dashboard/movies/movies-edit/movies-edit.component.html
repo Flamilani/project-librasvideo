@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Editar filme {{ movie?.title }}
+      <button (click)="back()" class="btn btn-info float-end">
+        Voltar
+      </button>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="form">
+        <div class="mb-3">
+          <label for="title" class="form-label">Título</label>
+          <input type="text" class="form-control"
+          formControlName="title"
+          [(ngModel)]="movie!.title"
+          required
+          >
+        </div>
+        <div class="mb-3">
+          <label for="director" class="form-label">Diretor</label>
+          <input type="text"
+          class="form-control"
+          formControlName="director"
+          [(ngModel)]="movie!.director"
+          >
+        </div>
+        <div class="mb-3">
+          <label for="genres" class="form-label">Gênero</label>
+          <input type="text" class="form-control"
+          formControlName="genres"
+          [(ngModel)]="movie!.genres"
+          >
+        </div>
+        <div class="mb-3">
+          <label for="year" class="form-label">Ano</label>
+          <input type="text" class="form-control"
+          formControlName="year"
+          [(ngModel)]="movie!.year"
+          >
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="onSubmit()">Atualizar</button>
+      </form>
+    </div>
+  </div>
+</div>
+

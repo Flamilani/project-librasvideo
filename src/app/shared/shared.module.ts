@@ -2,16 +2,16 @@ import { MaterialModule } from './material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DialogComponent } from './components/dialog/dialog.component';
-
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
-    DialogComponent
+    DialogComponent,
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    NgbModule
   ]
 })
 export class SharedModule { }

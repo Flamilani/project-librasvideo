@@ -1,7 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { Movie } from './model/movie.model';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { MoviesService } from './service/movies.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Genre } from './../../../shared/models/genre.model';
+import { Movie } from './../../../shared/models/movie.model';
 
 @Component({
   selector: 'app-movies',
@@ -13,32 +16,88 @@ export class MoviesComponent implements OnInit {
   @ViewChild('myCarousel') myCarousel: any;
   @ViewChild('myCarouselThumbs') myCarouselThumbs: any;
 
+  genres!: Genre;
+
+  listGenres!: Genre[];
+
   movies!: Movie[];
 
   images = [
     {path: 'https://image.tmdb.org/t/p/original/4MXfPlVS5aY6FJlJ5Y0qXsPnNcy.jpg'},
-    {path: 'https://image.tmdb.org/t/p/original/nSNle6UJNNuEbglNvXt67m1a1Yn.jpg'},
-    {path: '/assets/photo-1489365091240-6a18fc761ec2.jpg'},
-    {path: '/assets/photo-1547691889-841a6f1c5ca6.jpg'},
-    {path: '/assets/photo-1595433562696-a8b1cb8bdad1.jpg'},
-    {path: '/assets/photo-1495563381401-ecfbcaaa60f2.jpg'},
-    {path: '/assets/photo-1534801022022-6e319a11f249.jpg'},
-    {path: '/assets/photo-1524324463413-57e3d8392df1.jpg'},
-    {path: '/assets/photo-1506086679524-493c64fdfaa6.jpg'},
-    {path: '/assets/photo-1569749450723-1836b067fb64.jpg'}
+    {path: 'https://image.tmdb.org/t/p/original/nSNle6UJNNuEbglNvXt67m1a1Yn.jpg'}
 ];
 
-
-
   constructor(
+    private route: ActivatedRoute,
     private moviesService: MoviesService,
     private router: Router
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.listMovies();
+    this.loadGenres();
+    this.movieByGenre();
+  }
+
+  owlDragging(e: any){
+    console.log(e);
+  }
+
+  customOptions: OwlOptions = {
+    loop: false,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    freeDrag: true,
+    dots: false,
+    merge: true,
+    mergeFit: true,
+    fluidSpeed: true,
+    navSpeed: 600,
+    margin: 10,
+    autoWidth: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      760: {
+        items: 3
+      },
+      1000: {
+        items: 4
+      }
+    },
+    nav: false
+  }
+
+
+
+  loadGenres() {
+    this.moviesService.loadGenres().subscribe(genres => {
+      this.listGenres = genres;
+      console.log(this.listGenres);
+    });
+  }
+
+  movieByGenre() {
+    console.log(this.genres);
+
+    this.moviesService.loadMoviesByGenre("acao");
+
+    this.moviesService.findMovies()
+    .subscribe(
+      movies => {
+        this.movies = movies;
+        console.log(this.movies);
+      }
+    );
+  }
+
+  goToMovie(id: any) {
+    this.router.navigate([`home/filme/${id}`]);
+    console.log("movie detail: " + id);
   }
 
   listMovies() {

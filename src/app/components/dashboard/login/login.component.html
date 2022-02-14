@@ -1,52 +1,62 @@
-<h1 class="text-center">{{ viewHeader?.title }}</h1>
+<div class="container marginTop">
+  <div class="row justify-content-md-center">
+    <div class="col-6">
 
-<form autocomplete="off" class="form mt-4" (ngSubmit)="login()" #loginForm="ngForm">
-  <div class="form-group mb-3">
-    <input
-      class="form-control inputPadding"
-      [type]="viewContent?.input?.type"
-      [placeholder]="viewContent?.label"
-      [(ngModel)]="email"
-      name="email"
-      #campoEmail="ngModel"
-      required
-    />
-    <app-message
-      *ngIf="campoEmail.invalid && campoEmail.touched"
-      mensagem="viewContent?.errorMsg"
-    ></app-message>
+      <div class="card border border-dark">
+        <h5 class="card-header bg-info text-center">Painel Administrativo</h5>
+        <div class="card-body text-black">
+
+          <form autocomplete="off" class="form" (ngSubmit)="login()" #loginForm="ngForm">
+            <div class="form-group mb-3">
+              <label for="inputEmail" class="form-label">Email</label>
+              <input
+                id="inputEmail"
+                class="form-control inputPadding bg-light"
+                [type]="viewContent?.input?.type"
+                 [(ngModel)]="email"
+                name="email"
+                #campoEmail="ngModel"
+                required
+              />
+              <app-message
+                *ngIf="campoEmail.invalid && campoEmail.touched"
+                mensagem="viewContent?.errorMsg"
+              ></app-message>
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="inputSenha" class="form-label">Senha</label>
+              <input
+                id="inputSenha"
+                type="password"
+                class="form-control inputPadding bg-light"
+                [(ngModel)]="senha"
+                name="senha"
+                #campoSenha="ngModel"
+                required
+              />
+              <app-message
+                *ngIf="campoSenha.invalid && campoSenha.touched"
+                mensagem="Senha obrigatória"
+              ></app-message>
+            </div>
+            <div class="d-grid gap-2 mt-4">
+              <button
+              type="submit"
+              class="btn btn-info text-white btn-lg"
+              [disabled]="loginForm.invalid"
+            >
+              Acessar
+            </button>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
   </div>
 
-  <div class="form-group mb-3">
-    <input
-      type="password"
-      class="form-control inputPadding"
-      placeholder="Senha"
-      [(ngModel)]="senha"
-      name="senha"
-      #campoSenha="ngModel"
-      required
-    />
-    <app-message
-      *ngIf="campoSenha.invalid && campoSenha.touched"
-      mensagem="Senha obrigatória"
-    ></app-message>
-  </div>
-  <div class="d-grid gap-2 mt-4 mb-3">
-    <button
-    type="submit"
-    class="btn btn-info text-white btn-lg"
-    [disabled]="loginForm.invalid"
-  >
-    Acessar
-  </button>
-  </div>
-</form>
-<hr>
-<p class="text-center">
-  Novo Usuário?
-</p>
-<div class="d-grid gap-2 mt-4 mb-3">
-  <a class="link-register btn btn-secondary" [routerLink]="['novousuario']">Cadastre-se</a>
 </div>
 

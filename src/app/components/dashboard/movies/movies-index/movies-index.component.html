@@ -1,1 +1,48 @@
-<p>movies-index works!</p>
+<div class="container mb-4">
+  <div class="card">
+    <div class="card-header">
+      Listagem de Filmes
+      <button (click)="goToMoviesCreate()" class="btn btn-info float-end">
+        Adicionar Novo Filme
+      </button>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Título</th>
+              <th scope="col">Diretor</th>
+              <th scope="col">Gênero</th>
+              <th scope="col">Ano</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let movie of movies; let i = index;">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ movie.title }}</td>
+              <td>{{ movie.director }}</td>
+              <td>{{ movie.genres }}</td>
+              <td>{{ movie.year }}</td>
+              <td>
+                 <a [routerLink]="['/admin/filme', movie.id]" class="btn btn-info btn-sm" placement="top" ngbTooltip="Editar {{ movie.title }}">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </a>
+                <button (click)="delete(movie)" class="btn btn-danger btn-sm mx-2" placement="top" ngbTooltip="Deletar {{ movie.title }}">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </button>
+              </td>
+            </tr>
+            <tr *ngIf="loading">
+              <td colspan="6">
+                <img  class="loading" [src]="imgLoading" alt="Carregando">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
