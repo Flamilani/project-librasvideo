@@ -1,4 +1,3 @@
-import { MoviesService } from './../home/movies/service/movies.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MoviesCreateComponent } from './movies/movies-create/movies-create.component';
 import { MoviesIndexComponent } from './movies/movies-index/movies-index.component';
@@ -18,6 +17,7 @@ import { FooterComponent } from './templates/footer/footer.component';
 import { HeaderComponent } from './templates/header/header.component';
 import { ModalComponent } from './templates/modal/modal.component';
 import { MoviesEditComponent } from './movies/movies-edit/movies-edit.component';
+import { ImagesComponent } from './images/images.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +29,11 @@ import { MoviesEditComponent } from './movies/movies-edit/movies-edit.component'
     NavbarComponent,
     FooterComponent,
     HeaderComponent,
-    MoviesIndexComponent,
     MoviesCreateComponent,
+    MoviesIndexComponent,
     MoviesEditComponent,
-    ModalComponent
+    ModalComponent,
+    ImagesComponent
   ],
   imports: [
     CommonModule,
@@ -45,9 +46,6 @@ import { MoviesEditComponent } from './movies/movies-edit/movies-edit.component'
   ],
   exports: [
     DashboardComponent
-  ],
-  providers: [
-    MoviesService
-  ],
+  ]
 })
 export class DashboardModule { }

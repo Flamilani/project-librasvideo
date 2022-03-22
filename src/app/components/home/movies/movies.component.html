@@ -1,12 +1,14 @@
-<h2 class="title">Filmes</h2>
-<div class="text-white mb-4" *ngFor="let genre of listGenres">
-  {{ genre.name }}
-<!--   <div class="card text-black" *ngFor="let movie of movies">
+<img *ngIf="loading" class="loading" [src]="imgLoading" alt="Carregando">
+<div *ngIf="!loading">
+  <h2 class="title">Filmes</h2>
+  <div class="text-white mb-4" *ngFor="let genre of listGenres">
+    <h3>{{ genre.name }}</h3>
+    <!--   <div class="card text-black" *ngFor="let movie of movies">
     <div class="card-body">
       {{ movie.title }}
     </div>
   </div> -->
-<!--   <div class="demo">
+    <!--   <div class="demo">
     <carousel
       [images]="images"
       [objectFit]="'cover'"
@@ -18,17 +20,14 @@
       >
     </carousel>
   </div> -->
-
-  <owl-carousel-o [options]="customOptions">
-    <ng-container *ngFor="let slide of movies">
-    <ng-template carouselSlide [width]="130">
-      <div class="slide">
-        <img [src]="slide.url" [alt]="slide.title" (click)="goToMovie(slide.id)">
-      </div>
-    </ng-template>
-  </ng-container>
-  </owl-carousel-o>
- </div>
-
-
-
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of movies">
+        <ng-template carouselSlide [width]="130">
+          <div class="slide">
+            <img [src]="slide.iconUrl" [alt]="slide.title" (click)="goToMovie(slide.id)">
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+</div>

@@ -1,1 +1,20 @@
-<p>genres works!</p>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Adicionar nova categoria
+      <button (click)="back()" class="btn btn-info float-end">
+        Voltar
+      </button>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="form">
+        <div class="mb-3">
+          <label for="title" class="form-label">Nome da Categoria</label>
+          <input type="text" class="form-control" formControlName="name">
+        </div>
+
+        <button type="button" class="btn btn-primary" (click)="createCategory()">Adicionar</button>
+      </form>
+    </div>
+  </div>
+</div>

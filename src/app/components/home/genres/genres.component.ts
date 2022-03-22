@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MoviesService } from 'src/app/shared/services/movies.service';
 import { Genre } from './../../../shared/models/genre.model';
-
-import { MoviesService } from '../movies/service/movies.service';
 
 @Component({
   selector: 'app-genres',

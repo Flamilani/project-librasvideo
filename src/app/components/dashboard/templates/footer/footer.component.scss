@@ -1,0 +1,14 @@
+footer {
+  font-size: 15px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+
+  span {
+    margin: 5px;
+    ul {
+      list-style: none;
+    }
+  }
+}

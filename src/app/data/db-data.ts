@@ -5,7 +5,8 @@ export const MOVIES: any = {
     "director": "Adam",
     "genres": "acao",
     "year": 2020,
-    "url": "https://image.tmdb.org/t/p/original/4MXfPlVS5aY6FJlJ5Y0qXsPnNcy.jpg"
+    "url": "",
+    "iconUrl": "https://image.tmdb.org/t/p/original/4MXfPlVS5aY6FJlJ5Y0qXsPnNcy.jpg"
   },
   2: {
     "title": "Superman",
@@ -13,7 +14,8 @@ export const MOVIES: any = {
     "year": "1995",
     "genres": "aventura",
     "id": 3,
-    "url": "https://image.tmdb.org/t/p/original/nSNle6UJNNuEbglNvXt67m1a1Yn.jpg"
+    "url": "",
+    "iconUrl": "https://image.tmdb.org/t/p/original/nSNle6UJNNuEbglNvXt67m1a1Yn.jpg"
   },
   3: {
     "title": "Nome do Filme",
@@ -21,7 +23,8 @@ export const MOVIES: any = {
     "year": "2021",
     "genres": "aventura",
     "id": 4,
-    "url": "https://image.tmdb.org/t/p/original/rJwiDSoKI3ryiLTZZ6BPUl2CrwG.jpg"
+    "url": "",
+    "iconUrl": "https://image.tmdb.org/t/p/original/rJwiDSoKI3ryiLTZZ6BPUl2CrwG.jpg"
   },
   4: {
     "title": "teste",
@@ -29,7 +32,8 @@ export const MOVIES: any = {
     "genres": "comedia",
     "year": "2022",
     "id": 5,
-    "url": "https://image.tmdb.org/t/p/original/4gaUbCInKAJOsCgjg8vcNn0A7jn.jpg"
+    "url": "",
+    "iconUrl": "https://image.tmdb.org/t/p/original/4gaUbCInKAJOsCgjg8vcNn0A7jn.jpg"
   }
 }
 export const SERIES: any = {
@@ -92,7 +96,7 @@ export const GENRES = {
 export const USERS = {
   1: {
     id: 1,
-    email: 'teste@gmail.com',
+    email: 'flaviomilani83@gmail.com',
     password: 'teste1'
   }
 };

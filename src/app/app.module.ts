@@ -1,3 +1,4 @@
+import { MoviesService } from './shared/services/movies.service';
 import { NotificationService } from './shared/services/notification.service';
 import { AuthService } from './shared/services/auth.service';
 import { SharedModule } from './shared/shared.module';
@@ -33,7 +34,8 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   providers: [
     AuthService,
-    NotificationService
+    NotificationService,
+    MoviesService
   ],
   bootstrap: [AppComponent]
 })

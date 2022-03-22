@@ -1,8 +1,15 @@
 footer {
   font-size: 15px;
   margin-top: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: wrap;
+
+  span {
+    margin: 5px;
+    ul {
+      list-style: none;
+    }
+  }
 }
 
-footer a {
-
-}

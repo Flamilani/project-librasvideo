@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 import { from, Observable } from 'rxjs';
 import { concatMap, first, map } from 'rxjs/operators';
 
-import { APIMovies } from '../../../../app.api';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "@angular/fire/compat/firestore";
-import { convertSnaps } from './../../../../shared/utils/db-utils';
-import { Genre } from './../../../../shared/models/genre.model';
-import { Movie } from './../../../../shared/models/movie.model';
+import { Movie } from '../models/movie.model';
+import { APIMovies } from 'src/app/app.api';
+import { Genre } from '../models/genre.model';
+import { convertSnaps } from '../utils/db-utils';
+
 
 @Injectable({
   providedIn: 'root'

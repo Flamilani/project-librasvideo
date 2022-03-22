@@ -5,4 +5,5 @@ export interface Movie {
   genres: string;
   year: string;
   url: string;
+  iconUrl: string;
 }

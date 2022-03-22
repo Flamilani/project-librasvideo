@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { MoviesService } from '../service/movies.service';
-import { catchError, tap } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { catchError, concatMap, last, tap } from 'rxjs/operators';
+import { throwError, Observable } from 'rxjs';
 import { NotificationService } from './../../../../shared/services/notification.service';
 import { Movie } from './../../../../shared/models/movie.model';
+import { MoviesService } from 'src/app/shared/services/movies.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Genre } from 'src/app/shared/models/genre.model';
 
 @Component({
   selector: 'app-movies-create',
@@ -17,16 +19,25 @@ export class MoviesCreateComponent implements OnInit {
 
   movieId!: string;
 
+  genres!: Genre[];
+
+  percentageChanges$: Observable<any> | undefined;
+
+  iconUrl!: string;
+
   form = this.fb.group({
     title: ['', Validators.required],
     director: ['', Validators.required],
     genres: ['', Validators.required],
-    year: ['', Validators.required]
-  })
+    year: ['', Validators.required],
+    url: ['', Validators.required],
+    iconUrl: [null]
+  });
 
   constructor(
     private fb: FormBuilder,
     private moviesService: MoviesService,
+    private storage: AngularFireStorage,
     private afs: AngularFirestore,
     private router: Router,
     private notifyService : NotificationService
@@ -34,6 +45,31 @@ export class MoviesCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.movieId = this.afs.createId();
+    this.listGenres();
+  }
+
+  uploadImage(event: any) {
+    const file: File = event.target.files[0];
+
+    const filePath = `movies/${this.movieId}/${file.name}`;
+
+    const task = this.storage.upload(filePath, file, {
+      cacheControl: "max-age=2592000,public"
+    });
+
+    this.percentageChanges$ = task.percentageChanges();
+
+    task.snapshotChanges()
+    .pipe(last(),
+      concatMap(() => this.storage.ref(filePath).getDownloadURL()),
+      tap(url => this.iconUrl = url),
+      tap(url => this.form.get('iconUrl')?.setValue(url)),
+      catchError(err => {
+        console.log(err);
+        alert("Could not create thumbnail url.");
+        return throwError(err);
+      })
+    ).subscribe();
   }
 
   createMovie() {
@@ -43,7 +79,9 @@ export class MoviesCreateComponent implements OnInit {
       title: val.title,
       director: val.director,
       genres: val.genres,
-      year: val.year
+      year: val.year,
+      url: val.url,
+      iconUrl: val.iconUrl
     }
 
     this.moviesService.createMovie(newMovie, this.movieId)
@@ -60,6 +98,15 @@ export class MoviesCreateComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  listGenres() {
+    this.moviesService.loadGenres().subscribe(genres => {
+      this.genres = genres;
+      for (var item of genres) {
+        console.log(item.name);
+      }
+    });
   }
 
   back() {

@@ -1,4 +1,29 @@
 <footer>
-  <a href="#">Termo de Uso</a>
-  <a href="#">Política de Privacidade</a>
+  <span>
+    {{ viewFooter?.title }}
+  </span>
+  <span>
+    {{ viewFooter?.description }}
+  </span>
+  <span>
+    <div>{{ viewFooter.contacts?.title }}</div>
+    <ul>
+      <li>
+        {{ viewFooter.contacts?.email }}
+      </li>
+      <li>
+        {{ viewFooter.contacts?.celular }}
+      </li>
+    </ul>
+  </span>
+  <span>
+    <ul>
+      <li>
+        <a routerLink="{{ viewFooter.terms?.urlTerm }}">{{ viewFooter.terms?.term }}</a>
+      </li>
+      <li>
+        <a routerLink="{{ viewFooter.terms?.urlPolicy }}">{{ viewFooter.terms?.policy }}</a>
+      </li>
+    </ul>
+  </span>
 </footer>

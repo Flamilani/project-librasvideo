@@ -5,8 +5,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Movie } from 'src/app/shared/models/movie.model';
+import { MoviesService } from 'src/app/shared/services/movies.service';
 import { NotificationService } from './../../../../shared/services/notification.service';
-import { MoviesService } from '../service/movies.service';
+
 
 @Component({
   selector: 'app-movies-edit',
@@ -14,15 +15,18 @@ import { MoviesService } from '../service/movies.service';
   styleUrls: ['./movies-edit.component.scss']
 })
 export class MoviesEditComponent implements OnInit {
-  movieId!: string;
   // movie!: Movie | null;
+
+  movieId!: string;
+
   movie: Movie | null = {
     title: '',
     director: '',
     genres: '',
     year: '',
     id: '',
-    url: ''
+    url: '',
+    iconUrl: ''
   }
 
   form = this.fb.group({

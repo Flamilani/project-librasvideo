@@ -13,6 +13,8 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Título</th>
+              <th scope="col">Capa</th>
+              <th scope="col">Vídeo</th>
               <th scope="col">Diretor</th>
               <th scope="col">Gênero</th>
               <th scope="col">Ano</th>
@@ -23,6 +25,15 @@
             <tr *ngFor="let movie of movies; let i = index;">
               <th scope="row">{{ i + 1 }}</th>
               <td>{{ movie.title }}</td>
+              <td>
+                <img *ngIf="movie.iconUrl" class="imgThumbnail" [src]="movie.iconUrl" alt="movie.title" />
+                <span *ngIf="!movie.iconUrl" class="badge bg-secondary">Sem Imagem</span>
+              </td>
+              <td>
+                <div style="padding:56.25% 0 0 0;position:relative;">
+                  <iframe src="https://player.vimeo.com/video/45134899?h=a65271635a&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+                  <script src="https://player.vimeo.com/api/player.js"></script>
+              </td>
               <td>{{ movie.director }}</td>
               <td>{{ movie.genres }}</td>
               <td>{{ movie.year }}</td>
@@ -30,7 +41,7 @@
                  <a [routerLink]="['/admin/filme', movie.id]" class="btn btn-info btn-sm" placement="top" ngbTooltip="Editar {{ movie.title }}">
                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                 </a>
-                <button (click)="delete(movie)" class="btn btn-danger btn-sm mx-2" placement="top" ngbTooltip="Deletar {{ movie.title }}">
+                <button (click)="confirmDelete(movie)" class="btn btn-danger btn-sm mx-2" placement="top" ngbTooltip="Deletar {{ movie.title }}">
                   <i class="fa fa-trash-o" aria-hidden="true"></i>
                 </button>
               </td>

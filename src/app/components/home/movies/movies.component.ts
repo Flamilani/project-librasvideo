@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { MoviesService } from './service/movies.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Genre } from './../../../shared/models/genre.model';
 import { Movie } from './../../../shared/models/movie.model';
+import { MoviesService } from 'src/app/shared/services/movies.service';
 
 @Component({
   selector: 'app-movies',
@@ -16,10 +16,11 @@ export class MoviesComponent implements OnInit {
   @ViewChild('myCarousel') myCarousel: any;
   @ViewChild('myCarouselThumbs') myCarouselThumbs: any;
 
+  imgLoading = '../../../../assets/img/loading.gif';
+  loading!: boolean;
+
   genres!: Genre;
-
   listGenres!: Genre[];
-
   movies!: Movie[];
 
   images = [
@@ -34,8 +35,13 @@ export class MoviesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadGenres();
-    this.movieByGenre();
+
+    this.loading = true;
+    setTimeout (() => {
+      this.loading = false;
+      this.loadGenres();
+      this.movieByGenre();
+   }, 2000);
   }
 
   owlDragging(e: any){
