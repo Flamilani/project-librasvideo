@@ -14,20 +14,21 @@ import { LoginViewContent, LoginViewData, LoginViewFooter, LoginViewHeader } fro
 export class LoginComponent implements OnInit {
   readonly loginViewData: LoginViewData = LOGIN_VIEW_DATA;
 
-  form!: FormGroup;
+  formLogin!: FormGroup;
 
   email: string = '';
   senha: string = '';
 
   constructor(
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
     private authService: AuthService,
     private router: Router
   ) { }
 
   buildForm(): void {
-    this.form = this.formBuilder.group({
-      email: new FormControl('', [Validators.required, Validators.minLength(3)])
+    this.formLogin = this.fb.group({
+      email: ['', [Validators.required, Validators.minLength(3)]],
+      senha: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 

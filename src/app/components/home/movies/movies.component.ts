@@ -35,13 +35,15 @@ export class MoviesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
+    this.loadGenres();
+    this.moviesByGenre();
+/*
     this.loading = true;
     setTimeout (() => {
       this.loading = false;
       this.loadGenres();
-      this.movieByGenre();
-   }, 2000);
+      this.moviesByGenre();
+   }, 2000); */
   }
 
   owlDragging(e: any){
@@ -87,19 +89,48 @@ export class MoviesComponent implements OnInit {
     });
   }
 
-  movieByGenre() {
-    console.log(this.genres);
+  moviesByGenre() {
+    this.moviesService.loadGenres()
+      .subscribe(
+        genres => {
+          this.listGenres = genres;
+          console.log(this.listGenres[0]?.name);
 
-    this.moviesService.loadMoviesByGenre("acao");
+          console.log('item',this.listGenres[0]?.name);
+          this.moviesService.loadMoviesByGenre(this.listGenres[0]?.name.toString())
+          .subscribe(movies => {
+            this.movies = movies;
+            console.log('filmes agrupados', this.movies);
+          });
 
-    this.moviesService.findMovies()
-    .subscribe(
-      movies => {
-        this.movies = movies;
-        console.log(this.movies);
-      }
-    );
+  /*         for (var item of this.listGenres) {
+            console.log('item',item.name);
+            this.moviesService.loadMoviesByGenre(item.name)
+            .subscribe(movies => {
+              this.movies = movies;
+              console.log('filmes agrupados', this.movies);
+            });
+          console.log('filmes: ', this.movies);
+          } */
+
+        }
+      );
   }
+
+/*   movieByGenre() {
+    this.moviesService.findMovies()
+      .subscribe(
+        movies => {
+          this.movies = movies;
+          this.moviesService.loadMoviesByGenre('acao')
+            .subscribe(movies => {
+              this.movies = movies;
+              console.log('filmes agrupados', this.movies);
+            });
+          console.log('filmes: ', this.movies);
+        }
+      );
+  } */
 
   goToMovie(id: any) {
     this.router.navigate([`home/filme/${id}`]);

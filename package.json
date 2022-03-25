@@ -30,6 +30,7 @@
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "@popperjs/core": "^2.11.2",
     "@types/popper.js": "^1.11.0",
+    "angular-imask": "^6.4.2",
     "angular-responsive-carousel": "^2.1.2",
     "animate.css": "^4.1.1",
     "bootstrap": "^5.1.3",

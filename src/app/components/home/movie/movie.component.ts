@@ -1,3 +1,4 @@
+import { Genre } from './../../../shared/models/genre.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from 'src/app/shared/services/movies.service';
@@ -17,15 +18,7 @@ export class MovieComponent implements OnInit {
 
   movieId!: string;
   // movie!: Movie | null;
-  movie: Movie | null = {
-    title: '',
-    director: '',
-    genres: '',
-    year: '',
-    id: '',
-    url: '',
-    iconUrl: ''
-  }
+  movie!: Movie | null;
 
   constructor(
     private route: ActivatedRoute,

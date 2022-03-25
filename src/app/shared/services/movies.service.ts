@@ -47,14 +47,20 @@ export class MoviesService {
   }
 
   loadMoviesByGenre(genre: string): Observable<Movie[]> {
-    return this.db.collection(
-      "movies",
-      ref => ref.where("genres", "array-contains", genre)
+    return this.db.collection("movies",
+      ref => ref.where("genres", "==", genre)
     )
       .get()
       .pipe(
         map(result => convertSnaps<Movie>(result))
       );
+  }
+
+  groupMoviesByGenre(genre: string) {
+    return this.db.collectionGroup("movies",
+      ref => ref.where("genres", "==", genre)
+    ).snapshotChanges()
+
   }
 
   loadMovies(): Observable<Movie[]> {

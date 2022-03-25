@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MoviesComponent } from './movies/movies.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { LoginComponent } from './login/login.component';
-import { MessageModule } from 'src/app/shared/components/message/message.module';
+import { MessageModule } from '../../shared/components/message/message.module';
 import { MovieComponent } from './movie/movie.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { GenresComponent } from './genres/genres.component';

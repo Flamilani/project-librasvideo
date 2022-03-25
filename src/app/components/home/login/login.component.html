@@ -1,18 +1,20 @@
 <h1 class="text-center mt-4">{{ viewHeader?.title }}</h1>
 
-<form autocomplete="off" class="form mt-4" (ngSubmit)="login()" #loginForm="ngForm">
+<form [formGroup]="formLogin" autocomplete="off" class="form mt-4" (ngSubmit)="login()">
   <div class="form-group mb-3">
     <input
       class="form-control inputPadding"
       [type]="viewContent?.input?.type"
       [placeholder]="viewContent?.label"
       [(ngModel)]="email"
-      name="email"
-      #campoEmail="ngModel"
+      formControlName="email"
       required
     />
+    <div class="alert alert-danger mt-2" role="alert" *ngIf="formLogin.controls['email']?.invalid && formLogin.get('email')?.touched">
+      Email inválido
+    </div>
     <app-message
-      *ngIf="campoEmail.invalid && campoEmail.touched"
+      *ngIf="formLogin.controls['email']?.invalid && formLogin.controls['email']?.touched"
       mensagem="viewContent?.errorMsg"
     ></app-message>
   </div>
@@ -23,12 +25,11 @@
       class="form-control inputPadding"
       placeholder="Senha"
       [(ngModel)]="senha"
-      name="senha"
-      #campoSenha="ngModel"
+      formControlName="senha"
       required
     />
     <app-message
-      *ngIf="campoSenha.invalid && campoSenha.touched"
+      *ngIf="formLogin.get('senha')?.invalid && formLogin.get('senha')?.touched"
       mensagem="Senha obrigatória"
     ></app-message>
   </div>
@@ -36,7 +37,7 @@
     <button
     type="submit"
     class="btn btn-info text-white btn-lg"
-    [disabled]="loginForm.invalid"
+    [disabled]="formLogin.invalid"
   >
     Acessar
   </button>

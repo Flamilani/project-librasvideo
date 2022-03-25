@@ -19,15 +19,7 @@ export class MoviesEditComponent implements OnInit {
 
   movieId!: string;
 
-  movie: Movie | null = {
-    title: '',
-    director: '',
-    genres: '',
-    year: '',
-    id: '',
-    url: '',
-    iconUrl: ''
-  }
+  movie!: Movie | null;
 
   form = this.fb.group({
     title: ['', Validators.required],
