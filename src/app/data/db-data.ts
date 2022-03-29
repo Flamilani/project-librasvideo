@@ -1,39 +1,55 @@
 export const MOVIES: any = {
   1: {
-    "id": 2,
-    "title": "Godzilla",
-    "director": "Adam",
-    "genres": "acao",
-    "year": 2020,
-    "url": "",
-    "iconUrl": "https://image.tmdb.org/t/p/original/4MXfPlVS5aY6FJlJ5Y0qXsPnNcy.jpg"
+    id: 1,
+    seqNo: 0,
+    title: "Godzilla",
+    director: "Adam",
+    category: 'ACTION',
+    description: "",
+    year: 2020,
+    age: '0',
+    url: "",
+    iconUrl: "https://image.tmdb.org/t/p/original/4MXfPlVS5aY6FJlJ5Y0qXsPnNcy.jpg",
+    active: true
   },
   2: {
-    "title": "Superman",
-    "director": "Diretor",
-    "year": "1995",
-    "genres": "aventura",
-    "id": 3,
-    "url": "",
-    "iconUrl": "https://image.tmdb.org/t/p/original/nSNle6UJNNuEbglNvXt67m1a1Yn.jpg"
+    id: 2,
+    seqNo: 1,
+    title: "Superman",
+    director: "Diretor",
+    category: 'ADVENTURE',
+    description: "",
+    year: "1995",
+    age: '10',
+    url: "",
+    iconUrl: "https://image.tmdb.org/t/p/original/nSNle6UJNNuEbglNvXt67m1a1Yn.jpg",
+    active: true
   },
   3: {
-    "title": "Nome do Filme",
-    "director": "Nome do Diretor",
-    "year": "2021",
-    "genres": "aventura",
-    "id": 4,
-    "url": "",
-    "iconUrl": "https://image.tmdb.org/t/p/original/rJwiDSoKI3ryiLTZZ6BPUl2CrwG.jpg"
+    id: 3,
+    seqNo: 2,
+    title: "Nome do Filme",
+    director: "Nome do Diretor",
+    category: 'DRAMA',
+    description: "",
+    year: "2021",
+    age: '12',
+    url: "",
+    iconUrl: "https://image.tmdb.org/t/p/original/rJwiDSoKI3ryiLTZZ6BPUl2CrwG.jpg",
+    active: true
   },
   4: {
-    "title": "teste",
-    "director": "diretor",
-    "genres": "comedia",
-    "year": "2022",
-    "id": 5,
-    "url": "",
-    "iconUrl": "https://image.tmdb.org/t/p/original/4gaUbCInKAJOsCgjg8vcNn0A7jn.jpg"
+    id: 4,
+    seqNo: 3,
+    title: "teste",
+    director: "diretor",
+    category: 'ACTION',
+    description: "",
+    year: "2022",
+    age: '12',
+    url: "",
+    iconUrl: "https://image.tmdb.org/t/p/original/4gaUbCInKAJOsCgjg8vcNn0A7jn.jpg",
+    active: true
   }
 }
 export const SERIES: any = {
@@ -41,53 +57,59 @@ export const SERIES: any = {
     "id": 1,
     "title": "Stranger Things",
     "director": "Zack",
-    "genres": 2,
+    "genre": 2,
     "year": 2021
   },
   2: {
     "id": 2,
     "title": "Detetive",
     "director": "Adam",
-    "genres": 1,
+    "genre": 1,
     "year": 2020
   },
   3: {
     "id": 3,
     "title": "Itaiwem Class",
     "director": "Jack",
-    "genres": 3,
+    "genre": 3,
     "year": 2021
   }
 }
 
-export const GENRES = {
+export const CATEGORIES = {
   1: {
     id: 1,
-    name: "acao",
+    'seqNo': 0,
+    name: "Ação",
     active: true
   },
   2: {
     id: 2,
-    name: "aventura",
+    'seqNo': 1,
+    name: "Aventura",
     active: true
   },
   3: {
     id: 3,
-    name: "comedia",
+    'seqNo': 2,
+    name: "Comédia",
     active: true
   },
   4: {
     id: 4,
+    'seqNo': 3,
     name: "documentario",
     active: true
   },
   5: {
     id: 5,
+    'seqNo': 4,
     name: "romance",
     active: true
   },
   6: {
     id: 6,
+    'seqNo': 5,
     name: "drama",
     active: true
   }

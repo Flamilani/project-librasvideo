@@ -1,10 +1,15 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Category } from './../../../shared/models/genre.model';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { Genre } from './../../../shared/models/genre.model';
 import { Movie } from './../../../shared/models/movie.model';
 import { MoviesService } from 'src/app/shared/services/movies.service';
+import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
+import { MovieComponent } from '../movie/movie.component';
+import { Categories } from 'src/app/shared/interfaces/categories.interface';
+import { CATEGORIES } from 'src/app/shared/constants/categories.constant';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-movies',
@@ -19,24 +24,26 @@ export class MoviesComponent implements OnInit {
   imgLoading = '../../../../assets/img/loading.gif';
   loading!: boolean;
 
-  genres!: Genre;
-  listGenres!: Genre[];
+  getCategories: Categories[] = CATEGORIES;
+
+  categories!: Category;
+  listCategories!: Category[];
   movies!: Movie[];
 
-  images = [
-    {path: 'https://image.tmdb.org/t/p/original/4MXfPlVS5aY6FJlJ5Y0qXsPnNcy.jpg'},
-    {path: 'https://image.tmdb.org/t/p/original/nSNle6UJNNuEbglNvXt67m1a1Yn.jpg'}
-];
+  movie!: Movie | null;
+
+  @Output()
+  movieVisualizado = new EventEmitter();
 
   constructor(
     private route: ActivatedRoute,
-    private moviesService: MoviesService,
-    private router: Router
+    public moviesService: MoviesService,
+    private router: Router,
+    private _bottomSheet: MatBottomSheet
   ) {}
 
   ngOnInit(): void {
-    this.loadGenres();
-    this.moviesByGenre();
+
 /*
     this.loading = true;
     setTimeout (() => {
@@ -44,10 +51,9 @@ export class MoviesComponent implements OnInit {
       this.loadGenres();
       this.moviesByGenre();
    }, 2000); */
-  }
 
-  owlDragging(e: any){
-    console.log(e);
+   this.loadCategories();
+   this.moviesByAction();
   }
 
   customOptions: OwlOptions = {
@@ -80,37 +86,70 @@ export class MoviesComponent implements OnInit {
     nav: false
   }
 
+  showNameCategory(id: any) {
+    this.moviesService.showCategory(id)
+       .subscribe(
+         movie => {
+           console.log(movie);
+           this.listCategories = movie;
+          }
+       );
+  }
 
+  loadCategories() {
+    console.log(this.getCategories);
+    return this.getCategories;
+  }
 
   loadGenres() {
-    this.moviesService.loadGenres().subscribe(genres => {
-      this.listGenres = genres;
-      console.log(this.listGenres);
+    this.moviesService.loadCategories().subscribe(categories => {
+      this.listCategories = categories;
+   //   console.log(this.listGenres);
     });
   }
 
-  moviesByGenre() {
-    this.moviesService.loadGenres()
-      .subscribe(
-        genres => {
-          this.listGenres = genres;
-          console.log(this.listGenres[0]?.name);
 
-          console.log('item',this.listGenres[0]?.name);
-          this.moviesService.loadMoviesByGenre(this.listGenres[0]?.name.toString())
+  moviesByCategory() {
+    console.log(this.getCategories[1].nameCategory);
+    this.moviesService.loadMoviesByCategory(this.getCategories[0].nameCategory)
+      .subscribe(movies => {
+        this.movies = movies;
+        console.log(movies);
+      });
+  }
+
+  moviesByAction() {
+    this.moviesService.loadMoviesByCategory('ACTION')
+      .subscribe(movies => {
+        this.movies = movies;
+        console.log(movies);
+      });
+  }
+
+  moviesByGenre() {
+    this.moviesService.loadCategories()
+      .subscribe(
+        categories => {
+          this.listCategories = categories;
+         // console.log(this.listGenres[0]?.name);
+
+          console.log('item',this.listCategories[0]?.seqNo);
+          this.moviesService.loadMoviesByCategory(this.listCategories[0]?.seqNo)
           .subscribe(movies => {
             this.movies = movies;
-            console.log('filmes agrupados', this.movies);
+            console.log('filmes agrupados', this.movies[0]?.category);
           });
 
-  /*         for (var item of this.listGenres) {
-            console.log('item',item.name);
-            this.moviesService.loadMoviesByGenre(item.name)
+  /*          for (var item of categories) {
+            console.log('item',item.seqNo);
+            this.moviesService.loadMoviesByGenre(item.seqNo)
             .subscribe(movies => {
               this.movies = movies;
-              console.log('filmes agrupados', this.movies);
+              console.log('seq', item.seqNo);
+              console.log('filmes: ', this.movies);
+              console.log('filmes por categoria', movies[0]?.categoryId);
             });
-          console.log('filmes: ', this.movies);
+
           } */
 
         }
@@ -132,10 +171,30 @@ export class MoviesComponent implements OnInit {
       );
   } */
 
-  goToMovie(id: any) {
-    this.router.navigate([`home/filme/${id}`]);
-    console.log("movie detail: " + id);
-  }
+  getById(id: string) {
+     this.moviesService.getMovie(id)
+       .subscribe(
+         movie => {
+           console.log(movie);
+           this.movie = movie;
+          }
+       );
+ }
+
+  goToMovie(movie: Movie) {
+    const bottomSheetConfig = new MatBottomSheetConfig();
+
+    bottomSheetConfig.data = movie;
+
+     console.log("movie detail: " + movie.id);
+     this._bottomSheet.open(MovieComponent, bottomSheetConfig)
+     .afterDismissed()
+      .subscribe(val => {
+        if (val) {
+          this.movieVisualizado.emit();
+        }
+      });
+   }
 
   listMovies() {
     this.moviesService.index().subscribe(movies => {

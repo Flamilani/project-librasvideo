@@ -1,5 +1,6 @@
-export interface Genre {
+export interface Category {
   id?: string;
   name: string;
   active: boolean;
+  seqNo: number;
 }

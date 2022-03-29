@@ -1,3 +1,4 @@
+import { Categories } from './../interfaces/categories.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { from, Observable } from 'rxjs';
@@ -6,7 +7,7 @@ import { concatMap, first, map } from 'rxjs/operators';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "@angular/fire/compat/firestore";
 import { Movie } from '../models/movie.model';
 import { APIMovies } from 'src/app/app.api';
-import { Genre } from '../models/genre.model';
+import { Category } from '../models/genre.model';
 import { convertSnaps } from '../utils/db-utils';
 
 
@@ -30,10 +31,39 @@ export class MoviesService {
     );
   }
 
-  loadGenres(): Observable<Genre[]> {
-    return this.db.collection("genres").get()
+/*   public getCategoryByName(name: string[]) {
+    switch(name) {
+      case ['ACTION']:
+        return 'Ação';
+      case ['ANIMATION']:
+        return 'Animação';
+      default:
+        return 'Sem categoria';
+    }
+  } */
+
+  public getCategoryByName(name: string[]) {
+    if (name == ['ACTION']) {
+      return 'Ação';
+    } else if (name == ['ANIMATION']) {
+      return 'Animação'
+    } else if (name == ['ADVENTURE']) {
+      return 'Aventura'
+    } else if (name == ['DRAMA']) {
+      return 'Drama'
+    } else if (name == ['COMEDY']) {
+      return 'Comédia'
+    } else if (name == ['DOCUMENTARY']) {
+      return 'Documentário'
+    } else {
+      return 'Sem categoria';
+    }
+  }
+
+  loadCategories(): Observable<Category[]> {
+    return this.db.collection("categories").get()
       .pipe(
-        map(result => convertSnaps<Genre>(result))
+        map(result => convertSnaps<Category>(result))
       );
   }
 
@@ -46,9 +76,21 @@ export class MoviesService {
 
   }
 
-  loadMoviesByGenre(genre: string): Observable<Movie[]> {
+  showCategory(category: any): Observable<Category[]> {
+    return this.db.collectionGroup("categories",
+      ref => ref.where("seqNo", "==", category)
+    )
+      .get()
+      .pipe(
+        map(result => convertSnaps<Category>(result))
+      );
+  }
+
+
+  loadMoviesByCategory(category: any): Observable<Movie[]> {
     return this.db.collection("movies",
-      ref => ref.where("genres", "==", genre)
+      ref => ref.where("category", "==", category)
+      .orderBy("seqNo")
     )
       .get()
       .pipe(
@@ -56,9 +98,9 @@ export class MoviesService {
       );
   }
 
-  groupMoviesByGenre(genre: string) {
+  groupMoviesByGenre(categoryId: any) {
     return this.db.collectionGroup("movies",
-      ref => ref.where("genres", "==", genre)
+      ref => ref.where("category", "==", categoryId)
     ).snapshotChanges()
 
   }
@@ -101,13 +143,15 @@ export class MoviesService {
   }
 
   createMovie(newMovie: Partial<Movie>, movieId?: string) {
-    return this.db.collection("movies")
+    return this.db.collection("movies", ref => ref.orderBy("seqNo", "desc").limit(1))
       .get()
       .pipe(
         concatMap(result => {
           const movies = convertSnaps<Movie>(result);
+          const movieSeqNo = movies[0]?.seqNo ?? 0;
           const movie = {
-            ...newMovie
+            ...newMovie,
+            seqNo: movieSeqNo + 1
           }
 
           let save$: Observable<any>;

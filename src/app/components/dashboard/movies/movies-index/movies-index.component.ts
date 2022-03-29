@@ -1,3 +1,4 @@
+import { Categories } from './../../../../shared/interfaces/categories.interface';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Movie } from './../../../../shared/models/movie.model';
@@ -6,6 +7,7 @@ import { throwError } from 'rxjs';
 import { NotificationService } from './../../../../shared/services/notification.service';
 import Swal from 'sweetalert2';
 import { MoviesService } from 'src/app/shared/services/movies.service';
+import { CATEGORIES } from 'src/app/shared/constants/categories.constant';
 
 @Component({
   selector: 'app-movies-index',
@@ -16,13 +18,16 @@ export class MoviesIndexComponent implements OnInit {
 
   imgLoading = '../../../../assets/img/loading.gif';
 
+  getCategories: Categories[] = CATEGORIES;
+
   movies!: Movie[];
   loading!: boolean;
 
   constructor(
     private router: Router,
-    private moviesService: MoviesService,
-    private notifyService : NotificationService
+    public moviesService: MoviesService,
+    private notifyService : NotificationService,
+
     ) { }
 
   ngOnInit(): void {
@@ -30,8 +35,11 @@ export class MoviesIndexComponent implements OnInit {
     setTimeout (() => {
       this.loading = false;
       this.listMovies();
-   }, 2500);
+   }, 1000);
 
+   console.log(this.moviesService.getCategoryByName(['ACTION']));
+
+   console.log(this.getCategories);
   }
 
   goToMoviesCreate() {
@@ -41,6 +49,7 @@ export class MoviesIndexComponent implements OnInit {
   edit() {
 
   }
+
 
   confirmDelete(movie: Movie) {
     Swal.fire({

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { GENRES, MOVIES } from './data/db-data';
+import { CATEGORIES, MOVIES } from './data/db-data';
 
 @Component({
   selector: 'app-root',
@@ -20,12 +20,12 @@ export class AppComponent {
       console.log("carregando movies");
     }
 
-    const genresCollection = this.db.collection('genres');
-    for (let genre of Object.values(GENRES)) {
-      const newGenre = this.removeId(genre);
-      const genreRef = await genresCollection.add(newGenre);
+  /*   const categoriesCollection = this.db.collection('categories');
+    for (let category of Object.values(CATEGORIES)) {
+      const newCategory = this.removeId(category);
+      const categoryRef = await categoriesCollection.add(newCategory);
       console.log("carregando genres");
-    }
+    } */
   }
 
   removeId(data: any) {

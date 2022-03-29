@@ -1,3 +1,4 @@
+import { MaterialModule } from './../../shared/material/material.module';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from './../../shared/shared.module';
 import { HomeComponent } from './home.component';
@@ -12,7 +13,6 @@ import { LoginComponent } from './login/login.component';
 import { MessageModule } from '../../shared/components/message/message.module';
 import { MovieComponent } from './movie/movie.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { GenresComponent } from './genres/genres.component';
 import { FooterComponent } from './templates/footer/footer.component';
 import { HeaderComponent } from './templates/header/header.component';
 
@@ -25,8 +25,7 @@ import { HeaderComponent } from './templates/header/header.component';
     RegisterComponent,
     HeaderComponent,
     FooterComponent,
-    MovieComponent,
-    GenresComponent
+    MovieComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +35,8 @@ import { HeaderComponent } from './templates/header/header.component';
     MessageModule,
     SharedModule,
     IvyCarouselModule,
-    CarouselModule
+    CarouselModule,
+    MaterialModule
   ],
   exports: [
     HomeComponent

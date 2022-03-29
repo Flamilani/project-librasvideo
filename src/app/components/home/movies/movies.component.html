@@ -1,13 +1,15 @@
 <img *ngIf="loading" class="loading" [src]="imgLoading" alt="Carregando">
 <div *ngIf="!loading">
   <h2 class="title">Filmes</h2>
-  <div class="text-white mb-4" *ngFor="let genre of listGenres">
-    <h3>{{ genre.name }}</h3>
+  <div class="text-white mb-4" *ngFor="let genre of getCategories">
+    <h3>{{ genre.nameCategory }}</h3>
     <owl-carousel-o [options]="customOptions">
       <ng-container *ngFor="let slide of movies">
         <ng-template carouselSlide [width]="150">
           <div class="slide">
-            <img [src]="slide.iconUrl" [alt]="slide.title" (click)="goToMovie(slide.id)">
+            <span>{{ slide.title }}</span> |
+            <span>{{ moviesService.getCategoryByName(slide.category) }}</span>
+            <img [src]="slide.iconUrl" [alt]="slide.title" (click)="goToMovie(slide)">
           </div>
         </ng-template>
       </ng-container>

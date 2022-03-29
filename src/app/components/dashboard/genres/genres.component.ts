@@ -1,4 +1,4 @@
-import { Genre } from './../../../shared/models/genre.model';
+import { Category } from './../../../shared/models/genre.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -33,7 +33,7 @@ export class GenresComponent implements OnInit {
   createCategory() {
     const val = this.form.value;
 
-    const newMovie: Partial<Genre> = {
+    const newMovie: Partial<Category> = {
       name: val.name,
       active: val.active
     }

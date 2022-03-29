@@ -1,3 +1,6 @@
+import { CATEGORIES } from './../../../../shared/constants/categories.constant';
+import { Categories } from './../../../../shared/interfaces/categories.interface';
+import { Category } from './../../../../shared/models/genre.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -8,7 +11,6 @@ import { NotificationService } from './../../../../shared/services/notification.
 import { Movie } from './../../../../shared/models/movie.model';
 import { MoviesService } from 'src/app/shared/services/movies.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { Genre } from 'src/app/shared/models/genre.model';
 
 @Component({
   selector: 'app-movies-create',
@@ -17,9 +19,11 @@ import { Genre } from 'src/app/shared/models/genre.model';
 })
 export class MoviesCreateComponent implements OnInit {
 
+  getCategories: Categories[] = CATEGORIES;
+
   movieId!: string;
 
-  genres!: Genre[];
+  categories!: Category[];
 
   percentageChanges$: Observable<any> | undefined;
 
@@ -28,7 +32,7 @@ export class MoviesCreateComponent implements OnInit {
   form = this.fb.group({
     title: ['', Validators.required],
     director: ['', Validators.required],
-    genres: ['', Validators.required],
+    category: ['', Validators.required],
     year: ['', Validators.required],
     url: ['', Validators.required],
     iconUrl: [null]
@@ -45,7 +49,8 @@ export class MoviesCreateComponent implements OnInit {
 
   ngOnInit(): void {
     this.movieId = this.afs.createId();
-    this.listGenres();
+  //  this.listGenres();
+    this.listCategories();
   }
 
   uploadImage(event: any) {
@@ -72,13 +77,17 @@ export class MoviesCreateComponent implements OnInit {
     ).subscribe();
   }
 
+  listCategories() {
+    return this.getCategories;
+  }
+
   createMovie() {
     const val = this.form.value;
 
     const newMovie: Partial<Movie> = {
       title: val.title,
       director: val.director,
-      genres: val.genres,
+      category: val.category,
       year: val.year,
       url: val.url,
       iconUrl: val.iconUrl
@@ -101,9 +110,9 @@ export class MoviesCreateComponent implements OnInit {
   }
 
   listGenres() {
-    this.moviesService.loadGenres().subscribe(genres => {
-      this.genres = genres;
-      for (var item of genres) {
+    this.moviesService.loadCategories().subscribe(categories => {
+      this.categories = categories;
+      for (var item of categories) {
         console.log(item.name);
       }
     });

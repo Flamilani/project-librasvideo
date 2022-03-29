@@ -1,3 +1,4 @@
+import { MaterialModule } from './shared/material/material.module';
 import { MoviesService } from './shared/services/movies.service';
 import { NotificationService } from './shared/services/notification.service';
 import { AuthService } from './shared/services/auth.service';
@@ -26,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     SharedModule,
     NgbModule,
+    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),

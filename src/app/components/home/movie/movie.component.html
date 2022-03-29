@@ -1,6 +1,16 @@
-<a routerLink="/home/filmes">Filmes</a>
+<!-- <a routerLink="/home/filmes">Filmes</a> -->
+<div class="float-end">
+  <mat-icon id="close-icon" (click)="closeSheet()">close</mat-icon>
+</div>
 <h3 class="mt-3">{{ movie?.title }}</h3>
-<img class="flexImage" [src]="movie?.iconUrl" [alt]="movie?.title" />
-<div>{{ movie?.director }}</div>
-<div>{{ movie?.genres }}</div>
-<div>{{ movie?.year }}</div>
+<div class="row">
+  <div class="col-6">
+    <img class="flexImage" [src]="movie?.iconUrl" [alt]="movie?.title" />
+  </div>
+  <div class="col-6">
+<span>{{ movie?.director }}</span> -
+<span>{{ movie?.category }}</span> -
+<span>{{ movie?.year }}</span>
+    <button (click)="goToMovie(movie?.id)" class="btn btn-primary btnMovie">Assistir</button>
+  </div>
+</div>

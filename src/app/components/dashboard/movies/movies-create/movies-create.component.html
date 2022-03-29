@@ -18,9 +18,9 @@
         </div>
         <div class="mb-3">
           <label for="genres" class="form-label">Categoria</label>
-          <select class="form-select" aria-label="Categoria" formControlName="genres" required>
+          <select class="form-select" aria-label="Categoria" formControlName="category" required>
             <option disabled>Selecione</option>
-            <option *ngFor="let genre of genres" [value]="genre.name">{{genre.name}}</option>
+            <option *ngFor="let category of getCategories" [value]="category.arrayCategory">{{category.nameCategory}}</option>
           </select>
         </div>
         <div class="mb-3">

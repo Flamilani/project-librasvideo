@@ -1,3 +1,19 @@
+::ng-deep .mat-bottom-sheet-container {
+  background-color: #43464a;
+  color: #fff;
+  border-top: 1px solid #fff;
+  box-shadow: 1px 1px 2px 2px #ccc;
+}
+
 .flexImage {
-  width: 100%;
+  width: 180px;
+  max-width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.btnMovie {
+  text-align: center;
+  margin-top: 10px;
+  display: block;
 }

@@ -16,14 +16,15 @@
               <th scope="col">Capa</th>
               <th scope="col">Vídeo</th>
               <th scope="col">Diretor</th>
-              <th scope="col">Gênero</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Faixa Etária</th>
               <th scope="col">Ano</th>
               <th scope="col">Ações</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let movie of movies; let i = index;">
-              <th scope="row">{{ i + 1 }}</th>
+              <th scope="row">{{ movie.seqNo }}</th>
               <td>{{ movie.title }}</td>
               <td>
                 <img *ngIf="movie.iconUrl" class="imgThumbnail" [src]="movie.iconUrl" alt="movie.title" />
@@ -35,7 +36,10 @@
                   <script src="https://player.vimeo.com/api/player.js"></script>
               </td>
               <td>{{ movie.director }}</td>
-              <td>{{ movie.genres }}</td>
+              <td>
+                {{ moviesService.getCategoryByName(movie.category) }}
+              </td>
+              <td>{{ movie.age }}</td>
               <td>{{ movie.year }}</td>
               <td>
                  <a [routerLink]="['/admin/filme', movie.id]" class="btn btn-info btn-sm" placement="top" ngbTooltip="Editar {{ movie.title }}">

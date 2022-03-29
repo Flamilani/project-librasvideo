@@ -24,7 +24,7 @@ export class MoviesEditComponent implements OnInit {
   form = this.fb.group({
     title: ['', Validators.required],
     director: ['', Validators.required],
-    genres: ['', Validators.required],
+    categoryId: ['', Validators.required],
     year: ['', Validators.required]
   })
 
@@ -42,7 +42,7 @@ export class MoviesEditComponent implements OnInit {
     this.form = this.fb.group({
       title: [val.title, Validators.required],
       director: [val.director, Validators.required],
-      genres: [val.genres, Validators.required],
+      categoryId: [val.categoryId, Validators.required],
       year: [val.year, Validators.required],
     });
   }
@@ -99,7 +99,7 @@ export class MoviesEditComponent implements OnInit {
     const newMovie: Partial<Movie> = {
       title: val.title,
       director: val.director,
-      genres: val.genres,
+      category: val.category,
       year: val.year
     }
 
