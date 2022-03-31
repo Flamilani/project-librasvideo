@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { Component, Input, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  imagePath = '../../../../assets/img/logo-3.png';
+  imagePath = environment.imagePath;
 
-  constructor() { }
+  imageUser = environment.imageUser;
+
+  isAuth = false;
+  authSubscription!: Subscription;
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.authSubscription = this.authService.authChange.subscribe(authStatus => {
+      this.isAuth = authStatus;
+    });
   }
 
 }

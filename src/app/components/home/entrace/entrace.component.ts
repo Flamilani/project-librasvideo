@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-entrace',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntraceComponent implements OnInit {
 
-  constructor() { }
+  imageUser = environment.imageUser;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  profile() {
+    this.router.navigateByUrl('home/filmes');
   }
 
 }

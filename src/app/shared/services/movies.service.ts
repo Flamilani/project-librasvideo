@@ -107,7 +107,7 @@ export class MoviesService {
 
   loadMovies(): Observable<Movie[]> {
     return this.db.collection(
-      "movies")
+      "movies", ref => ref.orderBy("seqNo"))
       .get()
       .pipe(
         map(result => convertSnaps<Movie>(result))

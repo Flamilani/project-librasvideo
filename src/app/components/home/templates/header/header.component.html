@@ -2,7 +2,8 @@
   <a [routerLink]="'/'">
     <img class="logo" [src]="imagePath" alt="Logo LibrasVideos">
   </a>
-  <button type="button" class="btn btn-secondary float-end" [routerLink]="'login'">
+  <button *ngIf="!isAuth" type="button" class="btn btn-secondary float-end" [routerLink]="'login'">
     Login
   </button>
+  <img *ngIf="isAuth" [src]="imageUser" class="rounded-circle imgUserHeader" alt="Usuário">
 </header>

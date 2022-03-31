@@ -18,12 +18,12 @@ export class MovieComponent implements OnInit {
 
   movieId!: string;
   // movie!: Movie | null;
-  movie!: Movie | null;
+  movie!: Movie;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private moviesService: MoviesService,
+    public moviesService: MoviesService,
     @Inject(MAT_BOTTOM_SHEET_DATA) movie: Movie,
     private bottomSheetRef: MatBottomSheetRef<MovieComponent>
   ) {
@@ -53,7 +53,6 @@ export class MovieComponent implements OnInit {
   goToMovie(id: any) {
     console.log('id', id);
     this.router.navigate([`home/filme/${id}`]);
-    this.bottomSheetRef.dismiss();
   }
 
   getById(id: string) {
@@ -64,8 +63,5 @@ export class MovieComponent implements OnInit {
         );
   }
 
-  closeSheet() {
-    this.bottomSheetRef.dismiss();
-  }
 
 }

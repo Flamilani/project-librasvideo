@@ -17,7 +17,10 @@ export class LoginComponent implements OnInit {
   formLogin!: FormGroup;
 
   email: string = '';
-  senha: string = '';
+  password: string = '';
+  errorMessage: boolean = false;
+
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
 
   constructor(
     private fb: FormBuilder,
@@ -27,8 +30,8 @@ export class LoginComponent implements OnInit {
 
   buildForm(): void {
     this.formLogin = this.fb.group({
-      email: ['', [Validators.required, Validators.minLength(3)]],
-      senha: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      password: ['', [Validators.required]]
     });
   }
 
@@ -53,7 +56,16 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.router.navigateByUrl('entrada');
+    try {
+      this.authService.login({
+        email: this.formLogin.value.email,
+        password: this.formLogin.value.password,
+        admin: false
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
 /*     this.authService.autenticar(this.email, this.senha).subscribe(
       () => {
         this.router.navigateByUrl('entrada');

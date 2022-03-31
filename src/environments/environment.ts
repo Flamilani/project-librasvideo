@@ -2,10 +2,14 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 const assets = '';
+const imagePath = '../../../../assets/img/logo-3.png';
+const imageUser = '../../../../assets/img/icon-user.png';
 
 export const environment = {
   production: false,
   assets,
+  imagePath,
+  imageUser,
   firebase: {
     apiKey: "AIzaSyBirrhMDLCxV67K_Dk1A9ZyBTVHhlrmwJ0",
     authDomain: "app-librasvideos.firebaseapp.com",

@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
   get viewFooter(): LoginViewFooter {
     return this.loginViewData.footer;
   }
-
+/*
   login() {
     this.authService.autenticar(this.email, this.senha).subscribe(
       () => {
@@ -56,6 +56,6 @@ export class LoginComponent implements OnInit {
         console.log(error);
       }
     );
-  }
+  } */
 
 }

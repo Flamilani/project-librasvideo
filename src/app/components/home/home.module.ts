@@ -15,6 +15,8 @@ import { MovieComponent } from './movie/movie.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FooterComponent } from './templates/footer/footer.component';
 import { HeaderComponent } from './templates/header/header.component';
+import { MovieSheetComponent } from './movie-sheet/movie-sheet.component';
+import { MovieWatchComponent } from './movie-watch/movie-watch.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { HeaderComponent } from './templates/header/header.component';
     RegisterComponent,
     HeaderComponent,
     FooterComponent,
-    MovieComponent
+    MovieComponent,
+    MovieSheetComponent,
+    MovieWatchComponent
   ],
   imports: [
     CommonModule,

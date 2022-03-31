@@ -23,6 +23,8 @@ export class MoviesIndexComponent implements OnInit {
   movies!: Movie[];
   loading!: boolean;
 
+  order: any;
+
   constructor(
     private router: Router,
     public moviesService: MoviesService,
@@ -35,6 +37,7 @@ export class MoviesIndexComponent implements OnInit {
     setTimeout (() => {
       this.loading = false;
       this.listMovies();
+      this.sortData();
    }, 1000);
 
    console.log(this.moviesService.getCategoryByName(['ACTION']));
@@ -48,6 +51,14 @@ export class MoviesIndexComponent implements OnInit {
 
   edit() {
 
+  }
+
+  sortData() {
+    console.log('sort');
+    if (this.order) {
+      let newarr = this.movies.sort((a, b) => a.seqNo - b.seqNo);
+      this.movies = newarr;
+    }
   }
 
 

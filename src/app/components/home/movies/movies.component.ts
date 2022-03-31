@@ -1,15 +1,13 @@
+import { MovieSheetComponent } from './../movie-sheet/movie-sheet.component';
 import { Category } from './../../../shared/models/genre.model';
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Movie } from './../../../shared/models/movie.model';
 import { MoviesService } from 'src/app/shared/services/movies.service';
 import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
-import { MovieComponent } from '../movie/movie.component';
 import { Categories } from 'src/app/shared/interfaces/categories.interface';
 import { CATEGORIES } from 'src/app/shared/constants/categories.constant';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-movies',
@@ -29,6 +27,11 @@ export class MoviesComponent implements OnInit {
   categories!: Category;
   listCategories!: Category[];
   movies!: Movie[];
+
+  moviesAction!: Movie[];
+  moviesAdventure!: Movie[];
+  moviesAnimation!: Movie[];
+  moviesDrama!: Movie[];
 
   movie!: Movie | null;
 
@@ -53,7 +56,11 @@ export class MoviesComponent implements OnInit {
    }, 2000); */
 
    this.loadCategories();
+
    this.moviesByAction();
+   this.moviesByAdventure();
+   this.moviesByAnimation();
+   this.moviesByDrama();
   }
 
   customOptions: OwlOptions = {
@@ -121,10 +128,52 @@ export class MoviesComponent implements OnInit {
   moviesByAction() {
     this.moviesService.loadMoviesByCategory('ACTION')
       .subscribe(movies => {
-        this.movies = movies;
-        console.log(movies);
+        this.moviesAction = movies;
       });
   }
+
+  moviesByAdventure() {
+    this.moviesService.loadMoviesByCategory('ADVENTURE')
+      .subscribe(movies => {
+        this.moviesAdventure = movies;
+      });
+  }
+
+  moviesByAnimation() {
+    this.moviesService.loadMoviesByCategory('ANIMATION')
+      .subscribe(movies => {
+        this.moviesAnimation = movies;
+      });
+  }
+
+  moviesByDrama() {
+     this.moviesService.loadMoviesByCategory('DRAMA')
+      .subscribe(movies => {
+        this.moviesDrama = movies;
+      });
+  }
+
+  moviesByCateg() {
+    let item = this.getCategories;
+    item.forEach((item) => {
+ {
+
+      this.moviesService.loadMoviesByCategory(item.arrayCategory)
+      .subscribe(movies => {
+        this.moviesDrama = movies;
+        console.log('seq', item.arrayCategory);
+        console.log('filmes: ', this.movies);
+        console.log('filmes por categoria', movies[0]?.category);
+      })
+  }
+});
+/*     this.moviesService.loadMoviesByCategory('ANIMATION')
+      .subscribe(movies => {
+        this.moviesAnimation = movies;
+      }); */
+  }
+
+
 
   moviesByGenre() {
     this.moviesService.loadCategories()
@@ -156,21 +205,6 @@ export class MoviesComponent implements OnInit {
       );
   }
 
-/*   movieByGenre() {
-    this.moviesService.findMovies()
-      .subscribe(
-        movies => {
-          this.movies = movies;
-          this.moviesService.loadMoviesByGenre('acao')
-            .subscribe(movies => {
-              this.movies = movies;
-              console.log('filmes agrupados', this.movies);
-            });
-          console.log('filmes: ', this.movies);
-        }
-      );
-  } */
-
   getById(id: string) {
      this.moviesService.getMovie(id)
        .subscribe(
@@ -187,7 +221,7 @@ export class MoviesComponent implements OnInit {
     bottomSheetConfig.data = movie;
 
      console.log("movie detail: " + movie.id);
-     this._bottomSheet.open(MovieComponent, bottomSheetConfig)
+     this._bottomSheet.open(MovieSheetComponent, bottomSheetConfig)
      .afterDismissed()
       .subscribe(val => {
         if (val) {
