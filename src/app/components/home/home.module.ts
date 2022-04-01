@@ -17,6 +17,7 @@ import { FooterComponent } from './templates/footer/footer.component';
 import { HeaderComponent } from './templates/header/header.component';
 import { MovieSheetComponent } from './movie-sheet/movie-sheet.component';
 import { MovieWatchComponent } from './movie-watch/movie-watch.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { MovieWatchComponent } from './movie-watch/movie-watch.component';
     FooterComponent,
     MovieComponent,
     MovieSheetComponent,
-    MovieWatchComponent
+    MovieWatchComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,

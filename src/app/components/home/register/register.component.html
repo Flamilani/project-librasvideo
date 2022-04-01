@@ -1,33 +1,31 @@
 <h1 class="text-center mt-4">{{ viewHeader?.title }}</h1>
 
-<form autocomplete="off" class="form mt-4" (ngSubmit)="cadastrar()" #loginForm="ngForm">
+<form [formGroup]="formRegister" autocomplete="off" class="form mt-4" (ngSubmit)="cadastrar()">
   <div class="form-group mb-3">
     <input
       type="text"
       class="form-control inputPadding"
       placeholder="Nome Completo"
-      name="nome"
+      [(ngModel)]="name"
+      formControlName="name"
       required
     />
-    <app-message
-      *ngIf="campoSenha.invalid && campoSenha.touched"
-      mensagem="Senha obrigatória"
-    ></app-message>
+    <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls['name']?.invalid && formRegister.get('name')?.touched">
+      Email inválido
+    </div>
   </div>
   <div class="form-group mb-3">
     <input
       class="form-control inputPadding"
       [type]="viewContent?.input?.type"
-      [placeholder]="viewContent?.label"
+      placeholder="Email"
       [(ngModel)]="email"
-      name="email"
-      #campoEmail="ngModel"
+      formControlName="email"
       required
     />
-    <app-message
-      *ngIf="campoEmail.invalid && campoEmail.touched"
-      mensagem="viewContent?.errorMsg"
-    ></app-message>
+    <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls['email']?.invalid && formRegister.get('email')?.touched">
+      Email inválido
+    </div>
   </div>
   <div class="form-group mb-3">
     <input
@@ -35,47 +33,45 @@
       inputMode="tel"
       class="form-control inputPadding"
       placeholder="Número de Celular"
-      name="celular"
+      [(ngModel)]="celular"
+      formControlName="celular"
       required
     />
-    <app-message
-      *ngIf="campoSenha.invalid && campoSenha.touched"
-      mensagem="Senha obrigatória"
-    ></app-message>
+    <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls['celular']?.invalid && formRegister.get('celular')?.touched">
+      Celular inválido
+    </div>
   </div>
   <div class="form-group mb-3">
     <input
       type="password"
       class="form-control inputPadding"
       placeholder="Senha"
-      [(ngModel)]="senha"
-      name="senha"
-      #campoSenha="ngModel"
+      [(ngModel)]="password"
+      formControlName="password"
       required
     />
-    <app-message
-      *ngIf="campoSenha.invalid && campoSenha.touched"
-      mensagem="Senha obrigatória"
-    ></app-message>
+    <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls['password']?.invalid && formRegister.get('password')?.touched">
+      Senha inválida
+    </div>
   </div>
   <div class="form-group mb-3">
     <input
       type="password"
       class="form-control inputPadding"
       placeholder="Confirma Senha"
-      name="confirmaSenha"
+      [(ngModel)]="confirmPassword"
+      formControlName="confirmPassword"
       required
     />
-    <app-message
-      *ngIf="campoSenha.invalid && campoSenha.touched"
-      mensagem="Senha obrigatória"
-    ></app-message>
+    <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls['confirmPassword']?.invalid && formRegister.get('confirmPassword')?.touched">
+      Senha não corresponde
+    </div>
   </div>
   <div class="d-grid gap-2 mt-4 mb-3">
     <button
     type="submit"
     class="btn btn-info text-white btn-lg"
-    [disabled]="loginForm.invalid"
+    [disabled]="formRegister.invalid"
   >
     Cadastrar
   </button>

@@ -24,7 +24,7 @@ export class AuthService {
         .createUserWithEmailAndPassword(authData.email, authData.password)
         .then(result => {
           console.log(result);
-          this.authSuccessfully();
+          this.authPayment();
         })
         .catch(error => {
           console.log(error);
@@ -58,5 +58,11 @@ export class AuthService {
       this.isAuthenticated = true;
       this.authChange.next(true);
       this.router.navigateByUrl('home/entrada');
+    }
+
+    private authPayment() {
+      this.isAuthenticated = true;
+      this.authChange.next(true);
+      this.router.navigateByUrl('home/pagamento');
     }
 }
