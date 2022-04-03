@@ -43,8 +43,12 @@ export class LoginComponent implements OnInit {
     return this.loginViewData.header;
   }
 
-  get viewContent(): LoginViewContent {
-    return this.loginViewData.content;
+  get viewContentEmail(): LoginViewContent {
+    return this.loginViewData.content[0];
+  }
+
+  get viewContentSenha(): LoginViewContent {
+    return this.loginViewData.content[1];
   }
 
   get viewFooter(): LoginViewFooter {

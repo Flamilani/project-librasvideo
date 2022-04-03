@@ -1,3 +1,4 @@
+<hr>
 <footer>
   <span>
     {{ viewFooter?.title }}
@@ -6,8 +7,10 @@
     {{ viewFooter?.description }}
   </span>
   <span>
-    <div>{{ viewFooter.contacts?.title }}</div>
     <ul>
+      <li>
+        <strong>{{ viewFooter.contacts?.title }}</strong>
+      </li>
       <li>
         {{ viewFooter.contacts?.email }}
       </li>

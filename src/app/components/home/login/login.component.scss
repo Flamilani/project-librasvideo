@@ -1,3 +1,11 @@
 .inputPadding {
   padding: 10px;
 }
+
+a {
+  &.link-forget {
+    text-align: right;
+    text-decoration: none;
+    color: #0dcaf0;
+  }
+}

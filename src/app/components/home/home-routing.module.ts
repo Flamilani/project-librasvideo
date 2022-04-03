@@ -1,3 +1,4 @@
+import { PaymentComponent } from './payment/payment.component';
 import { MovieWatchComponent } from './movie-watch/movie-watch.component';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
@@ -21,6 +22,9 @@ const routes: Routes = [
       },
       {
         path: 'cadastro', component: RegisterComponent
+      },
+      {
+        path: 'pagamento', component: PaymentComponent
       },
       {
         path: 'filmes', component: MoviesComponent

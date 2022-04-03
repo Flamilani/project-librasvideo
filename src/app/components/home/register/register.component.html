@@ -3,85 +3,82 @@
 <form [formGroup]="formRegister" autocomplete="off" class="form mt-4" (ngSubmit)="cadastrar()">
   <div class="form-group mb-3">
     <input
-      type="text"
       class="form-control inputPadding"
-      placeholder="Nome Completo"
-      [(ngModel)]="name"
-      formControlName="name"
+      [placeholder]="viewContentName.label"
+      [type]="viewContentName.input.type"
+      [formControlName]="viewContentName.input.control"
       required
     />
-    <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls['name']?.invalid && formRegister.get('name')?.touched">
-      Email inválido
+    <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls[viewContentName.input.control]?.invalid && formRegister.get(viewContentName.input.control)?.touched">
+      {{ viewContentName.errorMsg }}
     </div>
   </div>
   <div class="form-group mb-3">
     <input
       class="form-control inputPadding"
-      [type]="viewContent?.input?.type"
-      placeholder="Email"
-      [(ngModel)]="email"
-      formControlName="email"
+      [placeholder]="viewContentCelular.label"
+      [type]="viewContentCelular.input.type"
+      [formControlName]="viewContentCelular.input.control"
       required
     />
-    <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls['email']?.invalid && formRegister.get('email')?.touched">
-      Email inválido
+    <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls[viewContentCelular.input.control]?.invalid && formRegister.get(viewContentCelular.input.control)?.touched">
+      {{ viewContentCelular.errorMsg }}
+    </div>
+   </div>
+  <div class="form-group mb-3">
+    <input
+      class="form-control inputPadding"
+      [placeholder]="viewContentEmail.label"
+      [type]="viewContentEmail.input.type"
+      [formControlName]="viewContentEmail.input.control"
+      required
+    />
+    <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls[viewContentEmail.input.control]?.invalid && formRegister.get(viewContentEmail.input.control)?.touched">
+      {{ viewContentEmail.errorMsg }}
     </div>
   </div>
   <div class="form-group mb-3">
     <input
-      type="tel"
-      inputMode="tel"
       class="form-control inputPadding"
-      placeholder="Número de Celular"
-      [(ngModel)]="celular"
-      formControlName="celular"
+      [placeholder]="viewContentSenha.label"
+      [type]="viewContentSenha.input.type"
+      [formControlName]="viewContentSenha.input.control"
       required
     />
-    <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls['celular']?.invalid && formRegister.get('celular')?.touched">
-      Celular inválido
+    <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls[viewContentSenha.input.control]?.invalid && formRegister.get(viewContentSenha.input.control)?.touched">
+      {{ viewContentSenha.errorMsg }}
     </div>
   </div>
   <div class="form-group mb-3">
     <input
-      type="password"
       class="form-control inputPadding"
-      placeholder="Senha"
-      [(ngModel)]="password"
-      formControlName="password"
+      [placeholder]="viewContentConfSenha.label"
+      [type]="viewContentConfSenha.input.type"
+      [formControlName]="viewContentConfSenha.input.control"
       required
     />
-    <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls['password']?.invalid && formRegister.get('password')?.touched">
-      Senha inválida
-    </div>
+  <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls[viewContentConfSenha.input.control]?.invalid && formRegister.get(viewContentConfSenha.input.control)?.touched">
+    {{ viewContentConfSenha.errorMsg }}
   </div>
-  <div class="form-group mb-3">
-    <input
-      type="password"
-      class="form-control inputPadding"
-      placeholder="Confirma Senha"
-      [(ngModel)]="confirmPassword"
-      formControlName="confirmPassword"
-      required
-    />
-    <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls['confirmPassword']?.invalid && formRegister.get('confirmPassword')?.touched">
-      Senha não corresponde
-    </div>
   </div>
   <div class="d-grid gap-2 mt-4 mb-3">
     <button
-    type="submit"
-    class="btn btn-info text-white btn-lg"
-    [disabled]="formRegister.invalid"
-  >
-    Cadastrar
+      [id]="viewFooterCadastrar.btnAction.id"
+      type="submit"
+      class="btn btn-info text-white btn-lg"
+      [disabled]="formRegister.invalid"
+    >
+    {{ viewFooterCadastrar.btnAction.text }}
   </button>
   </div>
 </form>
 <hr>
 <p class="text-center">
-  Já é Usuário?
+  {{ viewFooterLogar.description }}
 </p>
 <div class="d-grid gap-2 mb-3">
   <a class="link-register btn btn-secondary btn-lg"
-  (click)="navigate()">Logar</a>
+  (click)="navigate()">
+  {{ viewFooterLogar.btnAction.text }}
+</a>
 </div>

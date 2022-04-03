@@ -4,28 +4,26 @@
   <div class="form-group mb-3">
     <input
       class="form-control inputPadding"
-      [type]="viewContent?.input?.type"
-      [placeholder]="viewContent?.label"
-      [(ngModel)]="email"
-      formControlName="email"
+      [placeholder]="viewContentEmail.label"
+      [type]="viewContentEmail.input.type"
+      [formControlName]="viewContentEmail.input.control"
       required
     />
-    <div class="text-warning d-block mt-2" role="alert" *ngIf="formLogin.controls['email']?.invalid && formLogin.get('email')?.touched">
-      Email inválido
+    <div class="text-warning d-block mt-2" role="alert" *ngIf="formLogin.controls[viewContentEmail.input.control]?.invalid && formLogin.get(viewContentEmail.input.control)?.touched">
+      {{ viewContentEmail.errorMsg }}
     </div>
   </div>
 
   <div class="form-group mb-3">
     <input
-      type="password"
       class="form-control inputPadding"
-      placeholder="Senha"
-      [(ngModel)]="password"
-      formControlName="password"
+      [placeholder]="viewContentSenha.label"
+      [type]="viewContentSenha.input.type"
+      [formControlName]="viewContentSenha.input.control"
       required
     />
-    <div class="text-warning d-block mt-2" role="alert" *ngIf="formLogin.controls['password']?.invalid && formLogin.get('password')?.touched">
-      Senha incorreta
+    <div class="text-warning d-block mt-2" role="alert" *ngIf="formLogin.controls[viewContentSenha.input.control]?.invalid && formLogin.get(viewContentSenha.input.control)?.touched">
+      {{ viewContentSenha.errorMsg }}
     </div>
   </div>
   <div class="d-grid gap-2 mt-4 mb-3">
@@ -34,8 +32,9 @@
     class="btn btn-info text-white btn-lg"
     [disabled]="formLogin.invalid"
   >
-    Acessar
+    {{ viewFooter.btnAction.text }}
   </button>
+  <a class="link-forget" href="http://">Esqueci a senha</a>
   <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
     Usuário não encontrado
   </div>

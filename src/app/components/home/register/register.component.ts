@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { REGISTER_VIEW_DATA } from './constants/register.constant';
-import { RegisterViewContent, RegisterViewData, RegisterViewFooter, RegisterViewHeader } from './interface/login.interface';
+import { RegisterViewContent, RegisterViewData, RegisterViewFooter, RegisterViewHeader } from './interface/register.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
@@ -50,12 +50,32 @@ export class RegisterComponent implements OnInit {
     return this.registerViewData.header;
   }
 
-  get viewContent(): RegisterViewContent {
-    return this.registerViewData.content;
+  get viewContentName(): RegisterViewContent {
+    return this.registerViewData.content[0];
   }
 
-  get viewFooter(): RegisterViewFooter {
-    return this.registerViewData.footer;
+  get viewContentCelular(): RegisterViewContent {
+    return this.registerViewData.content[1];
+  }
+
+  get viewContentEmail(): RegisterViewContent {
+    return this.registerViewData.content[2];
+  }
+
+  get viewContentSenha(): RegisterViewContent {
+    return this.registerViewData.content[3];
+  }
+
+  get viewContentConfSenha(): RegisterViewContent {
+    return this.registerViewData.content[4];
+  }
+
+  get viewFooterCadastrar(): RegisterViewFooter {
+    return this.registerViewData.footer[0];
+  }
+
+  get viewFooterLogar(): RegisterViewFooter {
+    return this.registerViewData.footer[1];
   }
 
   cadastrar() {

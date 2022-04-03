@@ -1,7 +1,7 @@
 export interface RegisterViewData {
   header: RegisterViewHeader;
-  content: RegisterViewContent;
-  footer: RegisterViewFooter;
+  content: RegisterViewContent[];
+  footer: RegisterViewFooter[];
 }
 
 export interface RegisterViewHeader {
@@ -19,6 +19,7 @@ export interface RegisterViewInput {
   ariaLabel: string;
   inputMode: string;
   type: string;
+  control: string;
   inputMask?: string;
 }
 
