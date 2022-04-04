@@ -1,3 +1,5 @@
+import { ProfileComponent } from './profile/profile.component';
+import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { PaymentComponent } from './payment/payment.component';
 import { MovieWatchComponent } from './movie-watch/movie-watch.component';
 import { HomeComponent } from './home.component';
@@ -24,7 +26,13 @@ const routes: Routes = [
         path: 'cadastro', component: RegisterComponent
       },
       {
+        path: 'perfil', component: ProfileComponent
+      },
+      {
         path: 'pagamento', component: PaymentComponent
+      },
+      {
+        path: 'busca-filmes', component: MovieSearchComponent
       },
       {
         path: 'filmes', component: MoviesComponent

@@ -8,11 +8,24 @@ header {
     height: auto;
   }
 
+  .logoSmall {
+    width: 100%;
+    max-width: 70px;
+    height: auto;
+  }
+
   .imgUserHeader {
     border: 2px solid #fff;
     width: 100%;
     max-width: 40px;
     float: right;
+  }
+
+  .search {
+    color: #fff;
+    font-size: 35px;
+    padding-right: 8px;
+    padding-top: 5px;
   }
 }
 

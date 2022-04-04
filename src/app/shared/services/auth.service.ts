@@ -34,12 +34,22 @@ export class AuthService {
       });
     }
 
+    signUp(authData: AuthData) {
+      return this.afAuth
+        .createUserWithEmailAndPassword(authData.email, authData.password);
+    }
+
+    signIn(authData: AuthData) {
+      return this.afAuth
+        .signInWithEmailAndPassword(authData.email, authData.password);
+    }
+
     registerUser(authData: AuthData) {
       this.afAuth
         .createUserWithEmailAndPassword(authData.email, authData.password)
         .then(result => {
-          this.authPayment();
           this.SetUserData(result.user);
+          this.authPayment();
         })
         .catch(error => {
           window.alert(error.message);
@@ -54,15 +64,17 @@ export class AuthService {
             console.log(result);
             this.authSuccessfully();
           });
-          this.SetUserData(result.user);
         })
         .catch(error => {
           this.errorMessage = "Erro autenticação";
+          console.log(error.message);
           alert('Erro ao Acessar');
         });
     }
 
-    logout() {
+    async logout() {
+      await this.afAuth.signOut();
+      localStorage.removeItem('user');
       this.authChange.next(false);
       this.router.navigateByUrl('home/login');
       this.isAuthenticated = false;
@@ -72,13 +84,13 @@ export class AuthService {
       return this.isAuthenticated;
     }
 
-    private authSuccessfully() {
+    public authSuccessfully() {
       this.isAuthenticated = true;
       this.authChange.next(true);
       this.router.navigateByUrl('home/entrada');
     }
 
-    private authPayment() {
+    public authPayment() {
       this.isAuthenticated = true;
       this.authChange.next(true);
       this.router.navigateByUrl('home/pagamento');

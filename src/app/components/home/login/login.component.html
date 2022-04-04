@@ -1,6 +1,6 @@
 <h1 class="text-center mt-4">{{ viewHeader?.title }}</h1>
 
-<form [formGroup]="formLogin" autocomplete="off" class="form mt-4" (ngSubmit)="login()">
+<form [formGroup]="formLogin" autocomplete="off" class="form mt-4" (ngSubmit)="onLogin()">
   <div class="form-group mb-3">
     <input
       class="form-control inputPadding"
@@ -36,7 +36,7 @@
   </button>
   <a class="link-forget" href="http://">Esqueci a senha</a>
   <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
-    Usuário não encontrado
+     <strong>Erro:</strong> Usuário e/ou senha incorretos
   </div>
   </div>
 </form>

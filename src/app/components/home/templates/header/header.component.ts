@@ -1,5 +1,5 @@
 import { environment } from 'src/environments/environment';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
@@ -9,13 +9,18 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @Output() sidenavToggle = new EventEmitter<void>();
 
   imagePath = environment.imagePath;
-
+  imageSmallPath = environment.imageSmallPath;
   imageUser = environment.imageUser;
 
   isAuth = false;
   authSubscription!: Subscription;
+
+  onToggleSidenav() {
+		this.sidenavToggle.emit();
+	}
 
   constructor(private authService: AuthService) { }
 

@@ -1,21 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
-  height: 100%;
-  padding:0;
-  background-color: #000000 !important;
-}
-
-html{
-  position: relative;
-  min-height: 100%;
-}
+html, body { height: 100%; }
 
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
   font-family: 'Open Sans', sans-serif;
   color: #FFFFFF !important;
+  background-color: #000000 !important;
 }
 
 * {
@@ -23,7 +12,9 @@ body {
 }
 
 .content {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 66vh;
 }
 
 a {
@@ -31,11 +22,25 @@ a {
   color: #0dcaf0;
 }
 
-footer {
-  flex-shrink: 0;
+a:focus-visible {
+  outline: none;
 }
 
+footer {
+  margin-top: auto;
+}
 
+.mat-drawer-container {
+  background-color: #000;
+  color: #fff;
+  height: 100vh;
+}
+
+.mat-drawer {
+  background-color: rgb(82, 82, 82);
+  color: rgb(255, 255, 255);
+  padding: 10px;
+}
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

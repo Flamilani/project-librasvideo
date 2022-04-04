@@ -1,0 +1,7 @@
+<h1 class="mt-4">Meu Perfil</h1>
+
+<div *ngIf="authService.userData as user">
+  <p>{{ (user.displayName) ? user.displayName : 'User' }}</p>
+  <p>{{ user.uid }}</p>
+  <p>Email: {{ user.email }}</p>
+</div>

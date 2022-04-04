@@ -18,6 +18,10 @@ import { HeaderComponent } from './templates/header/header.component';
 import { MovieSheetComponent } from './movie-sheet/movie-sheet.component';
 import { MovieWatchComponent } from './movie-watch/movie-watch.component';
 import { PaymentComponent } from './payment/payment.component';
+import { SidenavListComponent } from './templates/sidenav-list/sidenav-list.component';
+import { MovieSearchComponent } from './movie-search/movie-search.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,11 @@ import { PaymentComponent } from './payment/payment.component';
     MovieComponent,
     MovieSheetComponent,
     MovieWatchComponent,
-    PaymentComponent
+    PaymentComponent,
+    SidenavListComponent,
+    MovieSearchComponent,
+    ForgotPasswordComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

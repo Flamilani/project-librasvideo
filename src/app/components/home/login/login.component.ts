@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   errorMessage: boolean = false;
+  message: string = '';
 
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
 
@@ -59,16 +60,21 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('home/cadastro');
   }
 
-  login() {
-    try {
-      this.authService.login({
+  onLogin() {
+      this.errorMessage = false;
+      this.authService.signIn({
+        username: this.formLogin.value.name,
         email: this.formLogin.value.email,
         password: this.formLogin.value.password,
         admin: false
+      }).then(() => {
+        this.errorMessage = false;
+        this.authService.authSuccessfully();
+      }).catch((err) => {
+        this.errorMessage = true;
+        this.message = err.message;
       });
-    } catch (error) {
-      console.log(error);
-    }
+
 
 /*     this.authService.autenticar(this.email, this.senha).subscribe(
       () => {

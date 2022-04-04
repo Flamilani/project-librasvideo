@@ -79,15 +79,16 @@ export class RegisterComponent implements OnInit {
   }
 
   cadastrar() {
-    try {
-      this.authService.registerUser({
+      this.authService.signUp({
+        username: this.formRegister.value.name,
         email: this.formRegister.value.email,
         password: this.formRegister.value.password,
         admin: false
+      }).then(() => {
+        this.authService.authPayment();
+      }).catch((err) => {
+        this.errorMessage = true;
       });
-    } catch (error) {
-      console.log(error);
-    }
   }
 
   navigate() {
