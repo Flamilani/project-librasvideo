@@ -55,7 +55,7 @@ export const REGISTER_VIEW_DATA: RegisterViewData =
         type: "password",
         control: "confirmPassword"
       },
-      errorMsg: "Senha não corresponde"
+      errorMsg: "Confirme sua senha"
     }
   ],
   footer: [

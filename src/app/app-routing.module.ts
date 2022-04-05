@@ -3,11 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '', pathMatch: 'full', redirectTo: 'home'
+    path: '', pathMatch: 'full', redirectTo: 'app'
+  },
+  {
+    path: 'app',
+    loadChildren: () => import('./components/start/start.module').then((m) => m.StartModule),
   },
   {
     path: 'home',
     loadChildren: () => import('./components/home/home.module').then((m) => m.HomeModule),
+  },
+  {
+    path: 'assistir/:id',
+    loadChildren: () => import('./components/home/movie-watch/movie-watch.module').then((m) => m.MovieWatchModule),
   },
   {
     path: 'admin',

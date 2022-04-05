@@ -2,10 +2,14 @@
   padding: 10px;
 }
 
-a {
-  &.link-forget {
-    text-align: right;
-    text-decoration: none;
-    color: #0dcaf0;
+.forget {
+  display: flex;
+  justify-content: end;
+
+  a {
+    &.link-forget {
+      text-decoration: none;
+      color: #0dcaf0;
+    }
   }
 }

@@ -1,0 +1,17 @@
+<div class="container">
+  <img class="logo" [src]="imagePath" alt="Logo LibrasVideos">
+  <div class="content">
+    <div class="embed-container mt-5">
+      <iframe src="https://player.vimeo.com/video/298998069?h=c33d25a5d8&color=ffeeeb&title=0&byline=0&portrait=0"
+      frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <hr />
+    <div class="d-grid gap-2 mb-3">
+      <a class="link-start text-white btn btn-info btn-lg"
+      (click)="navigate()">
+      {{ viewFooter.btnAction.text }}
+    </a>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

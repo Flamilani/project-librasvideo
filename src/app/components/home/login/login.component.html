@@ -34,7 +34,9 @@
   >
     {{ viewFooter.btnAction.text }}
   </button>
-  <a class="link-forget" href="http://">Esqueci a senha</a>
+  <div class="forget">
+    <a class="link-forget" (click)="goToForgot()">Esqueci a senha</a>
+  </div>
   <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
      <strong>Erro:</strong> Usuário e/ou senha incorretos
   </div>

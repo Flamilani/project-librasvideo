@@ -136,6 +136,7 @@ export class MoviesComponent implements OnInit {
     this.moviesService.loadMoviesByCategory('ADVENTURE')
       .subscribe(movies => {
         this.moviesAdventure = movies;
+        console.log(movies);
       });
   }
 
@@ -143,6 +144,7 @@ export class MoviesComponent implements OnInit {
     this.moviesService.loadMoviesByCategory('ANIMATION')
       .subscribe(movies => {
         this.moviesAnimation = movies;
+        console.log(movies);
       });
   }
 
@@ -229,16 +231,6 @@ export class MoviesComponent implements OnInit {
         }
       });
    }
-
-  listMovies() {
-    this.moviesService.index().subscribe(movies => {
-      this.movies = movies;
-    //  console.log(movies);
-      for (var item of movies) {
-        console.log(item.title);
-      }
-    });
-  }
 
   handleCarouselEvents(event: any) {
     console.log('filme');

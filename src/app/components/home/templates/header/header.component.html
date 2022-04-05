@@ -5,9 +5,9 @@
   <a *ngIf="isAuth" [routerLink]="'/'">
     <img class="logoSmall" [src]="imageSmallPath" alt="Logo LibrasVideos">
   </a>
-  <button *ngIf="!isAuth" type="button" class="btn btn-secondary float-end" [routerLink]="'login'">
+<!--   <button *ngIf="!isAuth" type="button" class="btn btn-secondary float-end" [routerLink]="'login'">
     Login
-  </button>
+  </button> -->
   <img (click)="onToggleSidenav()" *ngIf="isAuth" [src]="imageUser" class="rounded-circle imgUserHeader" alt="Usuário">
   <a class="float-end" *ngIf="isAuth" [routerLink]="'busca-filmes'">
     <span class="material-icons search">

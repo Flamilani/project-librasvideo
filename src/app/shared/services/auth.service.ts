@@ -44,11 +44,15 @@ export class AuthService {
         .signInWithEmailAndPassword(authData.email, authData.password);
     }
 
+    forgotPassword(email: string) {
+      return this.afAuth.sendPasswordResetEmail(email);
+    }
+
     registerUser(authData: AuthData) {
       this.afAuth
         .createUserWithEmailAndPassword(authData.email, authData.password)
         .then(result => {
-          this.SetUserData(result.user);
+          this.setUserData(result.user);
           this.authPayment();
         })
         .catch(error => {
@@ -96,7 +100,12 @@ export class AuthService {
       this.router.navigateByUrl('home/pagamento');
     }
 
-    SetUserData(user: any) {
+    get isLoggedIn(): boolean {
+      const user = JSON.parse(localStorage.getItem('user')!);
+      return (user !== null && user.emailVerified !== false) ? true : false;
+    }
+
+    setUserData(user: any) {
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(
         `users/${user.uid}`
       );
@@ -104,6 +113,7 @@ export class AuthService {
         uid: user.uid,
         email: user.email,
         displayName: user.displayName,
+        phoneNumber: user.phoneNumber,
         photoURL: user.photoURL,
         emailVerified: user.emailVerified,
       };

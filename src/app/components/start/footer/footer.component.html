@@ -1,0 +1,32 @@
+<hr>
+<footer>
+  <span>
+    {{ viewFooter?.title }}
+  </span>
+  <span>
+    {{ viewFooter?.description }}
+  </span>
+  <span>
+    <ul>
+      <li>
+        <strong>{{ viewFooter.contacts?.title }}</strong>
+      </li>
+      <li>
+        {{ viewFooter.contacts?.email }}
+      </li>
+      <li>
+        {{ viewFooter.contacts?.celular }}
+      </li>
+    </ul>
+  </span>
+  <span>
+    <ul>
+      <li>
+        <a routerLink="{{ viewFooter.terms?.urlTerm }}">{{ viewFooter.terms?.term }}</a>
+      </li>
+      <li>
+        <a routerLink="{{ viewFooter.terms?.urlPolicy }}">{{ viewFooter.terms?.policy }}</a>
+      </li>
+    </ul>
+  </span>
+</footer>

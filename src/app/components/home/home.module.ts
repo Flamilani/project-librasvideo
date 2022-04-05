@@ -16,12 +16,12 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FooterComponent } from './templates/footer/footer.component';
 import { HeaderComponent } from './templates/header/header.component';
 import { MovieSheetComponent } from './movie-sheet/movie-sheet.component';
-import { MovieWatchComponent } from './movie-watch/movie-watch.component';
 import { PaymentComponent } from './payment/payment.component';
 import { SidenavListComponent } from './templates/sidenav-list/sidenav-list.component';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProfileComponent } from './profile/profile.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,6 @@ import { ProfileComponent } from './profile/profile.component';
     FooterComponent,
     MovieComponent,
     MovieSheetComponent,
-    MovieWatchComponent,
     PaymentComponent,
     SidenavListComponent,
     MovieSearchComponent,
@@ -50,7 +49,8 @@ import { ProfileComponent } from './profile/profile.component';
     SharedModule,
     IvyCarouselModule,
     CarouselModule,
-    MaterialModule
+    MaterialModule,
+    Ng2SearchPipeModule
   ],
   exports: [
     HomeComponent

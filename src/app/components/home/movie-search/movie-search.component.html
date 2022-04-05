@@ -2,15 +2,20 @@
 <form autocomplete="off" class="form">
   <div class="form-group mb-3">
     <input
-      class="form-control inputPadding mt-5"
+      class="form-control inputPadding mt-4"
       placeholder="Buscar por título do filme"
+      [(ngModel)]="searchText"
+      name="title"
       type="text"
-      required
     />
   </div>
-
 </form>
 
-
-
+<div class="container">
+  <div class="row">
+    <div class="col-6 mb-3" *ngFor="let movie of movies | filter: searchText">
+      <img [src]="movie.iconUrl" class="slide" [alt]="movie.title" (click)="goToMovie(movie.id)" />
+    </div>
+  </div>
+</div>
 

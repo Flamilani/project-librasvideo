@@ -1,6 +1,7 @@
-import { FooterViewData } from './../../../../shared/interfaces/footer.interface';
-import { FOOTER_VIEW_DATA } from './../../../../shared/constants/footer.constant';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FOOTER_VIEW_DATA } from 'src/app/shared/constants/footer.constant';
+import { FooterViewData } from 'src/app/shared/interfaces/footer.interface';
 
 @Component({
   selector: 'app-footer',
@@ -8,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+
   readonly footerData = FOOTER_VIEW_DATA;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
   }

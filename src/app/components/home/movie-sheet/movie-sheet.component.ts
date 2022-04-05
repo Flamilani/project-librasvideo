@@ -1,3 +1,5 @@
+import { AGES } from './../../../shared/constants/age.constant';
+import { Age } from './../../../shared/interfaces/age.interface';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,6 +13,7 @@ import { MoviesService } from 'src/app/shared/services/movies.service';
 })
 export class MovieSheetComponent implements OnInit {
 
+  getAges: Age[] = AGES;
   movies!: Movie[];
 
   // movie!: Movie;
@@ -36,7 +39,7 @@ export class MovieSheetComponent implements OnInit {
 
    goToMovie(id: any) {
      console.log('id', id);
-     this.router.navigate([`home/assistir/${id}`]);
+     this.router.navigate([`assistir/${id}`]);
      this.bottomSheetRef.dismiss();
    }
 
@@ -50,6 +53,10 @@ export class MovieSheetComponent implements OnInit {
 
    closeSheet() {
      this.bottomSheetRef.dismiss();
+   }
+
+   setAges() {
+
    }
 
 }

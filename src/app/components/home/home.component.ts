@@ -14,12 +14,20 @@ export class HomeComponent implements OnInit {
   authSubscription!: Subscription;
   opened!: boolean;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    public authService: AuthService,
+    public router: Router
+    ) {
+
+     }
 
   ngOnInit(): void {
     this.authSubscription = this.authService.authChange.subscribe(authStatus => {
       this.isAuth = authStatus;
     });
+
   }
+
+
 
 }

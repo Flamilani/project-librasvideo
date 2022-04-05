@@ -60,16 +60,20 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('home/cadastro');
   }
 
+  goToForgot() {
+    this.router.navigateByUrl('home/esqueci-senha');
+  }
+
   onLogin() {
       this.errorMessage = false;
       this.authService.signIn({
-        username: this.formLogin.value.name,
         email: this.formLogin.value.email,
         password: this.formLogin.value.password,
         admin: false
-      }).then(() => {
+      }).then(result => {
         this.errorMessage = false;
         this.authService.authSuccessfully();
+        this.authService.setUserData(result.user);
       }).catch((err) => {
         this.errorMessage = true;
         this.message = err.message;

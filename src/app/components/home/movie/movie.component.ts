@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AGES } from 'src/app/shared/constants/age.constant';
+import { Age } from 'src/app/shared/interfaces/age.interface';
 import { MoviesService } from 'src/app/shared/services/movies.service';
 import { Movie } from './../../../shared/models/movie.model';
-import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 
 
 @Component({
@@ -12,56 +13,51 @@ import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bott
 })
 export class MovieComponent implements OnInit {
 
-  movies!: Movie[];
-
- // movie!: Movie;
-
+  getAges: Age[] = AGES;
+  movies!: Movie;
   movieId!: string;
-  // movie!: Movie | null;
-  movie!: Movie;
+  movie!: Movie | null;
+  //movie!: Movie;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     public moviesService: MoviesService,
-    @Inject(MAT_BOTTOM_SHEET_DATA) movie: Movie,
-    private bottomSheetRef: MatBottomSheetRef<MovieComponent>
   ) {
-    this.movie = movie;
-    this.getById(movie?.id);
+
   }
 
   ngOnInit(): void {
-    //  this.movie = this.route.snapshot.data['movies'];
+/*      this.movie = this.route.snapshot.data['movies'];
 
-/*     this.route.params.subscribe(params => {
-      console.log(this.movie.id);
-      this.movie.id == params['id'];
-      console.log(this.movie.id);
+     this.route.params.subscribe(params => {
+
+      this.movie?.id == params['id'];
+
     }); */
-  //  this.getById();
+    this.getById();
   }
 
-/*   getById() {
+   getById() {
     this.movieId = this.route.snapshot.params['id'];
     this.moviesService.getMovie(this.movieId)
       .subscribe(
         movie => this.movie = movie
       );
-  } */
+  }
 
   goToMovie(id: any) {
     console.log('id', id);
-    this.router.navigate([`home/filme/${id}`]);
+    this.router.navigate([`assistir/${id}`]);
   }
 
-  getById(id: string) {
+/*   getById(id: string) {
      // this.movieId = id;
       this.moviesService.getMovie(id)
         .subscribe(
           movie => console.log(movie)
         );
-  }
+  } */
 
 
 }

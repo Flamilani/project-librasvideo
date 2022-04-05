@@ -1,3 +1,4 @@
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { PaymentComponent } from './payment/payment.component';
@@ -27,6 +28,9 @@ const routes: Routes = [
       },
       {
         path: 'perfil', component: ProfileComponent
+      },
+      {
+        path: 'esqueci-senha', component: ForgotPasswordComponent
       },
       {
         path: 'pagamento', component: PaymentComponent

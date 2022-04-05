@@ -25,12 +25,6 @@ export class MoviesService {
     private db: AngularFirestore
   ) { }
 
-  index(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(`${APIMovies}/movies`).pipe(
-      map((obj: any) => obj)
-    );
-  }
-
 /*   public getCategoryByName(name: string[]) {
     switch(name) {
       case ['ACTION']:
@@ -42,7 +36,7 @@ export class MoviesService {
     }
   } */
 
-  public getCategoryByName(name: string[]) {
+  getCategoryByName(name: string[] | undefined) {
     if (name == ['ACTION']) {
       return 'Ação';
     } else if (name == ['ANIMATION']) {

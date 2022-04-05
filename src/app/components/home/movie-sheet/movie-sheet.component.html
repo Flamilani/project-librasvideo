@@ -2,14 +2,21 @@
   <mat-icon id="close-icon" (click)="closeSheet()">close</mat-icon>
 </div>
 <h3 class="mt-3">{{ movie?.title }}</h3>
+<span>{{ moviesService.getCategoryByName(movie!.category) }}</span>
+<span *ngIf="movie?.age == this.getAges[0].arrayAge.toString()" [ngClass]="{'bg-success': movie?.age == this.getAges[0].arrayAge.toString()}" class="mx-2 badge">{{ this.getAges[0].valueAge }}</span>
+<span *ngIf="movie?.age == this.getAges[1].arrayAge.toString()" [ngClass]="{'bg-info': movie?.age == this.getAges[1].arrayAge.toString()}" class="mx-2 badge">{{ this.getAges[1].valueAge }}</span>
+<span *ngIf="movie?.age == this.getAges[2].arrayAge.toString()" [ngClass]="{'bg-warning': movie?.age == this.getAges[2].arrayAge.toString()}" class="mx-2 badge">{{ this.getAges[2].valueAge }}</span>
+<span *ngIf="movie?.age == this.getAges[3].arrayAge.toString()" [ngClass]="{'bg-info': movie?.age == this.getAges[3].arrayAge.toString()}" class="mx-2 badge">{{ this.getAges[3].valueAge }}</span>
+<span *ngIf="movie?.age == this.getAges[4].arrayAge.toString()" [ngClass]="{'bg-danger': movie?.age == this.getAges[4].arrayAge.toString()}" class="mx-2 badge">{{ this.getAges[4].valueAge }}</span>
+<span *ngIf="movie?.age == this.getAges[5].arrayAge.toString()" [ngClass]="{'bg-dark': movie?.age == this.getAges[5].arrayAge.toString()}" class="mx-2 badge">{{ this.getAges[5].valueAge }}</span>
+<span>{{ movie?.year }}</span>
 <div class="row">
   <div class="col-6">
     <img class="flexImage" [src]="movie?.iconUrl" [alt]="movie?.title" />
   </div>
   <div class="col-6">
-<span>{{ movie?.director }}</span> -
-<span>{{  moviesService.getCategoryByName(movie!.category) }}</span> -
-<span>{{ movie?.year }}</span>
+<span>{{ movie?.director }}</span>
+
     <button (click)="goToMovie(movie?.id)" class="btn btn-primary btnMovie">Assistir</button>
   </div>
 </div>

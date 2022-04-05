@@ -16,11 +16,9 @@ export class RegisterComponent implements OnInit {
 
   formRegister!: FormGroup;
 
-  name: string = '';
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
-  celular: string = '';
 
   errorMessage: boolean = false;
 
@@ -34,11 +32,11 @@ export class RegisterComponent implements OnInit {
 
   buildForm(): void {
     this.formRegister = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
-      celular: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required], Validators.maxLength(0)],
       confirmPassword: ['', [Validators.required]]
+    }, {
+      validator: ConfirmedValidator('password', 'confirmPassword')
     });
   }
 
@@ -80,11 +78,11 @@ export class RegisterComponent implements OnInit {
 
   cadastrar() {
       this.authService.signUp({
-        username: this.formRegister.value.name,
         email: this.formRegister.value.email,
-        password: this.formRegister.value.password,
+        password: this.formRegister.value.confirmPassword,
         admin: false
-      }).then(() => {
+      }).then(result => {
+        this.authService.setUserData(result.user);
         this.authService.authPayment();
       }).catch((err) => {
         this.errorMessage = true;
@@ -96,4 +94,19 @@ export class RegisterComponent implements OnInit {
   }
 
 
+}
+
+export function ConfirmedValidator(controlName: string, matchingControlName: string){
+  return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
+          return;
+      }
+      if (control.value !== matchingControl.value) {
+          matchingControl.setErrors({ confirmedValidator: true });
+      } else {
+          matchingControl.setErrors(null);
+      }
+  }
 }

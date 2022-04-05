@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Movie } from 'src/app/shared/models/movie.model';
+import { MoviesService } from 'src/app/shared/services/movies.service';
 
 @Component({
   selector: 'app-movie-watch',
@@ -7,9 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieWatchComponent implements OnInit {
 
-  constructor() { }
+  movies!: Movie;
+  movieId!: string;
+  movie!: Movie | null;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    public moviesService: MoviesService
+  ) { }
 
   ngOnInit(): void {
+    this.getById();
+  }
+
+  getById() {
+    this.movieId = this.route.snapshot.params['id'];
+    this.moviesService.getMovie(this.movieId)
+      .subscribe(
+        movie => this.movie = movie
+      );
+  }
+
+  goToMovie(id: any) {
+    console.log(id);
+    this.router.navigate([`home/detalhe/${id}`]);
   }
 
 }

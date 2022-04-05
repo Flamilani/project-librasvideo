@@ -7,7 +7,7 @@ export const MOVIES: any = {
     category: 'ACTION',
     description: "",
     year: 2020,
-    age: '0',
+    age: 0,
     url: "",
     iconUrl: "https://image.tmdb.org/t/p/original/4MXfPlVS5aY6FJlJ5Y0qXsPnNcy.jpg",
     active: true
@@ -20,7 +20,7 @@ export const MOVIES: any = {
     category: 'ADVENTURE',
     description: "",
     year: "1995",
-    age: '10',
+    age: 10,
     url: "",
     iconUrl: "https://image.tmdb.org/t/p/original/nSNle6UJNNuEbglNvXt67m1a1Yn.jpg",
     active: true
@@ -33,7 +33,7 @@ export const MOVIES: any = {
     category: 'DRAMA',
     description: "",
     year: "2021",
-    age: '12',
+    age: 12,
     url: "",
     iconUrl: "https://image.tmdb.org/t/p/original/rJwiDSoKI3ryiLTZZ6BPUl2CrwG.jpg",
     active: true
@@ -46,7 +46,7 @@ export const MOVIES: any = {
     category: 'ACTION',
     description: "",
     year: "2022",
-    age: '12',
+    age: 12,
     url: "",
     iconUrl: "https://image.tmdb.org/t/p/original/4gaUbCInKAJOsCgjg8vcNn0A7jn.jpg",
     active: true
