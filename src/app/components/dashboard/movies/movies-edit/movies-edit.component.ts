@@ -4,6 +4,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { AGES } from 'src/app/shared/constants/age.constant';
+import { CATEGORIES } from 'src/app/shared/constants/categories.constant';
+import { Age } from 'src/app/shared/interfaces/age.interface';
+import { Categories } from 'src/app/shared/interfaces/categories.interface';
 import { Movie } from 'src/app/shared/models/movie.model';
 import { MoviesService } from 'src/app/shared/services/movies.service';
 import { NotificationService } from './../../../../shared/services/notification.service';
@@ -16,6 +20,8 @@ import { NotificationService } from './../../../../shared/services/notification.
 })
 export class MoviesEditComponent implements OnInit {
   // movie!: Movie | null;
+  getAges: Age[] = AGES;
+  getCategories: Categories[] = CATEGORIES;
 
   movieId!: string;
 
@@ -24,8 +30,11 @@ export class MoviesEditComponent implements OnInit {
   form = this.fb.group({
     title: ['', Validators.required],
     director: ['', Validators.required],
-    categoryId: ['', Validators.required],
-    year: ['', Validators.required]
+    category: ['', Validators.required],
+    description: ['', Validators.required],
+    age: ['', Validators.required],
+    year: ['', Validators.required],
+    url: ['', Validators.required]
   })
 
   constructor(
@@ -42,14 +51,24 @@ export class MoviesEditComponent implements OnInit {
     this.form = this.fb.group({
       title: [val.title, Validators.required],
       director: [val.director, Validators.required],
-      categoryId: [val.categoryId, Validators.required],
+      category: [val.category, Validators.required],
+      description: [val.description, Validators.required],
+      age: [val.age, Validators.required],
       year: [val.year, Validators.required],
+      url: [val.url, Validators.required]
     });
   }
 
   ngOnInit(): void {
     this.movieId = this.afs.createId();
     this.getById();
+
+    this.listCategories();
+  }
+
+
+  listCategories() {
+    return this.getCategories;
   }
 
   getById() {
@@ -100,7 +119,10 @@ export class MoviesEditComponent implements OnInit {
       title: val.title,
       director: val.director,
       category: val.category,
-      year: val.year
+      description: val.description,
+      age: val.age,
+      year: val.year,
+      url: val.url
     }
 
     this.moviesService.createMovie(newMovie, this.movieId)

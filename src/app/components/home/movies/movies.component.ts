@@ -8,6 +8,7 @@ import { MoviesService } from 'src/app/shared/services/movies.service';
 import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
 import { Categories } from 'src/app/shared/interfaces/categories.interface';
 import { CATEGORIES } from 'src/app/shared/constants/categories.constant';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-movies',
@@ -19,7 +20,8 @@ export class MoviesComponent implements OnInit {
   @ViewChild('myCarousel') myCarousel: any;
   @ViewChild('myCarouselThumbs') myCarouselThumbs: any;
 
-  imgLoading = '../../../../assets/img/loading.gif';
+  imgLoading = environment.imgLoading;
+
   loading!: boolean;
 
   getCategories: Categories[] = CATEGORIES;
