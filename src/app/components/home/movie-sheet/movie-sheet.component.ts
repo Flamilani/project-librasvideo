@@ -3,8 +3,8 @@ import { Age } from './../../../shared/interfaces/age.interface';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Movie } from 'src/app/shared/models/movie.model';
-import { MoviesService } from 'src/app/shared/services/movies.service';
+import { Movie } from './../../../shared/models/movie.model';
+import { MoviesService } from './../../../shared/services/movies.service';
 
 @Component({
   selector: 'app-movie-sheet',

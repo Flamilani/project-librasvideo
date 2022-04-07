@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AGES } from 'src/app/shared/constants/age.constant';
-import { Age } from 'src/app/shared/interfaces/age.interface';
-import { MoviesService } from 'src/app/shared/services/movies.service';
+import { AGES } from './../../../shared/constants/age.constant';
+import { Age } from './../../../shared/interfaces/age.interface';
+import { MoviesService } from './../../../shared/services/movies.service';
 import { Movie } from './../../../shared/models/movie.model';
 
 

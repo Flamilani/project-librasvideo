@@ -4,11 +4,11 @@ import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/cor
 import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Movie } from './../../../shared/models/movie.model';
-import { MoviesService } from 'src/app/shared/services/movies.service';
+import { MoviesService } from './../../../shared/services/movies.service';
 import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
-import { Categories } from 'src/app/shared/interfaces/categories.interface';
-import { CATEGORIES } from 'src/app/shared/constants/categories.constant';
-import { environment } from 'src/environments/environment';
+import { Categories } from './../../../shared/interfaces/categories.interface';
+import { CATEGORIES } from './../../../shared/constants/categories.constant';
+import { environment } from './../../../../environments/environment';
 
 @Component({
   selector: 'app-movies',

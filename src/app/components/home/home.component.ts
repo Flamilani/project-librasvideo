@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthService } from './../../shared/services/auth.service';
 
 @Component({
   selector: 'app-home',

@@ -4,8 +4,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { MoviesService } from 'src/app/shared/services/movies.service';
-import { NotificationService } from 'src/app/shared/services/notification.service';
+import { MoviesService } from './../../../shared/services/movies.service';
+import { NotificationService } from './../../../shared/services/notification.service';
 
 @Component({
   selector: 'app-genres',

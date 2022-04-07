@@ -1,8 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { AngularFireList, AngularFireDatabase } from '@angular/fire/compat/database';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
-import { FileService } from 'src/app/shared/services/file.service';
+import { FileService } from './../../../shared/services/file.service';
 
 @Component({
   selector: 'app-images',

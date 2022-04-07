@@ -9,10 +9,10 @@ import { catchError, concatMap, last, tap } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
 import { NotificationService } from './../../../../shared/services/notification.service';
 import { Movie } from './../../../../shared/models/movie.model';
-import { MoviesService } from 'src/app/shared/services/movies.service';
+import { MoviesService } from './../../../../shared/services/movies.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { AGES } from 'src/app/shared/constants/age.constant';
-import { Age } from 'src/app/shared/interfaces/age.interface';
+import { AGES } from './../../../../shared/constants/age.constant';
+import { Age } from './../../../../shared/interfaces/age.interface';
 
 @Component({
   selector: 'app-movies-create',

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { REGISTER_VIEW_DATA } from './constants/register.constant';
 import { RegisterViewContent, RegisterViewData, RegisterViewFooter, RegisterViewHeader } from './interface/register.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthService } from './../../../shared/services/auth.service';
 
 
 @Component({

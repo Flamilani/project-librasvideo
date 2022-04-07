@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
+import { environment } from './../../../environments/environment';
 import { LOGIN_VIEW_DATA } from '../home/login/constants/login.constant';
 import { LoginViewData, LoginViewFooter } from '../home/login/interface/login.interface';
 

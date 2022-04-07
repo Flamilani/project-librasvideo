@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthService } from './../../../shared/services/auth.service';
 import { FORGOT_VIEW_DATA } from './constant/forgot-password.constant';
 import { ForgotViewContent, ForgotViewData, ForgotViewFooter, ForgotViewHeader } from './interface/forgot-password.interface';
 

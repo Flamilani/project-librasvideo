@@ -1,7 +1,7 @@
 import { environment } from 'src/environments/environment';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthService } from './../../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-header',

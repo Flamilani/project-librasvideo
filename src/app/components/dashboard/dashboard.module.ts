@@ -1,5 +1,4 @@
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MoviesCreateComponent } from './movies/movies-create/movies-create.component';
 import { MoviesIndexComponent } from './movies/movies-index/movies-index.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './../../shared/shared.module';
@@ -8,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard.component';
-import { MessageModule } from 'src/app/shared/components/message/message.module';
+import { MessageModule } from './../../shared/components/message/message.module';
 import { GenresComponent } from './genres/genres.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { UsersComponent } from './users/users.component';
@@ -18,6 +17,7 @@ import { HeaderComponent } from './templates/header/header.component';
 import { ModalComponent } from './templates/modal/modal.component';
 import { MoviesEditComponent } from './movies/movies-edit/movies-edit.component';
 import { ImagesComponent } from './images/images.component';
+import { MoviesCreateComponent } from './movies/movies-create/movies-create.component';
 
 @NgModule({
   declarations: [

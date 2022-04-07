@@ -3,7 +3,7 @@ import { LOGIN_VIEW_DATA } from './constants/login.constant';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthService } from './../../../shared/services/auth.service';
 import { LoginViewContent, LoginViewData, LoginViewFooter, LoginViewHeader } from './interface/login.interface';
 
 @Component({

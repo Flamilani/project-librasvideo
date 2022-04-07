@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FOOTER_VIEW_DATA } from 'src/app/shared/constants/footer.constant';
-import { FooterViewData } from 'src/app/shared/interfaces/footer.interface';
+import { FOOTER_VIEW_DATA } from './../../../shared/constants/footer.constant';
+import { FooterViewData } from './../../../shared/interfaces/footer.interface';
 
 @Component({
   selector: 'app-footer',

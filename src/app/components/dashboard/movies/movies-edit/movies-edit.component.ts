@@ -4,12 +4,12 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { AGES } from 'src/app/shared/constants/age.constant';
-import { CATEGORIES } from 'src/app/shared/constants/categories.constant';
-import { Age } from 'src/app/shared/interfaces/age.interface';
-import { Categories } from 'src/app/shared/interfaces/categories.interface';
-import { Movie } from 'src/app/shared/models/movie.model';
-import { MoviesService } from 'src/app/shared/services/movies.service';
+import { AGES } from './../../../../shared/constants/age.constant';
+import { CATEGORIES } from './../../../../shared/constants/categories.constant';
+import { Age } from './../../../../shared/interfaces/age.interface';
+import { Categories } from './../../../../shared/interfaces/categories.interface';
+import { Movie } from './../../../../shared/models/movie.model';
+import { MoviesService } from './../../../../shared/services/movies.service';
 import { NotificationService } from './../../../../shared/services/notification.service';
 
 

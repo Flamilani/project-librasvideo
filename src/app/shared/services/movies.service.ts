@@ -6,7 +6,6 @@ import { concatMap, first, map } from 'rxjs/operators';
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "@angular/fire/compat/firestore";
 import { Movie } from '../models/movie.model';
-import { APIMovies } from 'src/app/app.api';
 import { Category } from '../models/genre.model';
 import { convertSnaps } from '../utils/db-utils';
 

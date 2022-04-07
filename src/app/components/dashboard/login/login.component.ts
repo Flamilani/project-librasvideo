@@ -3,8 +3,8 @@ import { LoginViewData, LoginViewHeader, LoginViewContent, LoginViewFooter } fro
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { environment } from 'src/environments/environment';
+import { AuthService } from './../../../shared/services/auth.service';
+import { environment } from './../../../../environments/environment';
 
 @Component({
   selector: 'app-login',
