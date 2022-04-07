@@ -7,41 +7,45 @@
       </button>
     </div>
     <div class="card-body">
-      <form [formGroup]="form">
-        <div class="mb-3">
+      <form [formGroup]="form" class="row">
+        <div class="mb-3 col-6">
           <label for="title" class="form-label">Título</label>
-          <input type="text" class="form-control"
-          formControlName="title"
-          [(ngModel)]="movie!.title"
-          required
-          >
+          <input type="text" class="form-control" formControlName="title" [(ngModel)]="movie!.title">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col-6">
           <label for="director" class="form-label">Diretor</label>
-          <input type="text"
-          class="form-control"
-          formControlName="director"
-          [(ngModel)]="movie!.director"
-          >
+          <input type="text" class="form-control" formControlName="director" [(ngModel)]="movie!.director">
         </div>
-        <div class="mb-3">
-          <label for="genres" class="form-label">Gênero</label>
-          <input type="text"
-          class="form-control"
-          formControlName="category"
-          [(ngModel)]="movie!.category"
-          >
+        <div class="mb-3 col-6">
+          <label for="genres" class="form-label">Categoria</label>
+          <select class="form-select" aria-label="Categoria" formControlName="category" [(ngModel)]="movie!.category">
+            <option disabled>Selecione</option>
+            <option *ngFor="let category of getCategories" [value]="category.arrayCategory">{{category.nameCategory}}</option>
+          </select>
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col-6">
+          <label for="genres" class="form-label">Faixa Etária</label>
+          <select class="form-select" aria-label="Faixa Etária" formControlName="age" [(ngModel)]="movie!.age">
+            <option disabled>Selecione</option>
+            <option *ngFor="let age of getAges" [value]="age.arrayAge">{{age.valueAge}}</option>
+          </select>
+        </div>
+        <div class="mb-3 col-6">
           <label for="year" class="form-label">Ano</label>
-          <input type="text" class="form-control"
-          formControlName="year"
-          [(ngModel)]="movie!.year"
-          >
+          <input type="tel" class="form-control" maxlength="4" formControlName="year" [(ngModel)]="movie!.year">
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!form.valid" (click)="onSubmit()">Atualizar</button>
+        <div class="mb-3 col-6">
+          <label for="url" class="form-label">Url de vídeo (Vimeo)</label>
+          <input type="text" class="form-control" formControlName="url" [(ngModel)]="movie!.url">
+        </div>
+        <div class="mb-3 col-12">
+          <label for="description" class="form-label">Descrição</label>
+          <textarea class="form-control" rows="3" formControlName="description" [(ngModel)]="movie!.description"></textarea>
+        </div>
+        <div class="mb-3 col-12">
+        <button type="button" class="btn btn-primary mt-4" [disabled]="form.invalid" (click)="onSubmit()">Atualizar</button>
+      </div>
       </form>
     </div>
   </div>
 </div>
-

@@ -27,19 +27,27 @@
               <th scope="row">{{ movie.seqNo }}</th>
               <td>{{ movie.title }}</td>
               <td>
-                <img *ngIf="movie.iconUrl" class="imgThumbnail" [src]="movie.iconUrl" alt="movie.title" />
-                <span *ngIf="!movie.iconUrl" class="badge bg-secondary">Sem Imagem</span>
+                <img *ngIf="movie.iconUrl" class="imgThumbnail capa" [src]="movie.iconUrl" alt="movie.title" />
+                <span *ngIf="!movie.iconUrl" class="badge bg-secondary capa-texto">Sem Imagem</span>
+               <!--  <button class="btn btn-primary btn-sm btn-capa">Trocar Capa</button> -->
               </td>
-              <td>
-                <div style="padding:56.25% 0 0 0;position:relative;">
-                  <iframe src="https://player.vimeo.com/video/45134899?h=a65271635a&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-                  <script src="https://player.vimeo.com/api/player.js"></script>
+              <td style="width: 300px;">
+                <div class="embed-container">
+                  <iframe src="https://player.vimeo.com/video/45134899?h=a65271635a&title=0&byline=0&portrait=0" frameborder="0"></iframe>
+                </div>
               </td>
               <td>{{ movie.director }}</td>
               <td>
                 {{ moviesService.getCategoryByName(movie.category) }}
               </td>
-              <td>{{ movie.age }}</td>
+              <td>
+                <span *ngIf="movie?.age == this.getAges[0].arrayAge.toString()" [ngClass]="{'bg-success': movie?.age == this.getAges[0].arrayAge.toString()}" class="fs-6 mx-2 badge">{{ this.getAges[0].valueAge }}</span>
+                <span *ngIf="movie?.age == this.getAges[1].arrayAge.toString()" [ngClass]="{'bg-info': movie?.age == this.getAges[1].arrayAge.toString()}" class="fs-6 mx-2 badge">{{ this.getAges[1].valueAge }}</span>
+                <span *ngIf="movie?.age == this.getAges[2].arrayAge.toString()" [ngClass]="{'bg-warning': movie?.age == this.getAges[2].arrayAge.toString()}" class="fs-6 mx-2 badge">{{ this.getAges[2].valueAge }}</span>
+                <span *ngIf="movie?.age == this.getAges[3].arrayAge.toString()" [ngClass]="{'bg-orange': movie?.age == this.getAges[3].arrayAge.toString()}" class="fs-6 mx-2 badge">{{ this.getAges[3].valueAge }}</span>
+                <span span *ngIf="movie?.age == this.getAges[4].arrayAge.toString()" [ngClass]="{'bg-danger': movie?.age == this.getAges[4].arrayAge.toString()}" class="fs-6 mx-2 badge">{{ this.getAges[4].valueAge }}</span>
+                <span *ngIf="movie?.age == this.getAges[5].arrayAge.toString()" [ngClass]="{'bg-dark': movie?.age == this.getAges[5].arrayAge.toString()}" class="fs-6 mx-2 badge">{{ this.getAges[5].valueAge }}</span>
+              </td>
               <td>{{ movie.year }}</td>
               <td>
                  <a [routerLink]="['/admin/filme', movie.id]" class="btn btn-info btn-sm" placement="top" ngbTooltip="Editar {{ movie.title }}">

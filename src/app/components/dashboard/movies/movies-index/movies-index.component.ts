@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Categories } from './../../../../shared/interfaces/categories.interface';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
@@ -8,6 +9,8 @@ import { NotificationService } from './../../../../shared/services/notification.
 import Swal from 'sweetalert2';
 import { MoviesService } from 'src/app/shared/services/movies.service';
 import { CATEGORIES } from 'src/app/shared/constants/categories.constant';
+import { Age } from 'src/app/shared/interfaces/age.interface';
+import { AGES } from 'src/app/shared/constants/age.constant';
 
 @Component({
   selector: 'app-movies-index',
@@ -16,7 +19,9 @@ import { CATEGORIES } from 'src/app/shared/constants/categories.constant';
 })
 export class MoviesIndexComponent implements OnInit {
 
-  imgLoading = '../../../../assets/img/loading.gif';
+  imgLoading = environment.imgLoading;
+
+  getAges: Age[] = AGES;
 
   getCategories: Categories[] = CATEGORIES;
 

@@ -7,27 +7,34 @@
       </button>
     </div>
     <div class="card-body">
-      <form [formGroup]="form">
-        <div class="mb-3">
+      <form [formGroup]="form" class="row">
+        <div class="mb-3 col-6">
           <label for="title" class="form-label">Título</label>
           <input type="text" class="form-control" formControlName="title">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col-6">
           <label for="director" class="form-label">Diretor</label>
           <input type="text" class="form-control" formControlName="director">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col-6">
           <label for="genres" class="form-label">Categoria</label>
-          <select class="form-select" aria-label="Categoria" formControlName="category" required>
+          <select class="form-select" aria-label="Categoria" formControlName="category">
             <option disabled>Selecione</option>
             <option *ngFor="let category of getCategories" [value]="category.arrayCategory">{{category.nameCategory}}</option>
           </select>
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col-6">
+          <label for="genres" class="form-label">Faixa Etária</label>
+          <select class="form-select" aria-label="Faixa Etária" formControlName="age">
+            <option disabled>Selecione</option>
+            <option *ngFor="let age of getAges" [value]="age.arrayAge">{{age.valueAge}}</option>
+          </select>
+        </div>
+        <div class="mb-3 col-6">
           <label for="year" class="form-label">Ano</label>
           <input type="tel" class="form-control" maxlength="4" formControlName="year">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 col-6">
           <label for="image" class="form-label">Capa</label>
           <img [src]="iconUrl" class="img-thumbnail imagemUpload" alt="Imagem" *ngIf="iconUrl">
           <input type="file" class="form-control" (change)="uploadImage($event)">
@@ -37,7 +44,17 @@
             </div>
           </div>
         </div>
-        <button type="button" class="btn btn-primary" (click)="createMovie()">Adicionar</button>
+        <div class="mb-3 col-6">
+          <label for="url" class="form-label">Url de vídeo (Vimeo)</label>
+          <input type="text" class="form-control" formControlName="url">
+        </div>
+        <div class="mb-3 col-12">
+          <label for="description" class="form-label">Descrição</label>
+          <textarea class="form-control" rows="3" formControlName="description"></textarea>
+        </div>
+        <div class="mb-3 col-12">
+        <button type="button" class="btn btn-primary mt-4" [disabled]="form.invalid" (click)="createMovie()">Adicionar</button>
+      </div>
       </form>
     </div>
   </div>

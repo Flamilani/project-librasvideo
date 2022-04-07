@@ -1,4 +1,4 @@
-<h1 class="text-center mt-4">{{ viewHeader?.title }}</h1>
+<h1 class="text-center">{{ viewHeader?.title }}</h1>
 
 <form [formGroup]="formRegister" autocomplete="off" class="form mt-4" (ngSubmit)="cadastrar()">
   <div class="form-group mb-3">
@@ -58,7 +58,7 @@
 <p class="text-center">
   {{ viewFooterLogar.description }}
 </p>
-<div class="d-grid gap-2 mb-3">
+<div class="d-grid gap-2">
   <a class="link-register btn btn-secondary btn-lg"
   (click)="navigate()">
   {{ viewFooterLogar.btnAction.text }}

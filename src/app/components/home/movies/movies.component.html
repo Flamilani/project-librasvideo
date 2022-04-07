@@ -6,7 +6,7 @@
     <h3>Ação</h3>
     <owl-carousel-o [options]="customOptions">
       <ng-container *ngFor="let slide of moviesAction">
-        <ng-template carouselSlide [width]="150">
+        <ng-template *ngIf="slide.iconUrl != null" carouselSlide [width]="150">
           <div class="slide">
             <img [src]="slide.iconUrl" [alt]="slide.title" (click)="goToMovie(slide)">
           </div>

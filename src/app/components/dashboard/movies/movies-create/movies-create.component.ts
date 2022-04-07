@@ -11,6 +11,8 @@ import { NotificationService } from './../../../../shared/services/notification.
 import { Movie } from './../../../../shared/models/movie.model';
 import { MoviesService } from 'src/app/shared/services/movies.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { AGES } from 'src/app/shared/constants/age.constant';
+import { Age } from 'src/app/shared/interfaces/age.interface';
 
 @Component({
   selector: 'app-movies-create',
@@ -19,6 +21,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 })
 export class MoviesCreateComponent implements OnInit {
 
+  getAges: Age[] = AGES;
   getCategories: Categories[] = CATEGORIES;
 
   movieId!: string;
@@ -33,6 +36,8 @@ export class MoviesCreateComponent implements OnInit {
     title: ['', Validators.required],
     director: ['', Validators.required],
     category: ['', Validators.required],
+    description: ['', Validators.required],
+    age: ['', Validators.required],
     year: ['', Validators.required],
     url: ['', Validators.required],
     iconUrl: [null]
@@ -88,6 +93,8 @@ export class MoviesCreateComponent implements OnInit {
       title: val.title,
       director: val.director,
       category: val.category,
+      description: val.description,
+      age: val.age,
       year: val.year,
       url: val.url,
       iconUrl: val.iconUrl
