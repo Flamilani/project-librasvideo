@@ -1,6 +1,6 @@
 const assets = '';
 const imagePath = '../../../../assets/img/logo-3.png';
-const imageSmallPath = '../../../../assets/img/logo-1.png';
+const imageSmallPath = '../../../../assets/img/logo-circle.png';
 const imageUser = '../../../../assets/img/icon-user.png';
 const imgLoading = '../../../../assets/img/loading.gif';
 
