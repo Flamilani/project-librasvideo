@@ -1,16 +1,18 @@
 import { Router } from '@angular/router';
 import { HttpClient, HttpStatusCode } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthData } from '../auth/auth-data.model';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { User } from '../models/user.model';
+import { concatMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
   userData: any;
   authChange = new Subject<boolean>();
   private isAuthenticated = false;
@@ -35,18 +37,27 @@ export class AuthService {
     }
 
     signUp(authData: AuthData) {
-      return this.afAuth
-        .createUserWithEmailAndPassword(authData.email, authData.password);
+      return this.afAuth.createUserWithEmailAndPassword(authData.email, authData.password);
     }
 
     signIn(authData: AuthData) {
-      return this.afAuth
-        .signInWithEmailAndPassword(authData.email, authData.password);
+      return this.afAuth.signInWithEmailAndPassword(authData.email, authData.password);
     }
 
     forgotPassword(email: string) {
       return this.afAuth.sendPasswordResetEmail(email);
     }
+
+/*  updateProfile(profileData: Partial<User>): Observable<any> {
+    const user = this.afAuth.currentUser;
+    return of(user).pipe(
+      concatMap((user) => {
+        if (!user) throw new Error('Not authenticated');
+
+        return updateUser(user, profileData);
+      })
+    );
+  } */
 
     registerUser(authData: AuthData) {
       this.afAuth
@@ -113,9 +124,12 @@ export class AuthService {
         uid: user.uid,
         email: user.email,
         displayName: user.displayName,
-        phoneNumber: user.phoneNumber,
         photoURL: user.photoURL,
-        emailVerified: user.emailVerified,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        phoneNumber: user.phoneNumber,
+        address: user.address
+
       };
       return userRef.set(userData, {
         merge: true,
