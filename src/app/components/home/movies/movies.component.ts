@@ -49,20 +49,16 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
 
-/*
-    this.loading = true;
+  this.loading = true;
     setTimeout (() => {
       this.loading = false;
-      this.loadGenres();
-      this.moviesByGenre();
-   }, 2000); */
+      this.loadCategories();
+      this.moviesByAction();
+      this.moviesByAdventure();
+      this.moviesByAnimation();
+      this.moviesByDrama();
+   }, 2000);
 
-   this.loadCategories();
-
-   this.moviesByAction();
-   this.moviesByAdventure();
-   this.moviesByAnimation();
-   this.moviesByDrama();
   }
 
   customOptions: OwlOptions = {
@@ -99,31 +95,26 @@ export class MoviesComponent implements OnInit {
     this.moviesService.showCategory(id)
        .subscribe(
          movie => {
-           console.log(movie);
            this.listCategories = movie;
           }
        );
   }
 
   loadCategories() {
-    console.log(this.getCategories);
     return this.getCategories;
   }
 
   loadGenres() {
     this.moviesService.loadCategories().subscribe(categories => {
       this.listCategories = categories;
-   //   console.log(this.listGenres);
     });
   }
 
 
   moviesByCategory() {
-    console.log(this.getCategories[1].nameCategory);
     this.moviesService.loadMoviesByCategory(this.getCategories[0].nameCategory)
       .subscribe(movies => {
         this.movies = movies;
-        console.log(movies);
       });
   }
 
@@ -138,7 +129,6 @@ export class MoviesComponent implements OnInit {
     this.moviesService.loadMoviesByCategory('ADVENTURE')
       .subscribe(movies => {
         this.moviesAdventure = movies;
-        console.log(movies);
       });
   }
 
@@ -146,7 +136,6 @@ export class MoviesComponent implements OnInit {
     this.moviesService.loadMoviesByCategory('ANIMATION')
       .subscribe(movies => {
         this.moviesAnimation = movies;
-        console.log(movies);
       });
   }
 
@@ -165,9 +154,6 @@ export class MoviesComponent implements OnInit {
       this.moviesService.loadMoviesByCategory(item.arrayCategory)
       .subscribe(movies => {
         this.moviesDrama = movies;
-        console.log('seq', item.arrayCategory);
-        console.log('filmes: ', this.movies);
-        console.log('filmes por categoria', movies[0]?.category);
       })
   }
 });
@@ -185,7 +171,6 @@ export class MoviesComponent implements OnInit {
         categories => {
           this.listCategories = categories;
          // console.log(this.listGenres[0]?.name);
-
           console.log('item',this.listCategories[0]?.seqNo);
           this.moviesService.loadMoviesByCategory(this.listCategories[0]?.seqNo)
           .subscribe(movies => {
@@ -194,13 +179,9 @@ export class MoviesComponent implements OnInit {
           });
 
   /*          for (var item of categories) {
-            console.log('item',item.seqNo);
             this.moviesService.loadMoviesByGenre(item.seqNo)
             .subscribe(movies => {
               this.movies = movies;
-              console.log('seq', item.seqNo);
-              console.log('filmes: ', this.movies);
-              console.log('filmes por categoria', movies[0]?.categoryId);
             });
 
           } */
@@ -213,7 +194,6 @@ export class MoviesComponent implements OnInit {
      this.moviesService.getMovie(id)
        .subscribe(
          movie => {
-           console.log(movie);
            this.movie = movie;
           }
        );
@@ -224,7 +204,6 @@ export class MoviesComponent implements OnInit {
 
     bottomSheetConfig.data = movie;
 
-     console.log("movie detail: " + movie.id);
      this._bottomSheet.open(MovieSheetComponent, bottomSheetConfig)
      .afterDismissed()
       .subscribe(val => {

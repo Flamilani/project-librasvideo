@@ -24,7 +24,6 @@ export class AppComponent {
     for (let category of Object.values(CATEGORIES)) {
       const newCategory = this.removeId(category);
       const categoryRef = await categoriesCollection.add(newCategory);
-      console.log("carregando genres");
     } */
   }
 

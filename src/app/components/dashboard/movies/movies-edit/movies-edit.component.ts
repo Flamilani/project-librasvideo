@@ -96,7 +96,6 @@ export class MoviesEditComponent implements OnInit {
   onSubmit() {
     const changes = this.form.value;
     this.movieId = this.route.snapshot.params['id'];
-    console.log(changes);
     this.moviesService.updateMovie(this.movieId, changes)
       .subscribe(() => {
         this.notifyService.showSuccess("Filme atualizado com sucesso!");
@@ -128,7 +127,6 @@ export class MoviesEditComponent implements OnInit {
     this.moviesService.createMovie(newMovie, this.movieId)
       .pipe(
         tap(movie => {
-          console.log("Created new movie: ", movie);
           this.notifyService.showSuccess("Filme adicionado com sucesso!");
           this.router.navigateByUrl('admin/filmes');
         }),

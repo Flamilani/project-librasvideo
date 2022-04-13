@@ -76,7 +76,6 @@ export class AuthService {
         .signInWithEmailAndPassword(authData.email, authData.password)
         .then(result => {
           this.ngZone.run(() => {
-            console.log(result);
             this.authSuccessfully();
           });
         })

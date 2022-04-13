@@ -1,4 +1,5 @@
-<div class="container">
+<img *ngIf="loading" class="loading" [src]="imgLoading" alt="Carregando">
+<div *ngIf="!loading" class="container">
   <img class="logo" [src]="imagePath" alt="Logo LibrasVideos">
   <div class="content">
     <div class="embed-container mt-5">

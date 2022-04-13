@@ -41,7 +41,6 @@ export class GenresComponent implements OnInit {
     this.moviesService.createMovie(newMovie, this.genreId)
       .pipe(
         tap(movie => {
-          console.log("Created new movie: ", movie);
           this.notifyService.showSuccess("Filme adicionado com sucesso!");
           this.router.navigateByUrl('admin/categorias');
         }),
