@@ -33,7 +33,6 @@ export class MovieWatchComponent implements OnInit {
   }
 
   goToMovie(id: any) {
-    console.log(id);
     this.router.navigate([`home/detalhe/${id}`]);
   }
 

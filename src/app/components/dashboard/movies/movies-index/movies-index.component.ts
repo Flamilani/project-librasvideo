@@ -44,10 +44,6 @@ export class MoviesIndexComponent implements OnInit {
       this.listMovies();
       this.sortData();
    }, 1000);
-
-   console.log(this.moviesService.getCategoryByName(['ACTION']));
-
-   console.log(this.getCategories);
   }
 
   goToMoviesCreate() {
@@ -59,7 +55,6 @@ export class MoviesIndexComponent implements OnInit {
   }
 
   sortData() {
-    console.log('sort');
     if (this.order) {
       let newarr = this.movies.sort((a, b) => a.seqNo - b.seqNo);
       this.movies = newarr;
@@ -78,10 +73,8 @@ export class MoviesIndexComponent implements OnInit {
     }).then((result) => {
 
       if (result.isConfirmed) {
-        console.log('Clicked, File is deleted!');
         this.delete(movie);
       } else if (result.isDismissed) {
-        console.log('Clicked No, File is safe!');
       }
     })
 

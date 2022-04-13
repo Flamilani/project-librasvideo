@@ -38,13 +38,11 @@ export class MovieSheetComponent implements OnInit {
    }
 
    goToMovie(id: any) {
-     console.log('id', id);
      this.router.navigate([`assistir/${id}`]);
      this.bottomSheetRef.dismiss();
    }
 
    getById(id: string) {
-      // this.movieId = id;
        this.moviesService.getMovie(id)
          .subscribe(
            movie => console.log(movie)

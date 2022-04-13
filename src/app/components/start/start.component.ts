@@ -13,11 +13,19 @@ export class StartComponent implements OnInit {
 
   readonly loginViewData: LoginViewData = LOGIN_VIEW_DATA;
 
+  loading!: boolean;
+
+  imgLoading = environment.imgLoading;
+
   imagePath = environment.imagePath;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.loading = true;
+    setTimeout (() => {
+      this.loading = false;
+    }, 2000);
   }
 
   get viewFooter(): LoginViewFooter {

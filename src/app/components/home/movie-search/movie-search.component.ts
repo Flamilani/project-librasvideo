@@ -33,7 +33,6 @@ export class MovieSearchComponent implements OnInit {
   }
 
   goToMovie(id: any) {
-    console.log('id', id);
     this.router.navigate([`home/detalhe/${id}`]);
   }
 }

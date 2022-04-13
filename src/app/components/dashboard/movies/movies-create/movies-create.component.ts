@@ -75,7 +75,6 @@ export class MoviesCreateComponent implements OnInit {
       tap(url => this.iconUrl = url),
       tap(url => this.form.get('iconUrl')?.setValue(url)),
       catchError(err => {
-        console.log(err);
         alert("Could not create thumbnail url.");
         return throwError(err);
       })
@@ -103,7 +102,6 @@ export class MoviesCreateComponent implements OnInit {
     this.moviesService.createMovie(newMovie, this.movieId)
       .pipe(
         tap(movie => {
-          console.log("Created new movie: ", movie);
           this.notifyService.showSuccess("Filme adicionado com sucesso!");
           this.router.navigateByUrl('admin/filmes');
         }),

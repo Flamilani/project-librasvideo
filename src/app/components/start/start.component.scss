@@ -1,3 +1,11 @@
+.loading {
+  width: 300px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 150px;
+  padding: 50px;
+}
+
 .container {
   padding-left: 20px;
   padding-right: 20px;
@@ -12,7 +20,9 @@
   }
 
   .content {
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 56vh;
   }
 
   .link-start {
