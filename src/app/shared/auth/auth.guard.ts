@@ -5,6 +5,7 @@ import {
   RouterStateSnapshot,
   Router
 } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 
@@ -15,11 +16,15 @@ export class AuthGuard implements CanActivate {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.authService.isAuth()) {
-      return true;
-    } else {
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    if (this.authService.isLoggedIn !== true) {
+      console.log("guard router login");
       return this.router.navigateByUrl('home/login');
+    } else {
+      console.log("guard router true");
+      return true;
     }
   }
 

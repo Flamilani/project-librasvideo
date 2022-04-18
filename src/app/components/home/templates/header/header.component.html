@@ -1,15 +1,15 @@
 <header>
-  <a *ngIf="!isAuth" [routerLink]="'/'">
+  <a *ngIf="!authService.isLoggedIn" [routerLink]="'/'">
     <img class="logo" [src]="imagePath" alt="Logo LibrasVideos">
   </a>
-  <a *ngIf="isAuth" [routerLink]="'filmes'">
+  <a *ngIf="authService.isLoggedIn" [routerLink]="'filmes'">
     <img class="logoSmall" [src]="imageSmallPath" alt="Logo LibrasVideos">
   </a>
 <!--   <button *ngIf="!isAuth" type="button" class="btn btn-secondary float-end" [routerLink]="'login'">
     Login
   </button> -->
-  <img (click)="onToggleSidenav()" *ngIf="isAuth" [src]="imageUser" class="rounded-circle imgUserHeader" alt="Usuário">
-  <a class="float-end" *ngIf="isAuth" [routerLink]="'busca-filmes'">
+  <img (click)="onToggleSidenav()" *ngIf="authService.isLoggedIn" [src]="imageUser" class="rounded-circle imgUserHeader" alt="Usuário">
+  <a class="float-end" *ngIf="authService.isLoggedIn" [routerLink]="'busca-filmes'">
     <span class="material-icons search">
       search
     </span>

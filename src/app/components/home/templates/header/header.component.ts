@@ -2,6 +2,7 @@ import { environment } from 'src/environments/environment';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from './../../../../shared/services/auth.service';
+import { User } from './../../../../shared/models/user';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,8 @@ import { AuthService } from './../../../../shared/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   @Output() sidenavToggle = new EventEmitter<void>();
+
+  user!: User;
 
   imagePath = environment.imagePath;
   imageSmallPath = environment.imageSmallPath;
@@ -22,7 +25,7 @@ export class HeaderComponent implements OnInit {
 		this.sidenavToggle.emit();
 	}
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
     this.authSubscription = this.authService.authChange.subscribe(authStatus => {

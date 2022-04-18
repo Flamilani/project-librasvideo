@@ -1,4 +1,4 @@
-
+<h2 class="title">Procurar Filmes</h2>
 <form autocomplete="off" class="form">
   <div class="form-group mb-3">
     <input
@@ -14,7 +14,7 @@
 <div class="container">
   <div class="row">
     <div class="col-6 mb-3" *ngFor="let movie of movies | filter: searchText">
-      <img [src]="movie.iconUrl" class="slide" [alt]="movie.title" (click)="goToMovie(movie.id)" />
+      <img *ngIf="movie.iconUrl != null" [src]="movie.iconUrl" class="slide" [alt]="movie.title" (click)="goToMovie(movie.id)" />
     </div>
   </div>
 </div>

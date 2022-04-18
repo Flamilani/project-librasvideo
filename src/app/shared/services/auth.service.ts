@@ -5,7 +5,7 @@ import { Observable, of, Subject } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthData } from '../auth/auth-data.model';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { User } from '../models/user.model';
+import { User } from './../models/user';
 import { concatMap } from 'rxjs/operators';
 
 @Injectable({
@@ -24,7 +24,7 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private ngZone: NgZone
     ) {
-      this.afAuth.authState.subscribe((user) => {
+       this.afAuth.authState.subscribe((user) => {
         if (user) {
           this.userData = user;
           localStorage.setItem('user', JSON.stringify(this.userData));
@@ -98,6 +98,13 @@ export class AuthService {
       return this.isAuthenticated;
     }
 
+    isSignedIn(): boolean {
+      if (!localStorage.getItem('user')) {
+        return false;
+      }
+      return true;
+    }
+
     public authSuccessfully() {
       this.isAuthenticated = true;
       this.authChange.next(true);
@@ -110,9 +117,18 @@ export class AuthService {
       this.router.navigateByUrl('home/pagamento');
     }
 
+/*     get isLoggedIn(): boolean {
+      const user = JSON.parse(localStorage.getItem('user'));
+      return (user !== null && user.emailVerified !== false) ? true : false;
+    } */
+
     get isLoggedIn(): boolean {
       const user = JSON.parse(localStorage.getItem('user')!);
-      return (user !== null && user.emailVerified !== false) ? true : false;
+      if (user === null) {
+        return false;
+      } else {
+        return true;
+      }
     }
 
     setUserData(user: any) {
@@ -124,10 +140,7 @@ export class AuthService {
         email: user.email,
         displayName: user.displayName,
         photoURL: user.photoURL,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        phoneNumber: user.phoneNumber,
-        address: user.address
+        phoneNumber: user.phoneNumber
 
       };
       return userRef.set(userData, {
