@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LOGIN_VIEW_DATA } from './../../shared/constants/login.constant';
+import { LoginViewData, LoginViewFooter } from './../../shared/interfaces/login.interface';
 import { environment } from './../../../environments/environment';
-import { LOGIN_VIEW_DATA } from '../home/login/constants/login.constant';
-import { LoginViewData, LoginViewFooter } from '../home/login/interface/login.interface';
 
 @Component({
   selector: 'app-start',

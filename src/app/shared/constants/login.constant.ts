@@ -1,4 +1,4 @@
-import { LoginViewData } from '../interface/login.interface';
+import { LoginViewData } from "../interfaces/login.interface";
 
 export const LOGIN_VIEW_DATA: LoginViewData =
 {

@@ -1,10 +1,9 @@
-import { LOGIN_VIEW_DATA } from './constants/login.constant';
-
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LOGIN_VIEW_DATA } from './../../../shared/constants/login.constant';
+import { LoginViewContent, LoginViewData, LoginViewFooter, LoginViewHeader } from './../../../shared/interfaces/login.interface';
 import { AuthService } from './../../../shared/services/auth.service';
-import { LoginViewContent, LoginViewData, LoginViewFooter, LoginViewHeader } from './interface/login.interface';
 
 @Component({
   selector: 'app-login',
@@ -38,6 +37,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
+    this.isLoggedIn;
+  }
+
+  get isLoggedIn() {
+    if (this.authService.isLoggedIn == false) {
+      return this.router.navigate(['home/login']);
+    } else {
+      return this.authService.authSuccessfully();
+    }
   }
 
   get viewHeader(): LoginViewHeader {
@@ -78,16 +86,6 @@ export class LoginComponent implements OnInit {
         this.errorMessage = true;
         this.message = err.message;
       });
-
-
-/*     this.authService.autenticar(this.email, this.senha).subscribe(
-      () => {
-        this.router.navigateByUrl('entrada');
-      },
-      (error) => {
-        alert('Usuário ou senha inválido');
-      }
-    ); */
   }
 
 }

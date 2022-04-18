@@ -21,31 +21,35 @@ const routes: Routes = [
         path: 'login', component: LoginComponent
       },
       {
-        path: 'entrada', component: EntraceComponent
+        path: 'entrada', component: EntraceComponent,
+      //  canActivate: [AuthGuard]
+      // -- TODO: Melhoria de refatoração de direcionamento para entrada após login.
       },
       {
         path: 'cadastro', component: RegisterComponent
       },
       {
-        path: 'perfil', component: ProfileComponent
+        path: 'perfil', component: ProfileComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'esqueci-senha', component: ForgotPasswordComponent
       },
       {
-        path: 'pagamento', component: PaymentComponent
+        path: 'pagamento', component: PaymentComponent,
+        canActivate: [AuthGuard]
       },
       {
-        path: 'busca-filmes', component: MovieSearchComponent
+        path: 'busca-filmes', component: MovieSearchComponent,
+        canActivate: [AuthGuard]
       },
       {
-        path: 'filmes', component: MoviesComponent
+        path: 'filmes', component: MoviesComponent,
+        canActivate: [AuthGuard]
       },
       {
-        path: 'detalhe/:id', component: MovieComponent
-      },
-      {
-        path: 'assistir/:id', component: MovieWatchComponent
+        path: 'detalhe/:id', component: MovieComponent,
+        canActivate: [AuthGuard]
       }
     ]
   },

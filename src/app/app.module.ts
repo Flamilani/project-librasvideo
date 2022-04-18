@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AngularFireAuthModule,
+    AngularFirestoreModule,
     Ng2SearchPipeModule,
     ToastrModule.forRoot()
   ],
