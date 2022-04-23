@@ -107,6 +107,15 @@ export class MoviesService {
       );
   }
 
+  loadMoviesFavorites(): Observable<Movie[]> {
+    return this.db.collection(
+      "movies", ref => ref.orderBy("seqNo"))
+      .get()
+      .pipe(
+        map(result => convertSnaps<Movie>(result))
+      );
+  }
+
 /*   getMovie(movieId: string): Observable<Movie[]> {
     return this.db.collection(
       "movies",

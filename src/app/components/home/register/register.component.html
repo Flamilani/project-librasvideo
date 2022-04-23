@@ -33,10 +33,12 @@
       [formControlName]="viewContentConfSenha.input.control"
       required
     />
-  <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls[viewContentConfSenha.input.control].errors?.required && formRegister.get(viewContentConfSenha.input.control)?.touched">
+  <div class="text-warning d-block mt-2" role="alert"
+  *ngIf="formRegister.controls[viewContentConfSenha.input.control].errors?.required && formRegister.get(viewContentConfSenha.input.control)?.touched">
     {{ viewContentConfSenha.errorMsg }}
   </div>
-  <div class="text-warning d-block mt-2" role="alert" *ngIf="formRegister.controls[viewContentConfSenha.input.control].errors?.confirmedValidator">
+  <div class="text-warning d-block mt-2" role="alert"
+  *ngIf="formRegister.controls[viewContentConfSenha.input.control].errors?.confirmedValidator">
     Senha não corresponde
   </div>
   </div>
@@ -54,6 +56,16 @@
  </div>
   </div>
 </form>
+<hr>
+<div class="d-grid gap-2 mt-1 mb-3">
+  <button
+  type="submit"
+  class="btn btn-light btn-lg"
+  (click)="authService.GoogleAuth()"
+  >
+  <img class="logoGoogle" [src]="imgGoogle" alt="Logo Google"> Continuar com Google
+  </button>
+  </div>
 <hr>
 <p class="text-center">
   {{ viewFooterLogar.description }}

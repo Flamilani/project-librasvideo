@@ -4,6 +4,7 @@ import { REGISTER_VIEW_DATA } from './constants/register.constant';
 import { RegisterViewContent, RegisterViewData, RegisterViewFooter, RegisterViewHeader } from './interface/register.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './../../../shared/services/auth.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -12,6 +13,8 @@ import { AuthService } from './../../../shared/services/auth.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  imgGoogle = environment.imgGoogle;
+
   readonly registerViewData: RegisterViewData = REGISTER_VIEW_DATA;
 
   formRegister!: FormGroup;
@@ -26,7 +29,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) { }
 
@@ -42,6 +45,15 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
+    this.isLoggedIn;
+  }
+
+  get isLoggedIn() {
+    if (this.authService.isLoggedIn == false) {
+      return this.router.navigate(['home/cadastro']);
+    } else {
+      return this.authService.authSuccessfully();
+    }
   }
 
   get viewHeader(): RegisterViewHeader {
@@ -82,8 +94,8 @@ export class RegisterComponent implements OnInit {
         password: this.formRegister.value.confirmPassword,
         admin: false
       }).then(result => {
+        this.authService.SendVerificationMail();
         this.authService.setUserData(result.user);
-        this.authService.authPayment();
       }).catch((err) => {
         this.errorMessage = true;
       });

@@ -1,3 +1,5 @@
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { MoviesFavoritesComponent } from './movies-favorites/movies-favorites.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
@@ -12,6 +14,7 @@ import { RegisterComponent } from './register/register.component';
 import { EntraceComponent } from './entrace/entrace.component';
 import { MovieComponent } from './movie/movie.component';
 import { AuthGuard } from '../../shared/auth/auth.guard';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 
 const routes: Routes = [
   {
@@ -19,6 +22,9 @@ const routes: Routes = [
     children: [
       {
         path: 'login', component: LoginComponent
+      },
+      {
+        path: 'verificar-email', component: VerifyEmailComponent
       },
       {
         path: 'entrada', component: EntraceComponent,
@@ -30,6 +36,10 @@ const routes: Routes = [
       },
       {
         path: 'perfil', component: ProfileComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'editar-perfil', component: ProfileEditComponent,
         canActivate: [AuthGuard]
       },
       {
@@ -45,6 +55,10 @@ const routes: Routes = [
       },
       {
         path: 'filmes', component: MoviesComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'favoritos', component: MoviesFavoritesComponent,
         canActivate: [AuthGuard]
       },
       {

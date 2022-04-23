@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="content">
+    <div class="authBlock">
+      <h3 class="mb-3">Obrigado por cadastrar</h3>
+      <div class="alert alert-secondary" *ngIf="authService.userData as user">
+        <p class="text-center">Nós enviamos a confirmação do e-mail para <strong>{{user.email}}</strong>.</p>
+        <p class="text-center mb-0">Por favor verifique seu e-email e clica no link para confirmar seu e-mail.</p>
+      </div>
+
+      <!-- Calling SendVerificationMail() method using authService Api -->
+      <div class="d-grid gap-2">
+        <button type="button" class="btn btn-warning" (click)="authService.SendVerificationMail()">
+          Reenviar a verificação do e-mail
+        </button>
+      </div>
+    </div>
+    <hr>
+    <div class="d-grid gap-2">
+      <a class="link-register btn btn-info text-white btn-lg"
+      (click)="navigate()">Ir para Login</a>
+    </div>
+  </div>
+</div>

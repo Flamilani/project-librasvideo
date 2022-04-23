@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { LOGIN_VIEW_DATA } from './../../../shared/constants/login.constant';
 import { LoginViewContent, LoginViewData, LoginViewFooter, LoginViewHeader } from './../../../shared/interfaces/login.interface';
 import { AuthService } from './../../../shared/services/auth.service';
@@ -11,6 +12,8 @@ import { AuthService } from './../../../shared/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  imgGoogle = environment.imgGoogle;
+
   readonly loginViewData: LoginViewData = LOGIN_VIEW_DATA;
 
   formLogin!: FormGroup;
@@ -24,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router
   ) { }
 
@@ -80,8 +83,8 @@ export class LoginComponent implements OnInit {
         admin: false
       }).then(result => {
         this.errorMessage = false;
+        this.authService.SetUserDataVerified(result.user);
         this.authService.authSuccessfully();
-        this.authService.setUserData(result.user);
       }).catch((err) => {
         this.errorMessage = true;
         this.message = err.message;

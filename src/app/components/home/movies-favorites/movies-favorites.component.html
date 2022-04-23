@@ -1,0 +1,9 @@
+<h2 class="title">Meus Favoritos</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 mb-3" *ngFor="let movie of movies">
+      <img *ngIf="movie.iconUrl != null" [src]="movie.iconUrl" class="slide" [alt]="movie.title" (click)="goToMovie(movie.id)" />
+    </div>
+  </div>
+</div>

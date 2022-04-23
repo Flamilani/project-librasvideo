@@ -1,5 +1,5 @@
 footer {
-  font-size: 14px;
+  font-size: 0.72rem;
   margin-top: auto;
   display: flex;
   justify-content: space-around;
@@ -9,6 +9,7 @@ footer {
     margin: 5px;
     ul {
       list-style: none;
+      display: contents;
       a {
         text-decoration: none;
         color: #0dcaf0;

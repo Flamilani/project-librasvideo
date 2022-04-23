@@ -4,9 +4,6 @@
     {{ viewFooter?.title }}
   </span>
   <span>
-    {{ viewFooter?.description }}
-  </span>
-  <span>
     <ul>
       <li>
         <strong>{{ viewFooter.contacts?.title }}</strong>
@@ -28,5 +25,8 @@
         <a routerLink="{{ viewFooter.terms?.urlPolicy }}">{{ viewFooter.terms?.policy }}</a>
       </li>
     </ul>
+  </span>
+  <span>
+    {{ viewFooter?.description }}
   </span>
 </footer>

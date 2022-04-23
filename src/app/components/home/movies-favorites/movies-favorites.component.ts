@@ -1,22 +1,20 @@
-import { MoviesService } from './../../../shared/services/movies.service';
-import { Movie } from './../../../shared/models/movie.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Movie } from './../../../shared/models/movie.model';
+import { MoviesService } from './../../../shared/services/movies.service';
 
 @Component({
-  selector: 'app-movie-search',
-  templateUrl: './movie-search.component.html',
-  styleUrls: ['./movie-search.component.scss']
+  selector: 'app-movies-favorites',
+  templateUrl: './movies-favorites.component.html',
+  styleUrls: ['./movies-favorites.component.scss']
 })
-export class MovieSearchComponent implements OnInit {
-  searchText: any;
-
+export class MoviesFavoritesComponent implements OnInit {
   movies!: Movie[];
 
   constructor(
     private moviesService: MoviesService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.listMovies();
@@ -31,4 +29,5 @@ export class MovieSearchComponent implements OnInit {
   goToMovie(id: any) {
     this.router.navigate([`home/detalhe/${id}`]);
   }
+
 }

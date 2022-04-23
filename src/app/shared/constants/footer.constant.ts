@@ -2,8 +2,8 @@ import { FooterData } from "../interfaces/footer.interface";
 
 export const FOOTER_VIEW_DATA: FooterData = {
   footer: {
-    title: "Desenvolvido por Milani Designer",
-    description: "Todos os direitos reservados",
+    title: "Copyright © 2022 - LibrasVideos - Todos os direitos reservados",
+    description: "Desenvolvido por Milani Designer",
     contacts: {
       title: "Contato",
       email: "email@gmail.com",
