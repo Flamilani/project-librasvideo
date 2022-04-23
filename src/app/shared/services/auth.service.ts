@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { HttpClient, HttpStatusCode } from '@angular/common/http';
 import { Injectable, NgZone } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
+import { from, Observable, of, Subject } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthData } from '../auth/auth-data.model';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
@@ -22,7 +22,7 @@ export class AuthService {
     public afs: AngularFirestore,
     private router: Router,
     private afAuth: AngularFireAuth,
-    private ngZone: NgZone
+    private ngZone: NgZone,
     ) {
        this.afAuth.authState.subscribe((user) => {
         if (user) {
@@ -58,6 +58,10 @@ export class AuthService {
       })
     );
   } */
+
+    updateProfile(profileId: string, changes: Partial<User>): Observable<any> {
+      return from(this.afs.doc(`users/${profileId}`).update(changes));
+    }
 
     registerUser(authData: AuthData) {
       this.afAuth

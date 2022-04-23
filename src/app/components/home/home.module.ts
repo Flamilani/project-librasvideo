@@ -22,6 +22,8 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProfileComponent } from './profile/profile.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { MoviesFavoritesComponent } from './movies-favorites/movies-favorites.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     SidenavListComponent,
     MovieSearchComponent,
     ForgotPasswordComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfileEditComponent,
+    MoviesFavoritesComponent
   ],
   imports: [
     CommonModule,

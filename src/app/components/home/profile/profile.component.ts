@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from './../../../../environments/environment';
 import { User } from './../../../shared/models/user';
 import { AuthService } from './../../../shared/services/auth.service';
 
@@ -9,11 +10,20 @@ import { AuthService } from './../../../shared/services/auth.service';
 })
 export class ProfileComponent implements OnInit {
   user!: User;
-  constructor(public authService: AuthService) {
+  imageUser = environment.imageUser;
+  profileId: any;
+  public providerId: string = 'null';
 
-   }
+
+  constructor(
+      public authService: AuthService
+    ) {}
 
   ngOnInit(): void {
+  }
+
+  currentUser() {
+    this.authService.isAuth()
   }
 
   getUserLoggedIn() {

@@ -76,6 +76,13 @@ export const SERIES: any = {
   }
 }
 
+export const MOVIES_FAVORITES = {
+  1: {
+    id: 1,
+    uid: ''
+  }
+}
+
 export const CATEGORIES = {
   1: {
     id: 1,

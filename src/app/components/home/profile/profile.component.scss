@@ -1,4 +1,20 @@
-h2.title {
-  font-size: 30px;
+.title {
+  font-size: 25px;
   margin-bottom: 1.3rem;
+}
+
+.imgUserHeader {
+  border: 2px solid #fff;
+  width: 100%;
+  max-width: 100px;
+  margin-bottom: 15px;
+}
+
+.formProfile {
+  color: #fff;
+}
+
+.btn-update-photo {
+  display: table;
+  margin: 0 auto;
 }
