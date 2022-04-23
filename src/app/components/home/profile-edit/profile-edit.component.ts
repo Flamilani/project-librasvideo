@@ -1,3 +1,4 @@
+import { UserService } from './../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,6 +18,10 @@ export class ProfileEditComponent implements OnInit {
 
   public providerId: string = 'null';
 
+  imaskConfig = {
+    mask: '(00) 00000-0000'
+  };
+
   formProfile = this.fb.group({
     email: ['', Validators.required],
     displayName: ['', Validators.required],
@@ -27,7 +32,8 @@ export class ProfileEditComponent implements OnInit {
     private authService: AuthService,
     private fb: FormBuilder,
     private router: Router,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private userService: UserService
   ) {
     const val = this.formProfile.value;
 
@@ -45,12 +51,22 @@ export class ProfileEditComponent implements OnInit {
 
   loadUser() {
     this.afAuth.authState.subscribe((user) => {
+    this.userService.getProfile(user?.uid).subscribe((user) => {
       this.users = user;
       this.profileId = user?.uid;
       console.log(this.users);
       console.log('profileId', this.profileId);
     });
+  });
+  }
 
+  loadProfile() {
+    this.afAuth.authState.subscribe((user) => {
+      this.users = user;
+      this.profileId = user?.uid;
+      console.log(this.users);
+      console.log('profileId', this.profileId);
+    });
   }
 
    onSubmit() {

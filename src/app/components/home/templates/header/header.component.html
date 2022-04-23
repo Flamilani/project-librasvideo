@@ -8,7 +8,11 @@
 <!--   <button *ngIf="!isAuth" type="button" class="btn btn-secondary float-end" [routerLink]="'login'">
     Login
   </button> -->
-  <img (click)="onToggleSidenav()" *ngIf="authService.isLoggedIn" [src]="imageUser" class="rounded-circle imgUserHeader" alt="Usuário">
+  <img (click)="onToggleSidenav()" *ngIf="authService.isLoggedIn && authService.userData.photoURL"
+  [src]="authService.userData.photoURL" class="rounded-circle imgUserHeader" alt="Usuário">
+
+  <img (click)="onToggleSidenav()" *ngIf="authService.isLoggedIn && !authService.userData.photoURL"
+  [src]="imageUser" class="rounded-circle imgUserHeader" alt="Usuário">
   <a class="float-end" *ngIf="authService.isLoggedIn" [routerLink]="'busca-filmes'">
     <span class="material-icons search">
       search

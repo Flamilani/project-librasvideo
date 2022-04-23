@@ -1,3 +1,4 @@
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { MoviesFavoritesComponent } from './movies-favorites/movies-favorites.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -21,6 +22,9 @@ const routes: Routes = [
     children: [
       {
         path: 'login', component: LoginComponent
+      },
+      {
+        path: 'verificar-email', component: VerifyEmailComponent
       },
       {
         path: 'entrada', component: EntraceComponent,

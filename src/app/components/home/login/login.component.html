@@ -43,6 +43,16 @@
   </div>
 </form>
 <hr>
+<div class="d-grid gap-2 mt-1 mb-3">
+<button
+type="submit"
+class="btn btn-light btn-lg"
+(click)="authService.GoogleAuth()"
+>
+<img class="logoGoogle" [src]="imgGoogle" alt="Logo Google"> Logar com Google
+</button>
+</div>
+<hr>
 <p class="text-center">
   Novo Usuário?
 </p>

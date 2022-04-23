@@ -24,6 +24,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { MoviesFavoritesComponent } from './movies-favorites/movies-favorites.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { IMaskModule } from 'angular-imask';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { MoviesFavoritesComponent } from './movies-favorites/movies-favorites.co
     ForgotPasswordComponent,
     ProfileComponent,
     ProfileEditComponent,
-    MoviesFavoritesComponent
+    MoviesFavoritesComponent,
+    VerifyEmailComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +57,8 @@ import { MoviesFavoritesComponent } from './movies-favorites/movies-favorites.co
     IvyCarouselModule,
     CarouselModule,
     MaterialModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    IMaskModule
   ],
   exports: [
     HomeComponent

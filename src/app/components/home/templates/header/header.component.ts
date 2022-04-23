@@ -25,7 +25,8 @@ export class HeaderComponent implements OnInit {
 		this.sidenavToggle.emit();
 	}
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService) {
+   }
 
   ngOnInit(): void {
     this.authSubscription = this.authService.authChange.subscribe(authStatus => {
