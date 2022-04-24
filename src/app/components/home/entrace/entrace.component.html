@@ -1,22 +1,21 @@
-  <h2>Quem está assistindo?</h2>
-  <div class="row text-center">
-    <div class="col-6 col-sm-3 mb-3" (click)="profile()">
-        <img [src]="imageUser" class="rounded-circle imgUser" alt="Usuário">
-          <p class="card-text">nome 1</p>
-        </div>
-    <div class="col-6 col-sm-3 mb-3" (click)="profile()">
-      <img [src]="imageUser" class="rounded-circle imgUser" alt="Usuário">
-          <p class="card-text">nome 2</p>
-    </div>
-
-    <div class="col-6 col-sm-3 mb-3" (click)="profile()">
-      <img [src]="imageUser" class="rounded-circle imgUser" alt="Usuário">
-          <p class="card-text">nome 3</p>
-        </div>
-    <div class="col-6 col-sm-3 mb-3" (click)="profile()">
-      <img [src]="imageUser" class="rounded-circle imgUser" alt="Usuário">
-          <p class="card-text">nome 4</p>
-        </div>
-
+<h2>Quem está assistindo?</h2>
+<div class="row text-center">
+  <div class="col-6 col-sm-3 mb-3" (click)="profile()">
+    <img [src]="imageUser" class="rounded-circle imgUser" alt="Usuário">
+    <p class="card-text">{{(users.displayName) ? users.displayName : 'Usuário'}}</p>
+  </div>
+<!--   <div class="col-6 col-sm-3 mb-3" (click)="profile()">
+    <img [src]="imageUser" class="rounded-circle imgUser" alt="Usuário">
+    <p class="card-text">nome 2</p>
   </div>
 
+  <div class="col-6 col-sm-3 mb-3" (click)="profile()">
+    <img [src]="imageUser" class="rounded-circle imgUser" alt="Usuário">
+    <p class="card-text">nome 3</p>
+  </div>
+  <div class="col-6 col-sm-3 mb-3" (click)="profile()">
+    <img [src]="imageUser" class="rounded-circle imgUser" alt="Usuário">
+    <p class="card-text">nome 4</p>
+  </div> -->
+
+</div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { UserService } from 'src/app/shared/services/user.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,15 +11,19 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./entrace.component.scss']
 })
 export class EntraceComponent implements OnInit {
-
+  users: any;
+  profileId: any;
   imageUser = environment.imageUser;
 
   constructor(
+    private authService: AuthService,
     private router: Router,
-    private authService: AuthService
+    private afAuth: AngularFireAuth,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
+    this.loadUser();
   }
 
   get isLoggedIn() {
@@ -26,6 +32,15 @@ export class EntraceComponent implements OnInit {
     } else {
       return true;
     }
+  }
+
+  loadUser() {
+    this.afAuth.authState.subscribe((user) => {
+    this.userService.getProfile(user?.uid).subscribe((user) => {
+      this.users = user;
+      this.profileId = user?.uid;
+    });
+  });
   }
 
   profile() {

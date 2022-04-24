@@ -30,6 +30,10 @@ export class MoviesIndexComponent implements OnInit {
 
   order: any;
 
+  view(url: string) {
+    return `<iframe src="https://player.vimeo.com/video/${url}?h=a65271635a&title=0&byline=0&portrait=0" frameborder="0"></iframe>`;
+  }
+
   constructor(
     private router: Router,
     public moviesService: MoviesService,
@@ -50,17 +54,12 @@ export class MoviesIndexComponent implements OnInit {
     this.router.navigateByUrl('admin/novo-filme');
   }
 
-  edit() {
-
-  }
-
   sortData() {
     if (this.order) {
       let newarr = this.movies.sort((a, b) => a.seqNo - b.seqNo);
       this.movies = newarr;
     }
   }
-
 
   confirmDelete(movie: Movie) {
     Swal.fire({

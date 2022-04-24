@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   @Output() sidenavToggle = new EventEmitter<void>();
 
   user!: User;
+  loading!: boolean;
 
   imagePath = environment.imagePath;
   imageSmallPath = environment.imageSmallPath;
@@ -29,6 +30,10 @@ export class HeaderComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.loading = true;
+    setTimeout (() => {
+      this.loading = false;
+    }, 2050);
     this.authSubscription = this.authService.authChange.subscribe(authStatus => {
       this.isAuth = authStatus;
     });

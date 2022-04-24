@@ -5,11 +5,20 @@
   box-shadow: 1px 1px 2px 2px #ccc;
 }
 
+.title {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
 .flexImage {
+  border: 1px solid #ccc;
+  border-radius: 3%;
   width: 180px;
   max-width: 100%;
   margin-top: 8px;
   margin-bottom: 8px;
+  background-color: #888;
+  height: 220px;
 }
 
 .btnMovie {
@@ -18,8 +27,3 @@
   display: block;
 }
 
-.title {
-  text-decoration: none;
-  color: #0dcaf0;
-  font-size: 20px;
-}

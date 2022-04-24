@@ -6,10 +6,14 @@
 }
 
 .flexImage {
-  width: 180px;
+  width: 150px;
   max-width: 100%;
   margin-top: 8px;
   margin-bottom: 8px;
+  background-color: #888;
+  height: 220px;
+  border: 1px solid #ccc;
+  border-radius: 3%;
 }
 
 .btnMovie {

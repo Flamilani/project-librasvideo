@@ -18,6 +18,9 @@ import { ModalComponent } from './templates/modal/modal.component';
 import { MoviesEditComponent } from './movies/movies-edit/movies-edit.component';
 import { ImagesComponent } from './images/images.component';
 import { MoviesCreateComponent } from './movies/movies-create/movies-create.component';
+import { MaterialModule } from './../../shared/material/material.module';
+import { MovieCoverEditComponent } from './movies/movie-cover-edit/movie-cover-edit.component';
+import { VimeoUrlPipe } from 'src/app/shared/pipes/vimeo-url.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { MoviesCreateComponent } from './movies/movies-create/movies-create.comp
     MoviesIndexComponent,
     MoviesEditComponent,
     ModalComponent,
-    ImagesComponent
+    ImagesComponent,
+    MovieCoverEditComponent,
+    VimeoUrlPipe
   ],
   imports: [
     CommonModule,
@@ -42,10 +47,12 @@ import { MoviesCreateComponent } from './movies/movies-create/movies-create.comp
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    MaterialModule,
     NgbModule
   ],
   exports: [
-    DashboardComponent
+    DashboardComponent,
+    SharedModule
   ]
 })
 export class DashboardModule { }

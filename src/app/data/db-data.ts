@@ -1,7 +1,7 @@
 export const MOVIES: any = {
   1: {
     id: 1,
-    seqNo: 0,
+    seqNo: 1,
     title: "Godzilla",
     director: "Adam",
     category: 'ACTION',
@@ -14,7 +14,7 @@ export const MOVIES: any = {
   },
   2: {
     id: 2,
-    seqNo: 1,
+    seqNo: 2,
     title: "Superman",
     director: "Diretor",
     category: 'ADVENTURE',
@@ -27,7 +27,7 @@ export const MOVIES: any = {
   },
   3: {
     id: 3,
-    seqNo: 2,
+    seqNo: 3,
     title: "Nome do Filme",
     director: "Nome do Diretor",
     category: 'DRAMA',
@@ -40,7 +40,7 @@ export const MOVIES: any = {
   },
   4: {
     id: 4,
-    seqNo: 3,
+    seqNo: 4,
     title: "teste",
     director: "diretor",
     category: 'ACTION',

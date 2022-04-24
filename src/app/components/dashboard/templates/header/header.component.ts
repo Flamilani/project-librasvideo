@@ -8,7 +8,7 @@ import { environment } from './../../../../../environments/environment';
 })
 export class HeaderComponent implements OnInit {
 
-  imagePath = environment.imagePath;
+  imagePathAdmin = environment.imagePathAdmin;
 
   constructor() { }
 

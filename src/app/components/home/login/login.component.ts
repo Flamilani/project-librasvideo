@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public authService: AuthService,
-    private router: Router
+    private router: Router,
+    private ngZone: NgZone
   ) { }
 
   buildForm(): void {
@@ -76,19 +77,21 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin() {
+    this.errorMessage = false;
+    this.authService.signIn({
+      email: this.formLogin.value.email,
+      password: this.formLogin.value.password,
+      admin: false
+    }).then(result => {
       this.errorMessage = false;
-      this.authService.signIn({
-        email: this.formLogin.value.email,
-        password: this.formLogin.value.password,
-        admin: false
-      }).then(result => {
-        this.errorMessage = false;
-        this.authService.SetUserDataVerified(result.user);
+      this.ngZone.run(() => {
         this.authService.authSuccessfully();
-      }).catch((err) => {
-        this.errorMessage = true;
-        this.message = err.message;
       });
+      this.authService.SetUserDataVerified(result.user);
+    }).catch((err) => {
+      this.errorMessage = true;
+      this.message = err.message;
+    });
   }
 
 }

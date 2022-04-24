@@ -1,10 +1,7 @@
-import { VerifyEmailComponent } from './verify-email/verify-email.component';
-import { MoviesFavoritesComponent } from './movies-favorites/movies-favorites.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { PaymentComponent } from './payment/payment.component';
-import { MovieWatchComponent } from './movie-watch/movie-watch.component';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,6 +12,9 @@ import { EntraceComponent } from './entrace/entrace.component';
 import { MovieComponent } from './movie/movie.component';
 import { AuthGuard } from '../../shared/auth/auth.guard';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { MoviesFavoritesComponent } from './movies-favorites/movies-favorites.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+
 
 const routes: Routes = [
   {

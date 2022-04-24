@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Editar capa do filme {{ movie?.title }}
+      <button (click)="back()" class="btn btn-secondary float-end">
+        Voltar
+      </button>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="form" class="row">
+      <div class="mb-3 col-6">
+        <label for="image" class="form-label">Nova Capa</label>
+        <input type="file" class="form-control" (change)="uploadImage($event)">
+        <div class="progress" *ngIf="(percentageChanges$ | async ) as percentage">
+          <div class="progress-bar" role="progressbar" attr.aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: percentage + '%'}">
+            {{ percentage }}%
+          </div>
+        </div><br />
+        <img [src]="iconUrl" class="img-thumbnail imagemUpload" alt="Imagem" *ngIf="iconUrl">
+      </div>
+      <div class="mb-3 col-6">
+        <label for="image" class="form-label">Capa Atual</label>
+        <img [src]="movie?.iconUrl" class="img-thumbnail imagemUpload" alt="Imagem">
+      </div>
+      <div class="mb-3 col-12">
+        <button type="button" class="btn btn-primary mt-4" [disabled]="form.invalid" (click)="updateCover()">Atualizar</button>
+      </div>
+      </form>
+      </div>
+    </div>
+    </div>

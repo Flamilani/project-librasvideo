@@ -8,12 +8,14 @@ import { SortByPipe } from './pipes/sort-by.pipe';
 @NgModule({
   declarations: [
     DialogComponent,
-    SortByPipe,
+    SortByPipe
   ],
   imports: [
     CommonModule,
     MaterialModule,
     NgbModule
+  ],
+  exports: [
   ]
 })
 export class SharedModule { }

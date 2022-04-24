@@ -1,3 +1,4 @@
+import { MovieCoverEditComponent } from './movies/movie-cover-edit/movie-cover-edit.component';
 import { MoviesCreateComponent } from './movies/movies-create/movies-create.component';
 import { MoviesIndexComponent } from './movies/movies-index/movies-index.component';
 import { NgModule } from '@angular/core';
@@ -21,6 +22,9 @@ const routes: Routes = [
       },
       {
         path: 'filme/:id', component: MoviesEditComponent
+      },
+      {
+        path: 'editar-capa/:id', component: MovieCoverEditComponent
       },
     ]
   },
