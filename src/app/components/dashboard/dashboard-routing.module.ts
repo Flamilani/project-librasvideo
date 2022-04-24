@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard.component';
 import { MoviesEditComponent } from './movies/movies-edit/movies-edit.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,9 @@ const routes: Routes = [
       },
       {
         path: 'editar-capa/:id', component: MovieCoverEditComponent
+      },
+      {
+        path: 'usuarios', component: UsersComponent
       },
     ]
   },

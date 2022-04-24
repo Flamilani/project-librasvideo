@@ -3,7 +3,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -35,5 +35,9 @@ export class UserService {
           }));
 
       return this.movie;
+    }
+
+    updateCover(id: string, changes: Partial<User>): Observable<any> {
+      return from(this.db.doc(`users/${id}`).update(changes));
     }
 }

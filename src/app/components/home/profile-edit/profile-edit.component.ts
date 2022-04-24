@@ -54,8 +54,6 @@ export class ProfileEditComponent implements OnInit {
     this.userService.getProfile(user?.uid).subscribe((user) => {
       this.users = user;
       this.profileId = user?.uid;
-      console.log(this.users);
-      console.log('profileId', this.profileId);
     });
   });
   }
@@ -64,8 +62,6 @@ export class ProfileEditComponent implements OnInit {
     this.afAuth.authState.subscribe((user) => {
       this.users = user;
       this.profileId = user?.uid;
-      console.log(this.users);
-      console.log('profileId', this.profileId);
     });
   }
 
@@ -73,15 +69,11 @@ export class ProfileEditComponent implements OnInit {
     this.afAuth.authState.subscribe((user) => {
       this.users = user;
       this.profileId = user?.uid;
-      console.log(this.users);
-      console.log('profileId', this.profileId);
 
       const changes = this.formProfile.value;
 
-      console.log(this.profileId);
       this.authService.updateProfile(this.profileId, changes)
         .subscribe(() => {
-          console.log('perfil atualizado');
           this.router.navigate(['home/perfil']);
         });
     });

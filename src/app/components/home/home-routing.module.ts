@@ -1,3 +1,4 @@
+import { ProfileCoverComponent } from './profile-cover/profile-cover.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
@@ -40,6 +41,10 @@ const routes: Routes = [
       },
       {
         path: 'editar-perfil', component: ProfileEditComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'trocar-foto', component: ProfileCoverComponent,
         canActivate: [AuthGuard]
       },
       {

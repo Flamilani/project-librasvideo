@@ -26,6 +26,7 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { MoviesFavoritesComponent } from './movies-favorites/movies-favorites.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { IMaskModule } from 'angular-imask';
+import { ProfileCoverComponent } from './profile-cover/profile-cover.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { IMaskModule } from 'angular-imask';
     ProfileComponent,
     ProfileEditComponent,
     MoviesFavoritesComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    ProfileCoverComponent
   ],
   imports: [
     CommonModule,

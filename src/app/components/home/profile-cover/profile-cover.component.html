@@ -1,0 +1,23 @@
+<h2 class="title">
+  <a routerLink="/home/perfil"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+  </a>
+  Editar Foto do Perfil: <br /> {{ users.displayName }} </h2>
+
+<form class="row g-3 formProfile" [formGroup]="formProfile" (ngSubmit)="updateCover()">
+  <div>
+    <div class="mb-1">
+      <label for="image" class="form-label">Baixar foto</label>
+        <input type="file" class="form-control" (change)="uploadImage($event)">
+        <div class="progress" *ngIf="(percentageChanges$ | async ) as percentage">
+          <div class="progress-bar" role="progressbar" attr.aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: percentage + '%'}">
+            {{ percentage }}%
+          </div>
+        </div><br />
+        <img [src]="photoURL" class="img-thumbnail imagemUpload" alt="Imagem" *ngIf="photoURL">
+    </div>
+    <div class="d-grid gap-2 mt-4">
+      <button type="submit" class="btn btn-primary mb-3">Salvar Foto</button>
+    </div>
+  </div>
+</form>
+
