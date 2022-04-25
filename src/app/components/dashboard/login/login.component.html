@@ -3,10 +3,10 @@
     <div class="col-lg-4">
       <img class="logo" [src]="imagePath" alt="Logo LibrasVideos">
       <div class="card border border-dark">
-        <h5 class="card-header bg-info text-center">Painel Administrativo</h5>
+        <h5 class="card-header bg-primary text-center">Painel Administrativo</h5>
         <div class="card-body text-black">
 
-          <form [formGroup]="formLogin" autocomplete="off" class="form mt-4" (ngSubmit)="login()">
+          <form [formGroup]="formLogin" autocomplete="off" class="form" (ngSubmit)="login()">
             <div class="form-group mb-3">
               <input class="form-control inputPadding" [placeholder]="viewContentEmail.label" [type]="viewContentEmail.input.type"
                 [formControlName]="viewContentEmail.input.control" required />
@@ -24,7 +24,7 @@
                 {{ viewContentSenha.errorMsg }}
               </div>
             </div>
-            <div class="d-grid gap-2 mt-4 mb-3">
+            <div class="d-grid gap-2 mt-4">
               <button type="submit" class="btn btn-info text-white btn-lg" [disabled]="formLogin.invalid">
                 {{ viewFooter.btnAction.text }}
               </button>

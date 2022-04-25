@@ -1,0 +1,49 @@
+.container {
+  color: #000000;
+
+  .card {
+    border: 1px solid #333;
+
+    .card-header {
+      color: #fff;
+      background-color: #0d6efd;
+      line-height: 2.4;
+    }
+  }
+    .loading {
+      width: 160px;
+      display: block;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .imgThumbnail {
+      width: 100%;
+      max-width: 120px;
+      height: auto;
+    }
+
+    .bg-orange {
+      background-color: orangered;
+    }
+
+    .capa {
+      display: flex;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+    }
+
+    .capa-texto {
+      text-align: center;
+      margin: 0 auto;
+      display: block;
+      padding: 15px;
+    }
+
+    .btn-capa {
+      display: flex;
+      margin: 0 auto;
+      margin-top: 10px;
+    }
+
+}

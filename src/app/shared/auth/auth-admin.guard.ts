@@ -11,14 +11,14 @@ export class AuthAdminGuard implements CanActivate {
   constructor(private authAdminService: AuthAdminService, private router: Router) {}
 
   canActivate(
-    route: ActivatedRouteSnapshot,
+    next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return this.authAdminService.userData.pipe(
         take(1),
-        map(user => user && this.authAdminService.userData ? true : false),
+        map((user: any) => user && user.roles.admin ? true : false),
         tap(isAdmin => {
           if (!isAdmin) {
-            console.error('Access denied - Admins only');
+            console.error('Access denied - Admins only')
             this.router.navigate(["/admin/login"]);
           }
         })

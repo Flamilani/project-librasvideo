@@ -5,6 +5,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Router } from '@angular/router';
 import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { convertSnaps } from '../utils/db-utils';
 
 @Injectable({
   providedIn: 'root'
@@ -19,25 +20,34 @@ export class UserService {
     private router: Router,
     private afAuth: AngularFireAuth,
     private ngZone: NgZone,
-    ) { }
+  ) { }
 
-    getProfile(id: any) {
-      this.movieDoc = this.db.doc<User>(`users/${id}`);
-      this.movie = this.movieDoc.snapshotChanges().pipe(
-          map(action => {
-            if (action.payload.exists === false) {
-              return null
-            } else {
-              const data = action.payload.data() as User;
-              data.uid = action.payload.id;
-              return data;
-            }
-          }));
+  getProfile(id: any) {
+    this.movieDoc = this.db.doc<User>(`users/${id}`);
+    this.movie = this.movieDoc.snapshotChanges().pipe(
+      map(action => {
+        if (action.payload.exists === false) {
+          return null
+        } else {
+          const data = action.payload.data() as User;
+          data.uid = action.payload.id;
+          return data;
+        }
+      }));
 
-      return this.movie;
-    }
+    return this.movie;
+  }
 
-    updateCover(id: string, changes: Partial<User>): Observable<any> {
-      return from(this.db.doc(`users/${id}`).update(changes));
-    }
+  loadUsers(): Observable<User[]> {
+    return this.db.collection(
+      "users", ref => ref.orderBy("displayName"))
+      .get()
+      .pipe(
+        map(result => convertSnaps<User>(result))
+      );
+  }
+
+  updateCover(id: string, changes: Partial<User>): Observable<any> {
+    return from(this.db.doc(`users/${id}`).update(changes));
+  }
 }

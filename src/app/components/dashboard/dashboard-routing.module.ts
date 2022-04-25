@@ -1,3 +1,4 @@
+import { CreateAccountComponent } from './create-account/create-account.component';
 import { AuthAdminGuard } from './../../shared/auth/auth-admin.guard';
 import { MovieCoverEditComponent } from './movies/movie-cover-edit/movie-cover-edit.component';
 import { MoviesCreateComponent } from './movies/movies-create/movies-create.component';
@@ -11,30 +12,36 @@ import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {
+    path: '', redirectTo: 'filmes'
+  },
+  {
     path: '', component: DashboardComponent,
     children: [
       {
         path: 'login', component: LoginComponent
       },
       {
+        path: 'criar-conta', component: CreateAccountComponent
+      },
+      {
         path: 'filmes', component: MoviesIndexComponent,
-        canActivate: [AuthAdminGuard],
+      //  canActivate: [AuthAdminGuard],
       },
       {
         path: 'novo-filme', component: MoviesCreateComponent,
-        canActivate: [AuthAdminGuard],
+      //  canActivate: [AuthAdminGuard],
       },
       {
         path: 'filme/:id', component: MoviesEditComponent,
-        canActivate: [AuthAdminGuard],
+      //  canActivate: [AuthAdminGuard],
       },
       {
         path: 'editar-capa/:id', component: MovieCoverEditComponent,
-        canActivate: [AuthAdminGuard],
+      //  canActivate: [AuthAdminGuard],
       },
       {
         path: 'usuarios', component: UsersComponent,
-        canActivate: [AuthAdminGuard],
+      //  canActivate: [AuthAdminGuard],
       },
     ]
   },

@@ -20,6 +20,9 @@ import { SecureInnerPagesGuard } from './../../shared/auth/secure-inner-pages.gu
 
 const routes: Routes = [
   {
+    path: '', redirectTo: 'login'
+  },
+  {
     path: '', component: HomeComponent,
     children: [
       {

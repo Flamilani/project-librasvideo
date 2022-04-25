@@ -10,8 +10,9 @@ import { AuthData } from '../auth/auth-data.model';
   providedIn: 'root'
 })
 export class AuthAdminService {
+
   userData: any;
-  user$: Observable<AuthData> | undefined;
+  user$!: Observable<any>;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -44,7 +45,7 @@ export class AuthAdminService {
          let user = {
           id: userResponse.user.uid,
           username: userResponse.user.email,
-          role: "admin",
+          admin: true,
          }
          //add the user to the database
          this.afs.collection("usersrole").add(user)
@@ -72,14 +73,14 @@ export class AuthAdminService {
 
       this.afAuth.signInWithEmailAndPassword(email, password)
       .then((user: any)=>{
-        this.afs.collection("usersrole").ref.where("email", "==", user.user.email).onSnapshot(snap =>{
+        this.afs.collection("usersrole").ref.where("username", "==", user.user.email).onSnapshot(snap =>{
           snap.forEach((userRef: any) => {
             console.log("userRef", userRef.data());
             this.currentUser = userRef.data();
             //setUserStatus
             this.setUserStatus(this.currentUser)
-            if(userRef.data().role !== "admin") {
-              this.router.navigate(["/"]);
+            if(userRef.data().admin !== true) {
+              this.router.navigate(["/admin/login"]);
             }else{
               this.router.navigate(["/admin"]);
             }
@@ -92,15 +93,15 @@ export class AuthAdminService {
   userChanges(){
     this.afAuth.onAuthStateChanged((currentUser: any) => {
       if(currentUser){
-        this.afs.collection("usersrole").ref.where("email", "==", currentUser.email).onSnapshot(snap =>{
+        this.afs.collection("usersrole").ref.where("username", "==", currentUser.email).onSnapshot(snap =>{
           snap.forEach((userRef: any) => {
             this.currentUser = userRef.data();
             //setUserStatus
             this.setUserStatus(this.currentUser);
             console.log(this.userStatus)
 
-            if(userRef.data().role !== "admin") {
-             this.ngZone.run(() => this.router.navigate(["/"]));
+            if(userRef.data().admin !== true) {
+              this.router.navigate(["/admin/login"]);
             }else{
              this.ngZone.run(() => this.router.navigate(["/admin"]));
             }
