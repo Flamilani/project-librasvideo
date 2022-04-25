@@ -1,9 +1,9 @@
 import { User } from './../../../shared/models/user';
-import { UserService } from 'src/app/shared/services/user.service';
+import { UserService } from './../../../shared/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NotificationService } from 'src/app/shared/services/notification.service';
-import { environment } from 'src/environments/environment';
+import { NotificationService } from './../../../shared/services/notification.service';
+import { environment } from './../../../../environments/environment';
 
 @Component({
   selector: 'app-users',

@@ -20,7 +20,7 @@ import { ImagesComponent } from './images/images.component';
 import { MoviesCreateComponent } from './movies/movies-create/movies-create.component';
 import { MaterialModule } from './../../shared/material/material.module';
 import { MovieCoverEditComponent } from './movies/movie-cover-edit/movie-cover-edit.component';
-import { VimeoUrlPipe } from 'src/app/shared/pipes/vimeo-url.pipe';
+import { VimeoUrlPipe } from './../../shared/pipes/vimeo-url.pipe';
 import { CreateAccountComponent } from './create-account/create-account.component';
 
 @NgModule({

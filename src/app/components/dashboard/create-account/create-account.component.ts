@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LOGIN_VIEW_DATA } from 'src/app/shared/constants/login.constant';
-import { LoginViewContent, LoginViewData, LoginViewFooter, LoginViewHeader } from 'src/app/shared/interfaces/login.interface';
-import { AuthAdminService } from 'src/app/shared/services/auth-admin.service';
-import { environment } from 'src/environments/environment';
+import { LOGIN_VIEW_DATA } from './../../../shared/constants/login.constant';
+import { LoginViewContent, LoginViewData, LoginViewFooter, LoginViewHeader } from './../../../shared/interfaces/login.interface';
+import { AuthAdminService } from './../../../shared/services/auth-admin.service';
+import { environment } from './../../../../environments/environment';
 
 @Component({
   selector: 'app-create-account',

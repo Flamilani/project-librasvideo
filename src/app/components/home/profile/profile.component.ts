@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/shared/services/user.service';
+import { UserService } from './../../../shared/services/user.service';
 import { environment } from './../../../../environments/environment';
 import { User } from './../../../shared/models/user';
 import { AuthService } from './../../../shared/services/auth.service';

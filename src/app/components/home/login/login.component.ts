@@ -1,7 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
+import { environment } from './../../../../environments/environment';
 import { LOGIN_VIEW_DATA } from './../../../shared/constants/login.constant';
 import { LoginViewContent, LoginViewData, LoginViewFooter, LoginViewHeader } from './../../../shared/interfaces/login.interface';
 import { AuthService } from './../../../shared/services/auth.service';

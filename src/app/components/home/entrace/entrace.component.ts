@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { UserService } from 'src/app/shared/services/user.service';
-import { environment } from 'src/environments/environment';
+import { AuthService } from './../../../shared/services/auth.service';
+import { UserService } from './../../../shared/services/user.service';
+import { environment } from './../../../../environments/environment';
 
 @Component({
   selector: 'app-entrace',

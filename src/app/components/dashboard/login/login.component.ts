@@ -5,8 +5,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from './../../../shared/services/auth.service';
 import { environment } from './../../../../environments/environment';
-import { LoginViewContent, LoginViewData, LoginViewFooter, LoginViewHeader } from 'src/app/shared/interfaces/login.interface';
-import { LOGIN_VIEW_DATA } from 'src/app/shared/constants/login.constant';
+import { LoginViewContent, LoginViewData, LoginViewFooter, LoginViewHeader } from './../../../shared/interfaces/login.interface';
+import { LOGIN_VIEW_DATA } from './../../../shared/constants/login.constant';
 
 @Component({
   selector: 'app-login',

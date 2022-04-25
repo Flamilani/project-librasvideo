@@ -1,10 +1,10 @@
-import { environment } from 'src/environments/environment';
+import { environment } from './../../../../../environments/environment';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from './../../../../shared/services/auth.service';
 import { User } from './../../../../shared/models/user';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { UserService } from 'src/app/shared/services/user.service';
+import { UserService } from './../../../../shared/services/user.service';
 
 @Component({
   selector: 'app-header',

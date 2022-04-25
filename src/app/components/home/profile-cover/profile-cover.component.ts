@@ -6,8 +6,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError, concatMap, last, tap } from 'rxjs/operators';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { UserService } from 'src/app/shared/services/user.service';
+import { UserService } from './../../../shared/services/user.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
