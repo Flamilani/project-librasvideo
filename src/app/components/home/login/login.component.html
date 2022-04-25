@@ -2,62 +2,44 @@
 
 <form [formGroup]="formLogin" autocomplete="off" class="form mt-4" (ngSubmit)="onLogin()">
   <div class="form-group mb-3">
-    <input
-      class="form-control inputPadding"
-      [placeholder]="viewContentEmail.label"
-      [type]="viewContentEmail.input.type"
-      [formControlName]="viewContentEmail.input.control"
-      required
-    />
-    <div class="text-warning d-block mt-2" role="alert" *ngIf="formLogin.controls[viewContentEmail.input.control]?.invalid && formLogin.get(viewContentEmail.input.control)?.touched">
+    <input class="form-control inputPadding" [placeholder]="viewContentEmail.label" [type]="viewContentEmail.input.type"
+      [formControlName]="viewContentEmail.input.control" required />
+    <div class="text-warning d-block mt-2" role="alert"
+      *ngIf="formLogin.controls[viewContentEmail.input.control]?.invalid && formLogin.get(viewContentEmail.input.control)?.touched">
       {{ viewContentEmail.errorMsg }}
     </div>
   </div>
 
   <div class="form-group mb-3">
-    <input
-      class="form-control inputPadding"
-      [placeholder]="viewContentSenha.label"
-      [type]="viewContentSenha.input.type"
-      [formControlName]="viewContentSenha.input.control"
-      required
-    />
-    <div class="text-warning d-block mt-2" role="alert" *ngIf="formLogin.controls[viewContentSenha.input.control]?.invalid && formLogin.get(viewContentSenha.input.control)?.touched">
+    <input class="form-control inputPadding" [placeholder]="viewContentSenha.label" [type]="viewContentSenha.input.type"
+      [formControlName]="viewContentSenha.input.control" required />
+    <div class="text-warning d-block mt-2" role="alert"
+      *ngIf="formLogin.controls[viewContentSenha.input.control]?.invalid && formLogin.get(viewContentSenha.input.control)?.touched">
       {{ viewContentSenha.errorMsg }}
     </div>
   </div>
   <div class="d-grid gap-2 mt-4 mb-3">
-    <button
-    type="submit"
-    class="btn btn-info text-white btn-lg"
-    [disabled]="formLogin.invalid"
-  >
-    {{ viewFooter.btnAction.text }}
-  </button>
-  <div class="forget">
-    <a class="link-forget" (click)="goToForgot()">Esqueci a senha</a>
-  </div>
-  <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
-     <strong>Erro:</strong> Usuário e/ou senha incorretos
-  </div>
+    <button type="submit" class="btn btn-info text-white btn-lg" [disabled]="formLogin.invalid">
+      {{ viewFooter.btnAction.text }}
+    </button>
+    <div class="forget">
+      <a class="link-forget" (click)="goToForgot()">Esqueci a senha</a>
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
+      <strong>Erro:</strong> Usuário e/ou senha incorretos
+    </div>
   </div>
 </form>
 <hr>
 <div class="d-grid gap-2 mt-1 mb-3">
-<button
-type="submit"
-class="btn btn-light btn-lg"
-(click)="authService.GoogleAuth()"
->
-<img class="logoGoogle" [src]="imgGoogle" alt="Logo Google"> Logar com Google
-</button>
+  <button type="submit" class="btn btn-light btn-lg" (click)="authService.GoogleAuth()">
+    <img class="logoGoogle" [src]="imgGoogle" alt="Logo Google"> Logar com Google
+  </button>
 </div>
 <hr>
 <p class="text-center">
   Novo Usuário?
 </p>
 <div class="d-grid gap-2">
-  <a class="link-register btn btn-secondary btn-lg"
-  (click)="navigate()">Cadastre-se</a>
+  <a class="link-register btn btn-secondary btn-lg" (click)="navigate()">Cadastre-se</a>
 </div>
-

@@ -13,7 +13,7 @@ import { AuthService } from './../../../shared/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   imgGoogle = environment.imgGoogle;
-
+  loading!: boolean;
   readonly loginViewData: LoginViewData = LOGIN_VIEW_DATA;
 
   formLogin!: FormGroup;
@@ -41,15 +41,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
-    this.isLoggedIn;
-  }
-
-  get isLoggedIn() {
-    if (this.authService.isLoggedIn == false) {
-      return this.router.navigate(['home/login']);
-    } else {
-      return this.authService.authSuccessfully();
-    }
   }
 
   get viewHeader(): LoginViewHeader {
@@ -83,11 +74,14 @@ export class LoginComponent implements OnInit {
       password: this.formLogin.value.password,
       admin: false
     }).then(result => {
+      this.loading = true;
+      setTimeout (() => {
       this.errorMessage = false;
       this.ngZone.run(() => {
         this.authService.authSuccessfully();
       });
       this.authService.SetUserDataVerified(result.user);
+    }, 100);
     }).catch((err) => {
       this.errorMessage = true;
       this.message = err.message;

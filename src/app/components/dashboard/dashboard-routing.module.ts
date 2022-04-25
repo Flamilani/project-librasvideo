@@ -1,3 +1,4 @@
+import { AuthAdminGuard } from './../../shared/auth/auth-admin.guard';
 import { MovieCoverEditComponent } from './movies/movie-cover-edit/movie-cover-edit.component';
 import { MoviesCreateComponent } from './movies/movies-create/movies-create.component';
 import { MoviesIndexComponent } from './movies/movies-index/movies-index.component';
@@ -16,19 +17,24 @@ const routes: Routes = [
         path: 'login', component: LoginComponent
       },
       {
-        path: 'filmes', component: MoviesIndexComponent
+        path: 'filmes', component: MoviesIndexComponent,
+        canActivate: [AuthAdminGuard],
       },
       {
-        path: 'novo-filme', component: MoviesCreateComponent
+        path: 'novo-filme', component: MoviesCreateComponent,
+        canActivate: [AuthAdminGuard],
       },
       {
-        path: 'filme/:id', component: MoviesEditComponent
+        path: 'filme/:id', component: MoviesEditComponent,
+        canActivate: [AuthAdminGuard],
       },
       {
-        path: 'editar-capa/:id', component: MovieCoverEditComponent
+        path: 'editar-capa/:id', component: MovieCoverEditComponent,
+        canActivate: [AuthAdminGuard],
       },
       {
-        path: 'usuarios', component: UsersComponent
+        path: 'usuarios', component: UsersComponent,
+        canActivate: [AuthAdminGuard],
       },
     ]
   },

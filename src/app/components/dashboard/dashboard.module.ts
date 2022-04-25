@@ -21,6 +21,7 @@ import { MoviesCreateComponent } from './movies/movies-create/movies-create.comp
 import { MaterialModule } from './../../shared/material/material.module';
 import { MovieCoverEditComponent } from './movies/movie-cover-edit/movie-cover-edit.component';
 import { VimeoUrlPipe } from 'src/app/shared/pipes/vimeo-url.pipe';
+import { CreateAccountComponent } from './create-account/create-account.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { VimeoUrlPipe } from 'src/app/shared/pipes/vimeo-url.pipe';
     ModalComponent,
     ImagesComponent,
     MovieCoverEditComponent,
-    VimeoUrlPipe
+    VimeoUrlPipe,
+    CreateAccountComponent
   ],
   imports: [
     CommonModule,

@@ -15,6 +15,7 @@ import { AuthGuard } from '../../shared/auth/auth.guard';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
 import { MoviesFavoritesComponent } from './movies-favorites/movies-favorites.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { SecureInnerPagesGuard } from './../../shared/auth/secure-inner-pages.guard';
 
 
 const routes: Routes = [
@@ -22,18 +23,20 @@ const routes: Routes = [
     path: '', component: HomeComponent,
     children: [
       {
-        path: 'login', component: LoginComponent
+        path: 'login', component: LoginComponent,
+        canActivate: [SecureInnerPagesGuard]
       },
       {
-        path: 'verificar-email', component: VerifyEmailComponent
+        path: 'verificar-email', component: VerifyEmailComponent,
+        canActivate: [SecureInnerPagesGuard]
       },
       {
         path: 'entrada', component: EntraceComponent,
-      //  canActivate: [AuthGuard]
-      // -- TODO: Melhoria de refatoração de direcionamento para entrada após login.
+        canActivate: [AuthGuard]
       },
       {
-        path: 'cadastro', component: RegisterComponent
+        path: 'cadastro', component: RegisterComponent,
+        canActivate: [SecureInnerPagesGuard]
       },
       {
         path: 'perfil', component: ProfileComponent,
@@ -48,7 +51,8 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'esqueci-senha', component: ForgotPasswordComponent
+        path: 'esqueci-senha', component: ForgotPasswordComponent,
+        canActivate: [SecureInnerPagesGuard]
       },
       {
         path: 'pagamento', component: PaymentComponent,

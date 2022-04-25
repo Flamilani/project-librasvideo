@@ -6,48 +6,31 @@
         <h5 class="card-header bg-info text-center">Painel Administrativo</h5>
         <div class="card-body text-black">
 
-          <form autocomplete="off" class="form" #loginForm="ngForm">
+          <form [formGroup]="formLogin" autocomplete="off" class="form mt-4" (ngSubmit)="login()">
             <div class="form-group mb-3">
-              <label for="inputEmail" class="form-label">Email</label>
-              <input
-                id="inputEmail"
-                class="form-control inputPadding bg-light"
-                [type]="viewContent?.input?.type"
-                 [(ngModel)]="email"
-                name="email"
-                #campoEmail="ngModel"
-                required
-              />
-              <app-message
-                *ngIf="campoEmail.invalid && campoEmail.touched"
-                mensagem="viewContent?.errorMsg"
-              ></app-message>
+              <input class="form-control inputPadding" [placeholder]="viewContentEmail.label" [type]="viewContentEmail.input.type"
+                [formControlName]="viewContentEmail.input.control" required />
+              <div class="text-danger d-block mt-2" role="alert"
+                *ngIf="formLogin.controls[viewContentEmail.input.control]?.invalid && formLogin.get(viewContentEmail.input.control)?.touched">
+                {{ viewContentEmail.errorMsg }}
+              </div>
             </div>
 
             <div class="form-group mb-3">
-              <label for="inputSenha" class="form-label">Senha</label>
-              <input
-                id="inputSenha"
-                type="password"
-                class="form-control inputPadding bg-light"
-                [(ngModel)]="senha"
-                name="senha"
-                #campoSenha="ngModel"
-                required
-              />
-              <app-message
-                *ngIf="campoSenha.invalid && campoSenha.touched"
-                mensagem="Senha obrigatória"
-              ></app-message>
+              <input class="form-control inputPadding" [placeholder]="viewContentSenha.label" [type]="viewContentSenha.input.type"
+                [formControlName]="viewContentSenha.input.control" required />
+              <div class="text-danger d-block mt-2" role="alert"
+                *ngIf="formLogin.controls[viewContentSenha.input.control]?.invalid && formLogin.get(viewContentSenha.input.control)?.touched">
+                {{ viewContentSenha.errorMsg }}
+              </div>
             </div>
-            <div class="d-grid gap-2 mt-4">
-              <button
-              type="submit"
-              class="btn btn-info text-white btn-lg"
-              [disabled]="loginForm.invalid"
-            >
-              Acessar
-            </button>
+            <div class="d-grid gap-2 mt-4 mb-3">
+              <button type="submit" class="btn btn-info text-white btn-lg" [disabled]="formLogin.invalid">
+                {{ viewFooter.btnAction.text }}
+              </button>
+              <div *ngIf="errorMessage" class="alert alert-danger mt-3" role="alert">
+                <strong>Erro:</strong> Usuário e/ou senha incorretos
+              </div>
             </div>
           </form>
 
