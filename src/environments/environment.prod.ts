@@ -1,16 +1,20 @@
 const assets = '';
 const imagePath = '../../../../assets/img/logo-3.png';
+const imagePathAdmin = '../../../../assets/img/logo-2.png';
 const imageSmallPath = '../../../../assets/img/logo-circle.png';
 const imageUser = '../../../../assets/img/icon-user.png';
 const imgLoading = '../../../../assets/img/loading.gif';
+const imgGoogle = '../../../../assets/img/google-logo.png';
 
 export const environment = {
   production: true,
   assets,
   imagePath,
+  imagePathAdmin,
   imageSmallPath,
   imageUser,
   imgLoading,
+  imgGoogle,
   firebase: {
     apiKey: "AIzaSyBirrhMDLCxV67K_Dk1A9ZyBTVHhlrmwJ0",
     authDomain: "app-librasvideos.firebaseapp.com",
