@@ -1,3 +1,4 @@
+import { AuthAdminService } from './../../../../shared/services/auth-admin.service';
 import { Component, OnInit } from '@angular/core';
 import { environment } from './../../../../../environments/environment';
 
@@ -8,11 +9,15 @@ import { environment } from './../../../../../environments/environment';
 })
 export class HeaderComponent implements OnInit {
 
-  imagePath = environment.imagePath;
+  imagePathAdmin = environment.imagePathAdmin;
 
-  constructor() { }
+  constructor(public auth: AuthAdminService) { }
 
   ngOnInit(): void {
+  }
+
+  onLogout() {
+    this.auth.logOut();
   }
 
 }

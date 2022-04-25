@@ -1,0 +1,21 @@
+.container {
+  color: #000000;
+
+  .card {
+    border: 1px solid #333;
+
+    .card-header {
+      color: #fff;
+      background-color: #0d6efd;
+      line-height: 2.4;
+    }
+  }
+
+  .imagemUpload {
+    width: 100%;
+    max-width: 180px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+}

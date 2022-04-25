@@ -15,6 +15,19 @@
     </owl-carousel-o>
   </div>
 
+  <div class="text-white mb-4" *ngIf="moviesAnimation?.length">
+    <h3>Animação</h3>
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of moviesAnimation">
+        <ng-template carouselSlide [width]="150">
+          <div class="slide">
+            <img [src]="slide.iconUrl" [alt]="slide.title" (click)="goToMovie(slide)">
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+
   <div class="text-white mb-4" *ngIf="moviesAdventure?.length">
     <h3>Aventura</h3>
     <owl-carousel-o [options]="customOptions">
@@ -28,10 +41,23 @@
     </owl-carousel-o>
   </div>
 
-  <div class="text-white mb-4" *ngIf="moviesAnimation?.length">
-    <h3>Animação</h3>
+  <div class="text-white mb-4" *ngIf="moviesComedy?.length">
+    <h3>Comédia</h3>
     <owl-carousel-o [options]="customOptions">
-      <ng-container *ngFor="let slide of moviesAnimation">
+      <ng-container *ngFor="let slide of moviesComedy">
+        <ng-template carouselSlide [width]="150">
+          <div class="slide">
+            <img [src]="slide.iconUrl" [alt]="slide.title" (click)="goToMovie(slide)">
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+
+  <div class="text-white mb-4" *ngIf="moviesDocumentary?.length">
+    <h3>Documentário</h3>
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of moviesDocumentary">
         <ng-template carouselSlide [width]="150">
           <div class="slide">
             <img [src]="slide.iconUrl" [alt]="slide.title" (click)="goToMovie(slide)">
@@ -53,4 +79,44 @@
       </ng-container>
     </owl-carousel-o>
   </div>
+
+  <div class="text-white mb-4" *ngIf="moviesRomance?.length">
+    <h3>Romance</h3>
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of moviesRomance">
+        <ng-template carouselSlide [width]="150">
+          <div class="slide">
+            <img [src]="slide.iconUrl" [alt]="slide.title" (click)="goToMovie(slide)">
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+
+  <div class="text-white mb-4" *ngIf="moviesThriller?.length">
+    <h3>Suspense</h3>
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of moviesThriller">
+        <ng-template carouselSlide [width]="150">
+          <div class="slide">
+            <img [src]="slide.iconUrl" [alt]="slide.title" (click)="goToMovie(slide)">
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+
+  <div class="text-white mb-4" *ngIf="moviesHorror?.length">
+    <h3>Terror</h3>
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of moviesHorror">
+        <ng-template carouselSlide [width]="150">
+          <div class="slide">
+            <img [src]="slide.iconUrl" [alt]="slide.title" (click)="goToMovie(slide)">
+          </div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+  </div>
+
 </div>

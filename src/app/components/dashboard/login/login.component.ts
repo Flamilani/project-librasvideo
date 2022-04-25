@@ -1,10 +1,12 @@
-import { LOGIN_VIEW_DATA } from './constants/login.constant';
-import { LoginViewData, LoginViewHeader, LoginViewContent, LoginViewFooter } from './interface/login.interface';
+import { AuthAdminService } from './../../../shared/services/auth-admin.service';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from './../../../shared/services/auth.service';
 import { environment } from './../../../../environments/environment';
+import { LoginViewContent, LoginViewData, LoginViewFooter, LoginViewHeader } from 'src/app/shared/interfaces/login.interface';
+import { LOGIN_VIEW_DATA } from 'src/app/shared/constants/login.constant';
 
 @Component({
   selector: 'app-login',
@@ -14,22 +16,21 @@ import { environment } from './../../../../environments/environment';
 export class LoginComponent implements OnInit {
   readonly loginViewData: LoginViewData = LOGIN_VIEW_DATA;
   imagePath = environment.imagePath;
-
-
-  form!: FormGroup;
-
+  formLogin!: FormGroup;
   email: string = '';
   senha: string = '';
+  errorMessage: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private auth: AuthAdminService,
     private router: Router
   ) { }
 
-  buildForm(): void {
-    this.form = this.formBuilder.group({
-      email: new FormControl('', [Validators.required, Validators.minLength(3)])
+   buildForm(): void {
+    this.formLogin = this.formBuilder.group({
+      email: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      password: ['', [Validators.required]]
     });
   }
 
@@ -41,12 +42,20 @@ export class LoginComponent implements OnInit {
     return this.loginViewData.header;
   }
 
-  get viewContent(): LoginViewContent {
-    return this.loginViewData.content;
+  get viewContentEmail(): LoginViewContent {
+    return this.loginViewData.content[0];
+  }
+
+  get viewContentSenha(): LoginViewContent {
+    return this.loginViewData.content[1];
   }
 
   get viewFooter(): LoginViewFooter {
     return this.loginViewData.footer;
+  }
+
+  login(){
+    this.auth.login(this.formLogin.value.email, this.formLogin.value.password);
   }
 /*
   login() {

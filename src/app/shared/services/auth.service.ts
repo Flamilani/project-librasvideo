@@ -83,6 +83,20 @@ export class AuthService {
       return from(this.afs.doc(`users/${profileId}`).update(changes));
     }
 
+/*     signIn(email: string, password: string) {
+      return this.afAuth
+        .signInWithEmailAndPassword(email, password)
+        .then((result) => {
+          this.ngZone.run(() => {
+            this.authSuccessfully();
+          });
+          this.setUserData(result.user);
+        })
+        .catch((error) => {
+          window.alert(error.message);
+        });
+    } */
+
     registerUser(authData: AuthData) {
       this.afAuth
         .createUserWithEmailAndPassword(authData.email, authData.password)
@@ -102,6 +116,7 @@ export class AuthService {
           this.ngZone.run(() => {
             this.authSuccessfully();
           });
+          this.SetUserDataVerified(result.user);
         })
         .catch(error => {
           this.errorMessage = "Erro autenticação";

@@ -52,10 +52,10 @@ export class MoviesEditComponent implements OnInit {
       title: [val.title, Validators.required],
       director: [val.director, Validators.required],
       category: [val.category, Validators.required],
-      description: [val.description, Validators.required],
+      description: [val.description],
       age: [val.age, Validators.required],
       year: [val.year, Validators.required],
-      url: [val.url, Validators.required]
+      url: [val.url]
     });
   }
 

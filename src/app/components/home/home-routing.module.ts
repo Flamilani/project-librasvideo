@@ -1,10 +1,8 @@
-import { VerifyEmailComponent } from './verify-email/verify-email.component';
-import { MoviesFavoritesComponent } from './movies-favorites/movies-favorites.component';
+import { ProfileCoverComponent } from './profile-cover/profile-cover.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { PaymentComponent } from './payment/payment.component';
-import { MovieWatchComponent } from './movie-watch/movie-watch.component';
 import { HomeComponent } from './home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -15,24 +13,33 @@ import { EntraceComponent } from './entrace/entrace.component';
 import { MovieComponent } from './movie/movie.component';
 import { AuthGuard } from '../../shared/auth/auth.guard';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { MoviesFavoritesComponent } from './movies-favorites/movies-favorites.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { SecureInnerPagesGuard } from './../../shared/auth/secure-inner-pages.guard';
+
 
 const routes: Routes = [
+  {
+    path: '', redirectTo: 'login'
+  },
   {
     path: '', component: HomeComponent,
     children: [
       {
-        path: 'login', component: LoginComponent
+        path: 'login', component: LoginComponent,
+        canActivate: [SecureInnerPagesGuard]
       },
       {
-        path: 'verificar-email', component: VerifyEmailComponent
+        path: 'verificar-email', component: VerifyEmailComponent,
+        canActivate: [SecureInnerPagesGuard]
       },
       {
         path: 'entrada', component: EntraceComponent,
-      //  canActivate: [AuthGuard]
-      // -- TODO: Melhoria de refatoração de direcionamento para entrada após login.
+        canActivate: [AuthGuard]
       },
       {
-        path: 'cadastro', component: RegisterComponent
+        path: 'cadastro', component: RegisterComponent,
+        canActivate: [SecureInnerPagesGuard]
       },
       {
         path: 'perfil', component: ProfileComponent,
@@ -43,7 +50,12 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'esqueci-senha', component: ForgotPasswordComponent
+        path: 'trocar-foto', component: ProfileCoverComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'esqueci-senha', component: ForgotPasswordComponent,
+        canActivate: [SecureInnerPagesGuard]
       },
       {
         path: 'pagamento', component: PaymentComponent,

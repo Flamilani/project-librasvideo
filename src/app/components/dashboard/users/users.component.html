@@ -1,1 +1,59 @@
-<p>users works!</p>
+<div class="container mb-2">
+  <div class="card">
+    <div class="card-header">
+      Listagem de Usuários
+<!--       <button (click)="goToMoviesCreate()" class="btn btn-secondary float-end">
+        Adicionar Novo Usuário
+      </button> -->
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Foto</th>
+              <th scope="col">E-mail</th>
+              <th scope="col">Celular</th>
+              <th scope="col">Verificado</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users; let i = index;">
+              <td>{{(user.displayName) ? user.displayName : 'Sem nome'}}</td>
+              <td>
+                <img *ngIf="user.photoURL" class="imgThumbnail capa" [src]="user.photoURL" [alt]="user.displayName" />
+                <span *ngIf="!user.photoURL" class="badge bg-secondary capa-texto">Sem Foto</span>
+<!--                <button [routerLink]="['/admin/editar-foto', user.uid]" class="btn btn-primary btn-sm btn-capa">Trocar Foto</button> -->
+              </td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phoneNumber }}</td>
+              <td>{{ (user.emailVerified) ? 'OK' : 'Pendente' }}</td>
+              <td>
+<!--                  <a [routerLink]="['/admin/filme', movie.id]" class="btn btn-info btn-sm" placement="top" ngbTooltip="Editar {{ movie.title }}">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </a>
+                <button (click)="confirmDelete(movie)" class="btn btn-danger btn-sm mx-2" placement="top" ngbTooltip="Deletar {{ movie.title }}">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </button> -->
+
+                <button mat-button [matMenuTriggerFor]="beforeMenu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #beforeMenu="matMenu" xPosition="before">
+                  <button color="primary" [routerLink]="['/admin/usuarios', user.uid]" mat-menu-item>Editar <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                </mat-menu>
+              </td>
+            </tr>
+            <tr *ngIf="loading">
+              <td colspan="8">
+                <img  class="loading" [src]="imgLoading" alt="Carregando">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

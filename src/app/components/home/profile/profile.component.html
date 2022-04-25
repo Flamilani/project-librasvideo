@@ -1,8 +1,7 @@
 <h2 class="title">Meu Perfil</h2>
-
-<img *ngIf="authService.userData.photoURL" [src]="authService.userData.photoURL" class="rounded-circle mx-auto d-block imgUserHeader" alt="Meu Perfil" />
-<img *ngIf="!authService.userData.photoURL" [src]="imageUser" class="rounded-circle mx-auto d-block imgUserHeader" alt="Meu Perfil" />
-<a routerLink="'/trocar-foto'" class="btn btn-info btn-sm mb-3 btn-update-photo">Trocar Foto</a>
+<img *ngIf="users?.photoURL !== null" [src]="users?.photoURL" class="rounded-circle mx-auto d-block imgUserHeader" alt="Meu Perfil user" />
+<img *ngIf="users?.photoURL === null" [src]="imageUser" class="rounded-circle mx-auto d-block imgUserHeader" alt="Meu Perfil imageUser" />
+<a routerLink="/home/trocar-foto" class="btn btn-info btn-sm mb-3 btn-update-photo">Trocar Foto</a>
   <div class="contentProfile">
     <div class="mb-1 row">
       <div><strong>Usuário:</strong> {{ users?.displayName }}</div>

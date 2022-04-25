@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 const assets = '';
 const imagePath = '../../../../assets/img/logo-3.png';
+const imagePathAdmin = '../../../../assets/img/logo-2.png';
 const imageSmallPath = '../../../../assets/img/logo-circle.png';
 const imageUser = '../../../../assets/img/icon-user.png';
 const imgLoading = '../../../../assets/img/loading.gif';
@@ -12,6 +13,7 @@ export const environment = {
   production: false,
   assets,
   imagePath,
+  imagePathAdmin,
   imageSmallPath,
   imageUser,
   imgLoading,

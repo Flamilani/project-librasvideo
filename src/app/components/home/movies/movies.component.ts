@@ -33,7 +33,12 @@ export class MoviesComponent implements OnInit {
   moviesAction!: Movie[];
   moviesAdventure!: Movie[];
   moviesAnimation!: Movie[];
+  moviesComedy!: Movie[];
+  moviesDocumentary!: Movie[];
   moviesDrama!: Movie[];
+  moviesRomance!: Movie[];
+  moviesThriller!: Movie[];
+  moviesHorror!: Movie[];
 
   movie!: Movie | null;
 
@@ -56,7 +61,12 @@ export class MoviesComponent implements OnInit {
       this.moviesByAction();
       this.moviesByAdventure();
       this.moviesByAnimation();
+      this.moviesByComedy();
+      this.moviesByDocumetary();
       this.moviesByDrama();
+      this.moviesByRomance();
+      this.moviesByThriller();
+      this.moviesByHorror();
    }, 2000);
 
   }
@@ -139,12 +149,47 @@ export class MoviesComponent implements OnInit {
       });
   }
 
+  moviesByComedy() {
+    this.moviesService.loadMoviesByCategory('COMEDY')
+      .subscribe(movies => {
+        this.moviesComedy = movies;
+      });
+  }
+
   moviesByDrama() {
      this.moviesService.loadMoviesByCategory('DRAMA')
       .subscribe(movies => {
         this.moviesDrama = movies;
       });
   }
+
+  moviesByDocumetary() {
+    this.moviesService.loadMoviesByCategory('DOCUMENTARY')
+     .subscribe(movies => {
+       this.moviesDocumentary = movies;
+     });
+ }
+
+ moviesByRomance() {
+  this.moviesService.loadMoviesByCategory('ROMANCE')
+   .subscribe(movies => {
+     this.moviesRomance = movies;
+   });
+}
+
+moviesByThriller() {
+  this.moviesService.loadMoviesByCategory('THRILLER')
+   .subscribe(movies => {
+     this.moviesThriller = movies;
+   });
+}
+
+moviesByHorror() {
+  this.moviesService.loadMoviesByCategory('HORROR')
+   .subscribe(movies => {
+     this.moviesHorror = movies;
+   });
+}
 
   moviesByCateg() {
     let item = this.getCategories;

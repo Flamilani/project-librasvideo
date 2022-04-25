@@ -1,5 +1,7 @@
-<a class="title" routerLink="/home/filmes">Filmes</a>
-<h3 class="mt-3">{{ movie?.title }}</h3>
+<h2 class="title">
+  <a routerLink="/home/filmes"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+  {{ movie?.title }}
+</h2>
 <span>{{ moviesService.getCategoryByName(movie!.category) }}</span>
 <span *ngIf="movie?.age == this.getAges[0].arrayAge.toString()" [ngClass]="{'bg-success': movie?.age == this.getAges[0].arrayAge.toString()}" class="mx-2 badge">{{ this.getAges[0].valueAge }}</span>
 <span *ngIf="movie?.age == this.getAges[1].arrayAge.toString()" [ngClass]="{'bg-info': movie?.age == this.getAges[1].arrayAge.toString()}" class="mx-2 badge">{{ this.getAges[1].valueAge }}</span>

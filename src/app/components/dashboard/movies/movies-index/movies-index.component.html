@@ -1,8 +1,8 @@
-<div class="container mb-4">
+<div class="container mb-2">
   <div class="card">
     <div class="card-header">
       Listagem de Filmes
-      <button (click)="goToMoviesCreate()" class="btn btn-info float-end">
+      <button (click)="goToMoviesCreate()" class="btn btn-secondary float-end">
         Adicionar Novo Filme
       </button>
     </div>
@@ -29,11 +29,11 @@
               <td>
                 <img *ngIf="movie.iconUrl" class="imgThumbnail capa" [src]="movie.iconUrl" alt="movie.title" />
                 <span *ngIf="!movie.iconUrl" class="badge bg-secondary capa-texto">Sem Imagem</span>
-               <!--  <button class="btn btn-primary btn-sm btn-capa">Trocar Capa</button> -->
+               <button [routerLink]="['/admin/editar-capa', movie.id]" class="btn btn-primary btn-sm btn-capa">Trocar Capa</button>
               </td>
               <td style="width: 300px;">
                 <div class="embed-container">
-                  <iframe src="https://player.vimeo.com/video/45134899?h=a65271635a&title=0&byline=0&portrait=0" frameborder="0"></iframe>
+                  <iframe [src]="movie.url | vimeoUrl" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
               </td>
               <td>{{ movie.director }}</td>
@@ -50,16 +50,24 @@
               </td>
               <td>{{ movie.year }}</td>
               <td>
-                 <a [routerLink]="['/admin/filme', movie.id]" class="btn btn-info btn-sm" placement="top" ngbTooltip="Editar {{ movie.title }}">
+<!--                  <a [routerLink]="['/admin/filme', movie.id]" class="btn btn-info btn-sm" placement="top" ngbTooltip="Editar {{ movie.title }}">
                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                 </a>
                 <button (click)="confirmDelete(movie)" class="btn btn-danger btn-sm mx-2" placement="top" ngbTooltip="Deletar {{ movie.title }}">
                   <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </button> -->
+
+                <button mat-button [matMenuTriggerFor]="beforeMenu">
+                  <mat-icon>more_vert</mat-icon>
                 </button>
+                <mat-menu #beforeMenu="matMenu" xPosition="before">
+                  <button color="primary" [routerLink]="['/admin/filme', movie.id]" mat-menu-item>Editar <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                  <button color="warn" (click)="confirmDelete(movie)" mat-menu-item>Deletar <i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </mat-menu>
               </td>
             </tr>
             <tr *ngIf="loading">
-              <td colspan="6">
+              <td colspan="8">
                 <img  class="loading" [src]="imgLoading" alt="Carregando">
               </td>
             </tr>

@@ -50,17 +50,12 @@ export class MoviesIndexComponent implements OnInit {
     this.router.navigateByUrl('admin/novo-filme');
   }
 
-  edit() {
-
-  }
-
   sortData() {
     if (this.order) {
       let newarr = this.movies.sort((a, b) => a.seqNo - b.seqNo);
       this.movies = newarr;
     }
   }
-
 
   confirmDelete(movie: Movie) {
     Swal.fire({
